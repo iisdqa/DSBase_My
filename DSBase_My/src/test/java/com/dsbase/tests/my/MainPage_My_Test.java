@@ -13,7 +13,7 @@ public class MainPage_My_Test extends BaseTest {
 	@Test(groups = { "MainPage_My_Test" })
 	public void TestMainPage_TestMethod() 
 	{
-		/* логин */
+		/* логин .*/
 		LogInPage_My authorizationPage = new MainPage_My(driver).redirectToLogInPage();
 		MainPage_My mainPage = authorizationPage.logInAs("ulloph_rus", "ullophrus");
 		
