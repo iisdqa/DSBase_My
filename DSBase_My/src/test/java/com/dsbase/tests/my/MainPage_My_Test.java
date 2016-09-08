@@ -20,7 +20,7 @@ public class MainPage_My_Test extends BaseTest {
 		//нажимаем на "Реестр ЛС"
 		DrugRegistryMy drugRegistryPage = mainPage.new goTo().drugRegistryMy();
 		drugRegistryPage.userNameCheck("Ivanov Ann");
-	
+	   
 		
 	}
 }

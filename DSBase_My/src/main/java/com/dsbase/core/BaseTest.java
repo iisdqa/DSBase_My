@@ -30,8 +30,8 @@ public abstract class BaseTest
 	public void tearDown()
 	{
 		//DbConnection.closeConnection(sqlConnection);
-		driver.close();
-		driver.quit();
+//		driver.close();
+//		driver.quit();
 	}
 	
     public WebDriver getDriver() 

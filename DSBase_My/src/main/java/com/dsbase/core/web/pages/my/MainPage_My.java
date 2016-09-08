@@ -11,6 +11,7 @@ import com.dsbase.core.web.WebPage;
 import com.dsbase.core.web.elements.Button;
 import com.dsbase.core.web.elements.Custom;
 import com.dsbase.core.web.elements.Link;
+import com.dsbase.pages.drugs.my.DrugRegistrationPage_My;
 
 public class MainPage_My extends WebPage<MainPage_My>
 {
@@ -41,6 +42,12 @@ public class MainPage_My extends WebPage<MainPage_My>
 		return new LogInPage_My(driver).waitUntilAvailable();
 	}
 	
+	public void waitForPageReady()
+	{
+		// Ожидание прогрузки страницы
+		waitForBlockStatus(getPageDownload(), false);
+		simpleWait(1);
+	}
 	
 	public class goTo{
 		public DrugRegistryMy drugRegistryMy(){
@@ -52,10 +59,15 @@ public class MainPage_My extends WebPage<MainPage_My>
 			// js click
 			new CustomMethods().new Js_Actions().webElement_Click(driver, getDrugRegistryLink());
 			return new DrugRegistryMy(driver).waitUntilAvailable();
-			
+		}
+		public DrugRegistrationPage_My drugRegistrationPage_My(){
+			new CustomMethods().new Js_Actions().webElement_Click(driver, getDrugRegistrationLink());
+			return new DrugRegistrationPage_My(driver).waitUntilAvailable();	
+		}
 			
 		
-		}
+	    
+		
 	}
 	/*_______________________________________________________________________*/				
 			
@@ -73,9 +85,9 @@ public class MainPage_My extends WebPage<MainPage_My>
 	private WebElement getDrugRegistryLink(){
 		return driver.findElement(By.xpath("//a[@href='/Drugs/List']"));
 	}
-/*	private Link getDrugRegistryLink(){
-		return new Link(driver, By.xpath("//a[@href='/Drugs/List']"));
-	}*/
+	private WebElement getDrugRegistrationLink(){
+		return driver.findElement(By.xpath("//a[@href='/Drugs/Registration']"));
+	}
 
 	private class DictionaryBlock_Elements{
 		private WebElement getDictionaryButton(){
@@ -83,6 +95,12 @@ public class MainPage_My extends WebPage<MainPage_My>
 		return element;
 		}
 	}
+	// "Завантаження"
+		private Custom getPageDownload()
+		{
+			return new Custom(driver, By.xpath("(//span[@class='span-url'])[1]"));
+		}
+	
 	/*_______________________________________________________________________*/		
 }	
 			
