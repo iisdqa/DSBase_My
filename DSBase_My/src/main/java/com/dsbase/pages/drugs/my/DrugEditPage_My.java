@@ -4,12 +4,14 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
+import com.dsbase.core.web.CommonActions;
 import com.dsbase.core.web.CustomMethods;
 import com.dsbase.core.web.WebPage;
 import com.dsbase.core.web.CustomMethods.Grid;
 import com.dsbase.core.web.elements.Button;
 import com.dsbase.core.web.elements.Custom;
 import com.dsbase.core.web.elements.TextInput;
+
 
 
 
@@ -193,6 +195,9 @@ public class DrugEditPage_My extends WebPage<DrugEditPage_My> {
 			new Substance_Elements().getSubstanceField().clear();
 			simpleWait(1);
 			new Substance_Elements().getSubstanceField().inputText(new Substance_Elements().new Values().editedSubstance);
+			new Substance_Elements().getSubstanceFieldAuto().clear();
+			new Substance_Elements().getSubstanceFieldAuto().inputText(new Substance_Elements().new Values().editedSubstance1);
+			new CommonActions().autoCompleteValue_Set(driver,new Substance_Elements().getSubstanceFieldAuto(), 2);
 			
 			// Сохранение действующее вещество
 			new Substance_Elements().getSaveButton().click();
@@ -209,6 +214,7 @@ public class DrugEditPage_My extends WebPage<DrugEditPage_My> {
 			String[][] ExpectedValues = new String [1][];
 			ExpectedValues[0] = new String[] {"",
 					  						  new Substance_Elements().new Values().editedSubstance,
+					  						  new Substance_Elements().new Values().editedSubstance1,
 											  ""};
 			
 			// Определение актуальных значений
@@ -226,7 +232,7 @@ public class DrugEditPage_My extends WebPage<DrugEditPage_My> {
 			waitUntilUnblocked((new Main_Elements().getDeletion_PopUp()));
 			simpleWait(2);
 				
-			// Удаление МНН
+			// Удаление 'Действущего вещества'
 			new Main_Elements().getDeletionYes_Button().click();
 			simpleWait(1);
 			
@@ -235,6 +241,71 @@ public class DrugEditPage_My extends WebPage<DrugEditPage_My> {
 			simpleWait(1);
 		}
 		//_______________________________________________________________________________________________//
+		
+		//________________________________________________________ Документы _____________________________________________________________//
+
+		public void addedDoc_check()
+		{
+			// Определение ожидаемых значений
+			String[][] ExpectedValues = new String [1][];
+			ExpectedValues[0] = new String[] {"",
+					  						  new Docs_Elements().new Values().date,
+											  new Docs_Elements().new Values().name,
+											  new Docs_Elements().new Values().docDescription,
+											  new Docs_Elements().new Values().docType,
+											  new Docs_Elements().new Values().fileLink,
+											  "",
+											  ""};
+			
+			// Определение актуальных значений
+			String[][] ActualValues = new CustomMethods().new Grid().GetAllRows(new Docs_Elements().getDocsGridBody());
+			
+			// Проверка значений грида
+			new CustomMethods().new Grid().gridValuesEqualityCheck(ExpectedValues, ActualValues);
+		}
+		
+		public void doc_Edit()
+		{
+			// Открытие поп-апа добавления действующего вещества
+			new Docs_Elements().getEditButton().click();
+			simpleWait(2);
+			waitUntilUnblocked((new Docs_Elements().getEditPopUp()));
+			simpleWait(2);
+			
+			// Внести действующее вещество
+			new Docs_Elements().getName_Field().clear();
+			simpleWait(1);
+			new Docs_Elements().getName_Field().inputText(new Docs_Elements().new Values().editedName);
+			
+			// Сохранение действующее вещество
+			new Docs_Elements().getSaveButton().click();
+			simpleWait(1);
+			
+			// Ожидание прогрузки грида
+			waitForBlockStatus(new Docs_Elements().getGridDownload_Div(), false);
+			simpleWait(1);
+		}
+		
+		public void editedDoc_check()
+		{
+			// Определение ожидаемых значений
+			String[][] ExpectedValues = new String [1][];
+			ExpectedValues[0] = new String[] {"",
+					  						  new Docs_Elements().new Values().date,
+					  						  new Docs_Elements().new Values().editedName,
+					  						  new Docs_Elements().new Values().docDescription,
+					  						  new Docs_Elements().new Values().docType,
+					  						  new Docs_Elements().new Values().fileLink,
+					  						  "",
+					  						  ""};
+			
+			// Определение актуальных значений
+			String[][] ActualValues = new CustomMethods().new Grid().GetAllRows(new Docs_Elements().getDocsGridBody());
+			
+			// Проверка значений грида
+			new CustomMethods().new Grid().gridValuesEqualityCheck(ExpectedValues, ActualValues);
+		}
+		
 
 	// _______________________________________elements______________________________________//
 	private class Main_Elements {
@@ -369,6 +440,10 @@ public class DrugEditPage_My extends WebPage<DrugEditPage_My> {
 			{
 				return new TextInput(driver, By.id("active_substance"));
 			}
+			// Действующее вещество автокоплит
+			private TextInput getSubstanceFieldAuto(){
+				return new TextInput(driver, By.id("active_substance_list_id_Name"));
+			}
 			
 			// Кнопка 'Сохранить'
 			private Button getSaveButton()
@@ -394,9 +469,56 @@ public class DrugEditPage_My extends WebPage<DrugEditPage_My> {
 				private String substance = "Тест";	  									// Действующее вещество
 				private String editedSubstance = "Тестинин";						    // Действующее вещество после редактирования
 				private String substance1="тест1";                                      // Действуещее вещество автокомплит
+				private String editedSubstance1="тест2";                                // Действуещее вещество автокомплит после редактирования
 			}
 		}
 		//________________________________________________________________________________________________________________________________//
 
+		//_________________________________________________________Элементы блока 'Документы'_____________________________________________//
+			private class Docs_Elements{
+					
+				// Поп-ап добавления
+				private Custom getEditPopUp(){
+					return new Custom(driver, By.xpath("//span[text() = '" + new Values().editPopUpName + "']"));
+				}
+				// "Завантаження"
+				private Custom getGridDownload_Div(){
+					return new Custom(driver, By.id("load_list_file_load"));
+				}
+				// <tbody> грида
+				private WebElement getDocsGridBody(){
+						return driver.findElement(By.xpath("//*[@id='list_file_load']/tbody"));
+				}
+				// Название документа
+				private TextInput getName_Field(){
+					return new TextInput(driver, By.id("Title"));
+				}
+					
+				// Кнопка 'Сохранить'
+				private Button getSaveButton(){
+					return new Button(driver, By.id("save_file_btn"));
+				}
+					
+				// Кнопка редактирования
+				private Button getEditButton(){
+					return new Button(driver, By.xpath("//td[@aria-describedby='list_file_load_edit']/input"));
+				}
+					
+				// Кнопка удаления
+				private Button getDeleteButton(){
+						return new Button(driver, By.xpath("//td[@aria-describedby='list_file_load_del']/input"));
+				}
+					
+				private class Values{
+					private String editPopUpName = "Редактирование документа";				// Название поп-апа добавления/редактирования документа
+					private String date = "05.01.2012";	  									// Дата
+					private String name = "Фай";						     				// Название документа
+					private String editedName = "Файл";										// Название документа после редактирования
+					private String docDescription = "Тестовое";						    	// Описание документа
+					private String docType = "Инструкция";						     		// Инструкция
+					private String fileLink = "www.getFile.com/get";			     		// Ссылка на файл
+				}
+			}
+		
 }
 
