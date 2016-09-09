@@ -292,12 +292,12 @@ public class DrugRegistrationPage_My extends WebPage<DrugRegistrationPage_My>{
 		waitUntilUnblocked((new excipients_Elements().getAddEditPopUp()));
 	    simpleWait(2);
 	    
-	    // Внести действующее вещество
+	    // Внести вспомогательное вещество
 	    new excipients_Elements().getExcipientsSubstanceField().inputText(new excipients_Elements().new Values().excipientsSubstance);
 	    new excipients_Elements().getSearchButton().click();
 	    simpleWait(2);
-	 // Ожидание прогрузки грида
-		waitForBlockStatus(new excipients_Elements().getAddEditPopUp(), true);
+	 // Ожидание прогрузки поп-
+		waitForBlockStatus(new excipients_Elements().getGridDownload_Div(), false);
 		simpleWait(1);
 		
 		// Кликнуть по ячейке 'Страна'(были проблемы с мозилой)
@@ -432,6 +432,10 @@ public class DrugRegistrationPage_My extends WebPage<DrugRegistrationPage_My>{
 			
 		// Проверка значений грида
 		new CustomMethods().new Grid().gridValuesEqualityCheck(ExpectedValues, ActualValues);
+	}
+	public void drug_Save(){
+			new Main_Elements().getSaveButton().click();
+			
 	}
 	
 		//________________________________________________________________________________________________________________________________//
@@ -583,11 +587,11 @@ public class DrugRegistrationPage_My extends WebPage<DrugRegistrationPage_My>{
 		private class Values{
 			private String marketingCountry = "Катар";     								// Страна маркетирования
 			private String Birthday = "01.01.2012";     								// Международная дата рождения
-			private String Declarer = "Заявитель для препарата";     					// Заявитель
-			private String holder = "Заявитель для препарата";							// Держатель РУ
+			private String Declarer = "Автотетст";     					                // Заявитель
+			private String holder = "Автотетст";										// Держатель РУ
 			private String DeclarerCountry = "Катар";     								// Страна заявителя
-			private String DeclarerCity = "Тестовое";                                   // Город заявителя
-			private String DeclarerAdress = "ул. Тестовая, д. 2";     					// Адрес заявителя
+			private String DeclarerCity = "Доха";                                   	// Город заявителя
+			private String DeclarerAdress = "вул.Кульчицького, 34";     				// Адрес заявителя
 			private String DrugTradeName = "Тестовый препарат";     				    // Торговое название препарата
 			private String DrugOutputForm = "Таблетки";     							// Форма выпуска препарата
 			private String Packing = "5г";     											// Фасовка
@@ -768,6 +772,7 @@ public class DrugRegistrationPage_My extends WebPage<DrugRegistrationPage_My>{
 		    private String addEditPopUpName = "Добавить действующее вещество";		// Название поп-апа добавления/редактирования действующего вещества
 		    private String substance1="тест1";                                      // Действуещее вещество автокомплит
 		    private String substance = "Тест";	  									// Действующее вещество
+		    
 		}
 	}
 			//________________________________________________________________________________________________________________________________//

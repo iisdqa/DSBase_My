@@ -1,4 +1,4 @@
-package com.dsbase.core.web.pages.my;
+package com.dsbase.pages.drugs.my;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
@@ -18,16 +18,17 @@ import com.dsbase.core.web.elements.Button;
 import com.dsbase.core.web.elements.Custom;
 import com.dsbase.core.web.elements.Text;
 import com.dsbase.core.web.elements.TextInput;
+import com.dsbase.core.web.pages.my.LogInPage_My;
 
 
 
 
 
-public class DrugRegistryMy extends WebPage<DrugRegistryMy>{
+public class DrugRegistryPage_My extends WebPage<DrugRegistryPage_My>{
     private static final String PAGE_URL = BASE_URL+ "/Drugs/List"; // ћожно мен€ть, нужно дл€ пр€мого редирект
 
     /*_______________________________ Core _______________________________*/
-	public DrugRegistryMy(WebDriver driver) {
+	public DrugRegistryPage_My(WebDriver driver) {
 		super(driver);
 	}
 		
@@ -37,7 +38,7 @@ public class DrugRegistryMy extends WebPage<DrugRegistryMy>{
 	}
 		
 	@Override
-	public DrugRegistryMy load() {
+	public DrugRegistryPage_My load() {
 		// TODO Auto-generated method stub
 		driver.get(PAGE_URL);
 		return null;

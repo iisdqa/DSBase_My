@@ -7,7 +7,7 @@ import com.dsbase.core.web.WebPage;
 import com.dsbase.core.web.elements.Button;
 import com.dsbase.core.web.elements.TextInput;
 import com.dsbase.core.web.pages.my.MainPage_My;
-import com.dsbase.core.web.pages.my.DrugRegistryMy;
+import com.dsbase.pages.drugs.my.DrugRegistryPage_My;
 
 public class LogInPage_My extends WebPage<LogInPage_My> {
 	private static final String PAGE_URL = BASE_URL + "/login";
@@ -38,12 +38,12 @@ public class LogInPage_My extends WebPage<LogInPage_My> {
 		getSubmitButton().click();
 		return new MainPage_My(driver).waitUntilAvailable();
 	}
-	public DrugRegistryMy logInToDrugsPage(String UserName, String Password)
+	public DrugRegistryPage_My logInToDrugsPage(String UserName, String Password)
 	{
 		getUserNameInput().inputText(UserName);
 		getPasswordInput().inputText(Password);
 		getSubmitButton().click();
-		return new DrugRegistryMy(driver).waitUntilAvailable();
+		return new DrugRegistryPage_My(driver).waitUntilAvailable();
 	}
 	/*_______________________________________________________________________*/				
 			

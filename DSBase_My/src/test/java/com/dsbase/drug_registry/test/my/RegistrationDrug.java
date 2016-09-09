@@ -6,13 +6,14 @@ import com.dsbase.core.BaseTest;
 import com.dsbase.core.web.pages.my.LogInPage_My;
 import com.dsbase.core.web.pages.my.MainPage_My;
 import com.dsbase.pages.drugs.my.DrugRegistrationPage_My;
+import com.dsbase.pages.drugs.my.DrugRegistryPage_My;
 
 public class RegistrationDrug extends BaseTest{
 	@Test(groups = { "DrugRegistration_Test" }) 
 	public void DrugRegistration_TestMethod(){
 		// Переход на главную
 		LogInPage_My authorizationPage = new MainPage_My(driver).redirectToLogInPage();
-		MainPage_My mainPage_My=authorizationPage.logInAs("ulloph_rus", "ullophrus");
+		MainPage_My mainPage_My=authorizationPage.logInAs("autotest_allroles", "aut0test_allr0les7_3");
 	   
 		// нажимаем на "Регистрация ЛС"		
     	DrugRegistrationPage_My drugRegistrationPage_My = mainPage_My.new goTo().drugRegistrationPage_My();
@@ -30,6 +31,13 @@ public class RegistrationDrug extends BaseTest{
 	    drugRegistrationPage_My.addedManufacturer_check();
 	    drugRegistrationPage_My.addExcipients();
 	    drugRegistrationPage_My.addExcipients_Check();
+	    drugRegistrationPage_My.drug_Save();
+	    // переход на реест ЛС
+	    DrugRegistryPage_My drugRegistryPage_My=mainPage_My.new goTo().drugRegistryMy();
+	    drugRegistryPage_My.userNameCheck("Тамин бин Хамад Аль Тани");
+	    
+	    
+	    
 	}
 	
 }

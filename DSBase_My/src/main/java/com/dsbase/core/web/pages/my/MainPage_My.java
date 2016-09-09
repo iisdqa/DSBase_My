@@ -12,6 +12,7 @@ import com.dsbase.core.web.elements.Button;
 import com.dsbase.core.web.elements.Custom;
 import com.dsbase.core.web.elements.Link;
 import com.dsbase.pages.drugs.my.DrugRegistrationPage_My;
+import com.dsbase.pages.drugs.my.DrugRegistryPage_My;
 
 public class MainPage_My extends WebPage<MainPage_My>
 {
@@ -50,7 +51,7 @@ public class MainPage_My extends WebPage<MainPage_My>
 	}
 	
 	public class goTo{
-		public DrugRegistryMy drugRegistryMy(){
+		public DrugRegistryPage_My drugRegistryMy(){
 /*			// hover
 			Actions actions = new Actions(driver);
 			actions.moveToElement(menuCard_Item()).build().perform();
@@ -58,12 +59,13 @@ public class MainPage_My extends WebPage<MainPage_My>
 			
 			// js click
 			new CustomMethods().new Js_Actions().webElement_Click(driver, getDrugRegistryLink());
-			return new DrugRegistryMy(driver).waitUntilAvailable();
+			return new DrugRegistryPage_My(driver).waitUntilAvailable();
 		}
 		public DrugRegistrationPage_My drugRegistrationPage_My(){
 			new CustomMethods().new Js_Actions().webElement_Click(driver, getDrugRegistrationLink());
 			return new DrugRegistrationPage_My(driver).waitUntilAvailable();	
 		}
+		
 			
 		
 	    
