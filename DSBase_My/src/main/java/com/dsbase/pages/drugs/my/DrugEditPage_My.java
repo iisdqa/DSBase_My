@@ -15,6 +15,7 @@ import com.dsbase.core.web.elements.TextInput;
 
 
 
+
 public class DrugEditPage_My extends WebPage<DrugEditPage_My> {
 	private static final String PAGE_URL = BASE_URL + "/Drugs/Edit";
 
@@ -173,7 +174,7 @@ public class DrugEditPage_My extends WebPage<DrugEditPage_My> {
 			String[][] ExpectedValues = new String [1][];
 			ExpectedValues[0] = new String[] {"",
 											  new Substance_Elements().new Values().substance,
-											  new Substance_Elements().new Values().substance1,
+											  new Substance_Elements().new Values().substanceAuto,
 											  ""};
 			
 		// Определение актуальных значений
@@ -196,7 +197,7 @@ public class DrugEditPage_My extends WebPage<DrugEditPage_My> {
 			simpleWait(1);
 			new Substance_Elements().getSubstanceField().inputText(new Substance_Elements().new Values().editedSubstance);
 			new Substance_Elements().getSubstanceFieldAuto().clear();
-			new Substance_Elements().getSubstanceFieldAuto().inputText(new Substance_Elements().new Values().editedSubstance1);
+			new Substance_Elements().getSubstanceFieldAuto().inputText(new Substance_Elements().new Values().editedSubstanceAuto);
 			new CommonActions().autoCompleteValue_Set(driver,new Substance_Elements().getSubstanceFieldAuto(), 2);
 			
 			// Сохранение действующее вещество
@@ -214,7 +215,7 @@ public class DrugEditPage_My extends WebPage<DrugEditPage_My> {
 			String[][] ExpectedValues = new String [1][];
 			ExpectedValues[0] = new String[] {"",
 					  						  new Substance_Elements().new Values().editedSubstance,
-					  						  new Substance_Elements().new Values().editedSubstance1,
+					  						  new Substance_Elements().new Values().editedSubstanceAuto,
 											  ""};
 			
 			// Определение актуальных значений
@@ -286,8 +287,7 @@ public class DrugEditPage_My extends WebPage<DrugEditPage_My> {
 			simpleWait(1);
 		}
 		
-		public void editedDoc_check()
-		{
+		public void editedDoc_check(){
 			// Определение ожидаемых значений
 			String[][] ExpectedValues = new String [1][];
 			ExpectedValues[0] = new String[] {"",
@@ -305,6 +305,110 @@ public class DrugEditPage_My extends WebPage<DrugEditPage_My> {
 			// Проверка значений грида
 			new CustomMethods().new Grid().gridValuesEqualityCheck(ExpectedValues, ActualValues);
 		}
+		public void doc_Delete(){
+			// Открытие поп-апа удаления 'Действущего вещества'
+			new Docs_Elements().getDeleteButton().click();
+			simpleWait(2);
+			waitUntilUnblocked((new Main_Elements().getDeletion_PopUp()));
+			simpleWait(2);
+				
+			// Удаление докумета
+			new Main_Elements().getDeletionYes_Button().click();
+			simpleWait(1);
+
+			// Ожидание прогрузки грида
+			waitForBlockStatus(new Docs_Elements().getGridDownload_Div(), false);
+			simpleWait(1);
+		}
+		
+		public void deletedDoc_check(){
+			// Проверка отсутствия значений в гриде 'Действущие вещества'
+			new CustomMethods().elementExistenceCheck(new Docs_Elements().getDocsGridBody() , false);
+		}
+		//___________________________________________________ Сотрудники _______________________________________________________//
+		
+		public void addedEmployee_check()
+		{
+			// Определение ожидаемых значений
+			String[][] ExpectedValues = new String [1][];
+			ExpectedValues[0] = new String[] {"",
+											  new Employee_Elements().new Values().fio,
+											  new Employee_Elements().new Values().position,
+											  ""};
+			
+			// Определение актуальных значений
+			String[][] ActualValues = new CustomMethods().new Grid().GetAllRows(new Employee_Elements().getEmployeeGridBody());
+			
+			// Проверка значений грида
+			new CustomMethods().new Grid().gridValuesEqualityCheck(ExpectedValues, ActualValues);
+		}
+		
+		public void employee_Edit()
+		{
+			// Открытие поп-апа добавления действующего вещества
+			new Employee_Elements().getEditButton().click();
+			simpleWait(2);
+			waitUntilUnblocked((new Employee_Elements().getAddEditPopUp()));
+			simpleWait(2);
+			
+			// Внести действующее вещество
+			new Employee_Elements().getPositionField().clear();
+			simpleWait(1);
+			new Employee_Elements().getPositionField().inputText(new Employee_Elements().new Values().editedPosition);
+			
+			// Сохранение действующее вещество
+			new Employee_Elements().getSaveButton().click();
+			simpleWait(1);
+			
+			// Ожидание прогрузки грида
+			waitForBlockStatus(new Employee_Elements().getGridDownload_Div(), false);
+			simpleWait(1);
+		}
+		
+		public void editedEmployee_check()
+		{
+			// Определение ожидаемых значений
+			String[][] ExpectedValues = new String [1][];
+			ExpectedValues[0] = new String[] {"",
+					  						  new Employee_Elements().new Values().fio,
+					  						  new Employee_Elements().new Values().editedPosition,
+					  						  ""};
+			
+			// Определение актуальных значений
+			String[][] ActualValues = new CustomMethods().new Grid().GetAllRows(new Employee_Elements().getEmployeeGridBody());
+			
+			// Проверка значений грида
+			new CustomMethods().new Grid().gridValuesEqualityCheck(ExpectedValues, ActualValues);
+		}
+		
+		public void employee_Delete()
+		{
+			// Открытие поп-апа удаления 'Действущего вещества'
+			new Employee_Elements().getDeleteButton().click();
+			simpleWait(2);
+			waitUntilUnblocked((new Main_Elements().getDeletion_PopUp()));
+			simpleWait(2);
+				
+			// Удаление МНН
+			new Main_Elements().getDeletionYes_Button().click();
+			simpleWait(1);
+			
+			// Ожидание прогрузки грида
+			waitForBlockStatus(new Employee_Elements().getGridDownload_Div(), false);
+			simpleWait(1);
+		}
+		
+		public void deletedEmployee_check()
+		{
+			// Проверка отсутствия значений в гриде 'Действущие вещества'
+			new CustomMethods().elementExistenceCheck(new Employee_Elements().getEmployeeGridBody() , false);
+		}
+		public DrugPassportPage_My drug_Save()
+		{
+				new Main_Elements().getSaveButton().click();
+				return new DrugPassportPage_My(driver).waitUntilAvailable();
+		}
+		//________________________________________________________________________________________________________________________________//
 		
 
 	// _______________________________________elements______________________________________//
@@ -380,7 +484,7 @@ public class DrugEditPage_My extends WebPage<DrugEditPage_My> {
 	//________________________________________________________________________________________________________________________________//
 
 	// Элементы блока 'Производитель препарата'
-		private class Manufacterer_Elements{
+	private class Manufacterer_Elements{
 			// Поп-ап добавления
 			private Custom getAddEditPopUp(){
 				return new Custom(driver, By.xpath("//span[text() = '" + new Values().addEditPopUpName + "']"));
@@ -415,7 +519,7 @@ public class DrugEditPage_My extends WebPage<DrugEditPage_My> {
 		
 		
 		//______________________________Элементы блока 'Действующие вещества'__________________________________________________//
-		private class Substance_Elements
+		public class Substance_Elements
 		{		
 			// Поп-ап добавления
 			private Custom getAddEditPopUp()
@@ -463,13 +567,13 @@ public class DrugEditPage_My extends WebPage<DrugEditPage_My> {
 				return new Button(driver, By.xpath("//td[@aria-describedby='list_Substances_del']/input"));
 			}
 			
-			private class Values
+			public class Values
 			{
 				private String addEditPopUpName = "Добавить действующее вещество";		// Название поп-апа добавления/редактирования действующего вещества
-				private String substance = "Тест";	  									// Действующее вещество
+				public String substance = "Тест";	  									// Действующее вещество
 				private String editedSubstance = "Тестинин";						    // Действующее вещество после редактирования
-				private String substance1="тест1";                                      // Действуещее вещество автокомплит
-				private String editedSubstance1="тест2";                                // Действуещее вещество автокомплит после редактирования
+				public String substanceAuto="тест1";                                      // Действуещее вещество автокомплит
+				private String editedSubstanceAuto="тест2";                                // Действуещее вещество автокомплит после редактирования
 			}
 		}
 		//________________________________________________________________________________________________________________________________//
@@ -519,6 +623,60 @@ public class DrugEditPage_My extends WebPage<DrugEditPage_My> {
 					private String fileLink = "www.getFile.com/get";			     		// Ссылка на файл
 				}
 			}
+			// Элементы блока 'Сотрудники'
+			private class Employee_Elements
+			{	
+				// Поп-ап добавления
+				private Custom getAddEditPopUp()
+				{
+					return new Custom(driver, By.xpath("//span[text() = '" + new Values().addEditPopUpName + "']"));
+				}
+				
+				// "Завантаження"
+				private Custom getGridDownload_Div()
+				{
+					return new Custom(driver, By.id("load_list_staff"));
+				}
+				
+				// <tbody> грида
+				private WebElement getEmployeeGridBody()
+				{
+					return driver.findElement(By.xpath("//*[@id='list_staff']/tbody"));
+				}
+				
+				// Сфера ответственности
+				private TextInput getPositionField()
+				{
+					return new TextInput(driver, By.id("responsibilities"));
+				}
+				
+				// Кнопка 'Сохранить'
+				private Button getSaveButton()
+				{
+					return new Button(driver, By.xpath("//input[contains(@onclick,'SavePerson()')]"));
+				}
+				
+				// Кнопка редактирования
+				private Button getEditButton()
+				{
+					return new Button(driver, By.xpath("//td[@aria-describedby='list_staff_edit']/input"));
+				}
+				
+				// Кнопка удаления
+				private Button getDeleteButton()
+				{
+					return new Button(driver, By.xpath("//td[@aria-describedby='list_staff_del']/input"));
+				}
+				
+				private class Values
+				{
+					private String addEditPopUpName = "Добавить сотрудников, которые ведут ЛС";		// Название поп-апа добавления/редактирования сотрудника
+					private String fio = "Автоматичний Петро Васильович";	  						// ФИО
+					private String position = "Начальникэ";						     				// Сфера ответственности
+					private String editedPosition = "Начальник";									// Отредактированная сфера ответственности
+				}
+			}
+			//________________________________________________________________________________________________________________________________//
 		
 }
 
