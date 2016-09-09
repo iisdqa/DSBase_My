@@ -34,7 +34,11 @@ public class RegistrationDrug extends BaseTest{
 	    drugRegistrationPage_My.drug_Save();
 	    // переход на реест ЛС
 	    DrugRegistryPage_My drugRegistryPage_My=mainPage_My.new goTo().drugRegistryMy();
+	    drugRegistryPage_My.WaitForPageReady();
 	    drugRegistryPage_My.userNameCheck("Тамин бин Хамад Аль Тани");
+	    drugRegistryPage_My.drug_Search();
+	    
+	    
 	    
 	    
 	    
