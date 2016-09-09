@@ -15,7 +15,7 @@ public class RegistrationDrug extends BaseTest{
 		LogInPage_My authorizationPage = new MainPage_My(driver).redirectToLogInPage();
 		MainPage_My mainPage_My=authorizationPage.logInAs("autotest_allroles", "aut0test_allr0les7_3");
 	   
-		// нажимаем на "Регистрация ЛС"		
+		// нажимаем на "Регистрация ЛС"		/
     	DrugRegistrationPage_My drugRegistrationPage_My = mainPage_My.new goTo().drugRegistrationPage_My();
 		drugRegistrationPage_My.marketingCountry_Set();
 		drugRegistrationPage_My.mainFields_FillUp();
