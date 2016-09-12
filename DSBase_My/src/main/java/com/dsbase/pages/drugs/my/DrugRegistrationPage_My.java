@@ -433,9 +433,9 @@ public class DrugRegistrationPage_My extends WebPage<DrugRegistrationPage_My>{
 		// Проверка значений грида
 		new CustomMethods().new Grid().gridValuesEqualityCheck(ExpectedValues, ActualValues);
 	}
-	public void drug_Save(){
+	public DrugPassportPage_My drug_Save(){
 			new Main_Elements().getSaveButton().click();
-			
+			return new DrugPassportPage_My(driver).waitUntilAvailable();
 	}
 	
 		//________________________________________________________________________________________________________________________________//

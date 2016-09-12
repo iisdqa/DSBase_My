@@ -38,8 +38,7 @@ public class DrugPassportPage_My extends WebPage<DrugPassportPage_My> {
 	}
 
 	/*================================================================ Методы============================================================*/
-	public void addedPassport_Check()
-	{
+	public void addedPassport_Check(){
 		// Проверка тайтла
 		drugPassportTitle_Check();
 		
@@ -69,23 +68,20 @@ public class DrugPassportPage_My extends WebPage<DrugPassportPage_My> {
 		// Проверка грида 'Страны маркетирования'
 		drugOtherCountries_check();
 	}
-	public DrugEditPage_My drug_Edit()
-	{
+	public DrugEditPage_My drug_Edit(){
 		getDrugEdit_Button().click();
 		simpleWait(2);
 		return new DrugEditPage_My(driver).waitUntilAvailable();
 	}
-	private void drugPassportTitle_Check()
-	{
+	private void drugPassportTitle_Check(){
 		// Определение тайтла
-		String expectedTitle = "Паспорт препарата: Тестовый препарат, Таблетки, 02.01.2012, 222";
+		String expectedTitle = "Паспорт препарата: Катар, Тестовый препарат, Таблетки, 02.01.2012, 222";
 		String actualTitle = new CustomMethods().StringSpacesCut(getDrugPassport_Title().getText());
 		
 		// Проверка соответствия
 		assertThat(actualTitle, is(equalTo(expectedTitle)));
 	}
-	public void editedPassport_Check()
-	{
+	public void editedPassport_Check(){
 		// Проверка тайтла
 		drugPassportTitle_Check();
 		
@@ -113,8 +109,7 @@ public class DrugPassportPage_My extends WebPage<DrugPassportPage_My> {
 		// Проверка грида 'Страны маркетирования'
 		drugOtherCountries_check();
 	}
-	private void mnnPart_check(String CheckType)
-	{
+	private void mnnPart_check(String CheckType){
 		// Объявление переменной
 		String Mnn = "";
 		
@@ -133,8 +128,7 @@ public class DrugPassportPage_My extends WebPage<DrugPassportPage_My> {
 		new CustomMethods().new Grid().gridValuesEqualityCheck(ExpectedValues, ActualValues);
 	}
 	
-	private void manufacturerPart_check()
-	{
+	private void manufacturerPart_check(){
 		// Определение значений ячеек
 		String manufacturerName = new Grids_Elements().new Manufacturer().new Values().manufactererName;
 		String manufacturerCountry = new Grids_Elements().new Manufacturer().new Values().manufactererCountry;
@@ -217,20 +211,17 @@ public class DrugPassportPage_My extends WebPage<DrugPassportPage_My> {
 //		}
 //	}
 	//________________________________________________________________________________________________________________________________//
-	private void drugReRegistrationPart_check()
-	{
+	private void drugReRegistrationPart_check(){
 		// Проверка отсутствия значений в гриде 'Перерегистрация ЛС'
 		new CustomMethods().elementExistenceCheck(new Grids_Elements().new Drug_Reregistration().getGridBody() , false);
 	}
 	
-	private void drugChanges_check()
-	{
+	private void drugChanges_check(){
 		// Проверка отсутствия значений в гриде 'Изменения'
 		new CustomMethods().elementExistenceCheck(new Grids_Elements().new Drug_Changes().getGridBody() , false);
 	}
 	
-	private void LastPart_check()
-	{
+	private void LastPart_check(){
 		// Определение значений ячеек грида
 		String plannedDateTitle = new LastPart_Elements().new Values().plannedDateTitle;
 		String plannedDate = new LastPart_Elements().new Values().plannedDate;
@@ -255,8 +246,7 @@ public class DrugPassportPage_My extends WebPage<DrugPassportPage_My> {
 		new CustomMethods().new Grid().gridValuesEqualityCheck(ExpectedValues, ActualValues);
 	}
 	
-	private void employeesPart_check(String CheckType)
-	{
+	private void employeesPart_check(String CheckType){
 		// Определение значений ячеек грида
 		String FIO = new Grids_Elements().new Employees().new Values().fio;
 		
@@ -278,8 +268,7 @@ public class DrugPassportPage_My extends WebPage<DrugPassportPage_My> {
 		new CustomMethods().new Grid().gridValuesEqualityCheck(ExpectedValues, ActualValues);
 	}
 	
-	private void drugOtherCountries_check()
-	{
+	private void drugOtherCountries_check(){
 		// Проверка отсутствия значений в гриде 'Изменения'
 		new CustomMethods().elementExistenceCheck(new Grids_Elements().new Drug_OtherCountries().getGridBody() , false);
 	}
@@ -299,94 +288,91 @@ public class DrugPassportPage_My extends WebPage<DrugPassportPage_My> {
 	}
 	//__________________________________________________ Элементы блоков с гридами ___________________________________________________//
 	
-		private class Grids_Elements{
-			// Грид 'МНН'
-			private class Mnn{
-				private WebElement getGridBody(){
-					return driver.findElement(By.xpath("//table[@id='list_Mnn']/tbody"));
-				}
-			    private class Values{
-			    	private String Mnn = "11122233344";      								// МНН
-			    	private String editedMnn = "111222333444";								// МНН после редактирования
-			    }
-		   }	
-			
-			// Грид 'Производители'
-			private class Manufacturer{
-				private WebElement getGridBody(){
-					return driver.findElement(By.xpath("//table[@id='list_manufacturer']/tbody"));
-				}
-				
-				private class Values{
-					private String manufactererName = "Производитель для препарата";	  	// Название производителя
-					private String manufactererCountry = "Катар";	  						// Страна производителя
-					private String manufactererAdress = "ул. Тестовая, д. 1";	  			// Адрес производителя
-				}
-		    }
-			
-			// Блок 'Состав ЛС'
-			private class Drug_Structure{
-				private WebElement getGridBody(){
-					return driver.findElement(By.xpath("//table[@id='list_Substances']/tbody"));
-				}
-				private class Values{
-					private String editedSubstanceAuto = "тест2";
-					private String editedActiveSubstance = "Тестинин";						     	// Действующее вещество после редактирования
-				}
-		    }
-			// Грид 'Перерегистрация ЛС'
-			private class Drug_Reregistration{
-				private WebElement getGridBody(){
-					return driver.findElement(By.xpath("//table[@id='list_re_registering']/tbody"));
-					}
+	private class Grids_Elements{
+		// Грид 'МНН'
+		private class Mnn{
+			private WebElement getGridBody(){
+				return driver.findElement(By.xpath("//table[@id='list_Mnn']/tbody"));
 			}
-			// Грид 'Изменения'
-			private class Drug_Changes{
-				private WebElement getGridBody(){
-					return driver.findElement(By.xpath("//table[@id='list_drug_changes']/tbody"));
-					}
+			private class Values{
+			    private String Mnn = "11122233344";      								// МНН
+			    private String editedMnn = "111222333444";								// МНН после редактирования
+			}
+		}	
+			
+		// Грид 'Производители'
+		private class Manufacturer{
+			private WebElement getGridBody(){
+				return driver.findElement(By.xpath("//table[@id='list_manufacturer']/tbody"));
+			}
+				
+			private class Values{
+				private String manufactererName = "Производитель для препарата";	  	// Название производителя
+				private String manufactererCountry = "Катар";	  						// Страна производителя
+				private String manufactererAdress = "ул. Тестовая, д. 1";	  			// Адрес производителя
+			}
+		}
+			
+		// Блок 'Состав ЛС'
+		private class Drug_Structure{
+			private WebElement getGridBody(){
+				return driver.findElement(By.xpath("//table[@id='list_Substances']/tbody"));
+			}
+			private class Values{
+				private String editedSubstanceAuto = "тест2";
+				private String editedActiveSubstance = "Тестинин";						     	// Действующее вещество после редактирования
+			}
+		}
+		// Грид 'Перерегистрация ЛС'
+		private class Drug_Reregistration{
+			private WebElement getGridBody(){
+				return driver.findElement(By.xpath("//table[@id='list_re_registering']/tbody"));
+			}
+		}
+		// Грид 'Изменения'
+		private class Drug_Changes{
+			private WebElement getGridBody(){
+				return driver.findElement(By.xpath("//table[@id='list_drug_changes']/tbody"));
+		}
 //				private Button getEdit_Button(){
 //					return new Button(driver, By.xpath("//td[@aria-describedby='list_drug_changes_edit']/input"));        // нет страницы DrugChangeAddEditPage_My
 //				}
+		}
+		// Грид 'Сотрудники'
+		private class Employees{
+			private WebElement getGridBody(){
+				return driver.findElement(By.xpath("//table[@id='list_staff']/tbody"));
 			}
-			// Грид 'Сотрудники'
-			private class Employees{
-				private WebElement getGridBody(){
-					return driver.findElement(By.xpath("//table[@id='list_staff']/tbody"));
-				}
-				private class Values{
-					private String fio = "Автоматичний Петро Васильович";	  						// ФИО
-					private String position = "Начальникэ";						     				// Сфера ответственности
-					private String editedPosition = "Начальник";									// Отредактированная сфера ответственности
-				}
+			private class Values{
+				private String fio = "Автоматичний Петро Васильович";	  						// ФИО
+				private String position = "Начальникэ";						     				// Сфера ответственности
+				private String editedPosition = "Начальник";									// Отредактированная сфера ответственности
 			}
-			// Грид 'Страны маркетирования'
-			private class Drug_OtherCountries{
-				private WebElement getGridBody(){
-					return driver.findElement(By.xpath("//table[@id='list_countries']/tbody"));
-				}
+		}
+		// Грид 'Страны маркетирования'
+		private class Drug_OtherCountries{
+			private WebElement getGridBody(){
+				return driver.findElement(By.xpath("//table[@id='list_countries']/tbody"));
 			}
+		}
 	
-		}
-		private class LastPart_Elements
-		{
-			private WebElement getGridBody()
-			{
-				return driver.findElement(By.xpath("(//div[@class='content_page table_cell']/div[@class='max_width1010px']/table)[4]/tbody"));
-			}
-			
-			private class Values
-			{
-				private String plannedDateTitle = "Запланированная:";	  			    // Название поля 'Запланированная дата'
-				private String plannedDate = "01.01.2013";	  							// Значение поля 'Запланированная дата'
-				private String actualDateTitle = "Фактическая:";	  					// Название поля 'Фактическая дата'
-				private String actualDate = "";	  										// Значение поля 'Фактическая дата'
-				private String endRuDateTitle = "Дата окончания РУ:";	  				// Название поля 'Дата окончания РУ'
-				private String endRuDate = "01.01.2014";	  							// Значение поля 'Дата окончания РУ'
-				private String drugConditionTitle = "Состояние по препарату:";	  		// Название поля 'Состояние по препарату'
-				private String drugCondition = "в стадии разработки";	  				// Значение поля 'Состояние по препарату'
-			}
-		}
-		
-		
 	}
+	private class LastPart_Elements{
+		private WebElement getGridBody(){
+			return driver.findElement(By.xpath("(//div[@class='content_page table_cell']/div[@class='max_width1010px']/table)[4]/tbody"));
+		}
+			
+		private class Values{
+			private String plannedDateTitle = "Запланированная:";	  			    // Название поля 'Запланированная дата'
+			private String plannedDate = "01.01.2013";	  							// Значение поля 'Запланированная дата'
+			private String actualDateTitle = "Фактическая:";	  					// Название поля 'Фактическая дата'
+			private String actualDate = "";	  										// Значение поля 'Фактическая дата'
+			private String endRuDateTitle = "Дата окончания РУ:";	  				// Название поля 'Дата окончания РУ'
+			private String endRuDate = "01.01.2014";	  							// Значение поля 'Дата окончания РУ'
+			private String drugConditionTitle = "Состояние по препарату:";	  		// Название поля 'Состояние по препарату'
+			private String drugCondition = "в стадии разработки";	  				// Значение поля 'Состояние по препарату'
+		}
+	}
+		
+		
+}

@@ -146,13 +146,13 @@ public class DrugEditPage_My extends WebPage<DrugEditPage_My> {
 	}
 
 	public void manufacturer_Delete() {
-		// Открытие поп-апа удаления 'Действущего вещества'
+		// Открытие поп-апа удаления 'Производитель'
 		new Manufacterer_Elements().getDeleteButton().click();
 		simpleWait(2);
 		waitUntilUnblocked((new Main_Elements().getDeletion_PopUp()));
 		simpleWait(2);
 
-		// Удаление МНН
+		// Удаление производителя
 		new Main_Elements().getDeletionYes_Button().click();
 		simpleWait(1);
 
@@ -162,7 +162,7 @@ public class DrugEditPage_My extends WebPage<DrugEditPage_My> {
 	}
 
 	public void deletedManufacturer_check() {
-		// Проверка отсутствия значений в гриде 'Действущие вещества'
+		// Проверка отсутствия значений в гриде 'Производитель'
 		new CustomMethods().elementExistenceCheck(new Manufacterer_Elements().getManufacturerGridBody(), false);
 	}
 	// ________________________________________________________________________________________________________________________________//
@@ -327,8 +327,7 @@ public class DrugEditPage_My extends WebPage<DrugEditPage_My> {
 		}
 		//___________________________________________________ Сотрудники _______________________________________________________//
 		
-		public void addedEmployee_check()
-		{
+		public void addedEmployee_check(){
 			// Определение ожидаемых значений
 			String[][] ExpectedValues = new String [1][];
 			ExpectedValues[0] = new String[] {"",
@@ -343,20 +342,19 @@ public class DrugEditPage_My extends WebPage<DrugEditPage_My> {
 			new CustomMethods().new Grid().gridValuesEqualityCheck(ExpectedValues, ActualValues);
 		}
 		
-		public void employee_Edit()
-		{
-			// Открытие поп-апа добавления действующего вещества
+		public void employee_Edit(){
+			// Открытие поп-апа добавления Сотрудники
 			new Employee_Elements().getEditButton().click();
 			simpleWait(2);
 			waitUntilUnblocked((new Employee_Elements().getAddEditPopUp()));
 			simpleWait(2);
 			
-			// Внести действующее вещество
+			// Внести сотрудника
 			new Employee_Elements().getPositionField().clear();
 			simpleWait(1);
 			new Employee_Elements().getPositionField().inputText(new Employee_Elements().new Values().editedPosition);
 			
-			// Сохранение действующее вещество
+			// Сохранение сотрудника
 			new Employee_Elements().getSaveButton().click();
 			simpleWait(1);
 			
@@ -365,8 +363,7 @@ public class DrugEditPage_My extends WebPage<DrugEditPage_My> {
 			simpleWait(1);
 		}
 		
-		public void editedEmployee_check()
-		{
+		public void editedEmployee_check(){
 			// Определение ожидаемых значений
 			String[][] ExpectedValues = new String [1][];
 			ExpectedValues[0] = new String[] {"",
@@ -381,15 +378,14 @@ public class DrugEditPage_My extends WebPage<DrugEditPage_My> {
 			new CustomMethods().new Grid().gridValuesEqualityCheck(ExpectedValues, ActualValues);
 		}
 		
-		public void employee_Delete()
-		{
-			// Открытие поп-апа удаления 'Действущего вещества'
+		public void employee_Delete(){
+			// Открытие поп-апа удаления 'Сотрудники'
 			new Employee_Elements().getDeleteButton().click();
 			simpleWait(2);
 			waitUntilUnblocked((new Main_Elements().getDeletion_PopUp()));
 			simpleWait(2);
 				
-			// Удаление МНН
+			// Удаление сотрудника
 			new Main_Elements().getDeletionYes_Button().click();
 			simpleWait(1);
 			
@@ -398,13 +394,11 @@ public class DrugEditPage_My extends WebPage<DrugEditPage_My> {
 			simpleWait(1);
 		}
 		
-		public void deletedEmployee_check()
-		{
-			// Проверка отсутствия значений в гриде 'Действущие вещества'
+		public void deletedEmployee_check(){
+			// Проверка отсутствия значений в гриде 'Сотрудники'
 			new CustomMethods().elementExistenceCheck(new Employee_Elements().getEmployeeGridBody() , false);
 		}
-		public DrugPassportPage_My drug_Save()
-		{
+		public DrugPassportPage_My drug_Save(){
 				new Main_Elements().getSaveButton().click();
 				return new DrugPassportPage_My(driver).waitUntilAvailable();
 		}
@@ -472,13 +466,9 @@ public class DrugEditPage_My extends WebPage<DrugEditPage_My> {
 		}
 
 		private class Values {
-			private String addEditPopUpName = "Добавить МНН"; // Название
-																// поп-апа
-																// добавления/редактирования
-																// МНН
+			private String addEditPopUpName = "Редактирование записи"; // Название поп-апа добавления/редактирования МНН
 			private String mnn = "11122233344"; // МНН
-			private String editedMnn = "111222333444"; // МНН после
-														// редактирования
+			private String editedMnn = "111222333444"; // МНН после редактирования
 		}
 	}
 	//________________________________________________________________________________________________________________________________//
@@ -510,7 +500,7 @@ public class DrugEditPage_My extends WebPage<DrugEditPage_My> {
 				return new Button(driver, By.xpath("//td[@aria-describedby='list_manufacturer_del']/input"));
 			}
 			private class Values{
-				private String addEditPopUpName = "Добавить производителя препарата";   // Название поп-апа добавления/редактирования производителя
+				private String addEditPopUpName = "Редактирование записи";   // Название поп-апа добавления/редактирования производителя
 				private String manufactererName = "Производитель для препарата";	    // Название производителя
 				private String manufactererCountry = "Катар";	  						// Страна производителя
 				private String manufactererAdress = "ул. Тестовая, д. 1";	  			// Адрес производителя
@@ -569,7 +559,7 @@ public class DrugEditPage_My extends WebPage<DrugEditPage_My> {
 			
 			public class Values
 			{
-				private String addEditPopUpName = "Добавить действующее вещество";		// Название поп-апа добавления/редактирования действующего вещества
+				private String addEditPopUpName = "Редактирование записи";		// Название поп-апа добавления/редактирования действующего вещества
 				public String substance = "Тест";	  									// Действующее вещество
 				private String editedSubstance = "Тестинин";						    // Действующее вещество после редактирования
 				public String substanceAuto="тест1";                                      // Действуещее вещество автокомплит
@@ -670,7 +660,7 @@ public class DrugEditPage_My extends WebPage<DrugEditPage_My> {
 				
 				private class Values
 				{
-					private String addEditPopUpName = "Добавить сотрудников, которые ведут ЛС";		// Название поп-апа добавления/редактирования сотрудника
+					private String addEditPopUpName = "Редактирование записи";		// Название поп-апа добавления/редактирования сотрудника
 					private String fio = "Автоматичний Петро Васильович";	  						// ФИО
 					private String position = "Начальникэ";						     				// Сфера ответственности
 					private String editedPosition = "Начальник";									// Отредактированная сфера ответственности
