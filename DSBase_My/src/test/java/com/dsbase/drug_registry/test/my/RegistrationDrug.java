@@ -19,8 +19,6 @@ public class RegistrationDrug extends BaseTest{
 	   
 //		DrugPassportPage_My drugPassportPage_My = mainPage_My.new goTo().customPage();
 		
-		
-		
 		// нажимаем на "Регистрация ЛС"
 		
     	DrugRegistrationPage_My drugRegistrationPage_My = mainPage_My.new goTo().drugRegistrationPage_My();
@@ -60,15 +58,15 @@ public class RegistrationDrug extends BaseTest{
 	    drugEditPage_My.editedEmployee_check();
 	    drugPassportPage_My = drugEditPage_My.drug_Save();	   
 	    
-	    // переход на реестh ЛС, проверка на то что все поля заполнены верно, удаление препарата.
+	    // переход на реестр ЛС, проверка на то что все поля заполнены верно, удаление препарата.
 	    
 	    DrugRegistryPage_My drugRegistryPage_My=mainPage_My.new goTo().drugRegistryMy();
 	    drugRegistryPage_My.WaitForPageReady();
 	    drugRegistryPage_My.userNameCheck("Тамин бин Хамад Аль Тани");
 	    drugRegistryPage_My.drug_Search();
 	    drugRegistryPage_My.foundDrug_Check();
-	    drugRegistryPage_My.drug_Delete();
-	    drugRegistryPage_My.deletedDrug_check();
+//	    drugRegistryPage_My.drug_Delete();
+//	    drugRegistryPage_My.deletedDrug_check();
 	    
 	    
 	    

@@ -8,16 +8,15 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.support.ui.Select;
 
 import com.dsbase.core.web.CommonActions;
 import com.dsbase.core.web.CustomMethods;
 import com.dsbase.core.web.WebPage;
-import com.dsbase.core.web.CustomMethods.Grid;
 import com.dsbase.core.web.elements.Button;
 import com.dsbase.core.web.elements.Custom;
 import com.dsbase.core.web.elements.Text;
 import com.dsbase.core.web.elements.TextInput;
+import com.dsbase.pages.drugs.my.DrugPassportPage_My;
 import com.dsbase.core.web.pages.my.LogInPage_My;
 
 
@@ -159,6 +158,13 @@ public class DrugRegistryPage_My extends WebPage<DrugRegistryPage_My>{
 		// Проверка отсутствия значений в гриде 'Действущие вещества'
 		new CustomMethods().elementExistenceCheck(getGridBody(), false);
 	}
+	public DrugPassportPage_My passport_Open()
+	{
+		Actions action = new Actions(driver);
+		action.doubleClick(getDrugName_Cell()).perform();
+		simpleWait(2);
+		return new DrugPassportPage_My(driver).waitUntilAvailable();
+	}
 	public LogInPage_My userOut()
 	{
 		// Выход из системы
@@ -167,10 +173,6 @@ public class DrugRegistryPage_My extends WebPage<DrugRegistryPage_My>{
 	
 	
 	/*_______________________________ Elements _______________________________*/
-	private WebElement getTopGridBody(){
-		return driver.findElement(By.xpath("//table[@aria-labelledby='gbox_list_search']/thead"));
-	}
-	
 	private WebElement getGridBody(){
 		return driver.findElement(By.xpath("//table[@id='list_search']/tbody"));
 	}
@@ -184,9 +186,6 @@ public class DrugRegistryPage_My extends WebPage<DrugRegistryPage_My>{
 		private Custom getSearch_Accordion(){
 			return new Custom(driver, By.xpath("//div[@id='accordFilter']/h3"));
 		}
-			private Select getFiltrationName_Select(){
-			return new Select(driver.findElement(By.xpath("//select[contains(@id, 'name')]")));
-		}	
 			private TextInput getFiltrationValue_Input(){
 			return new TextInput(driver, By.xpath("//input[contains(@id, 'value')]"));
 		}
