@@ -12,7 +12,9 @@ import org.openqa.selenium.WebElement;
 import com.dsbase.core.web.CustomMethods;
 import com.dsbase.core.web.WebPage;
 import com.dsbase.core.web.elements.Button;
+import com.dsbase.core.web.elements.Link;
 import com.dsbase.core.web.elements.Text;
+
 
 
 
@@ -36,6 +38,27 @@ public class DrugPassportPage_My extends WebPage<DrugPassportPage_My> {
 	}
 
 	/*================================================================ Методы============================================================*/
+	public class GoTo{
+		public DrugInstructionsPage_My instructionsPage(){
+			new DrugRegistration_Elements().getInstructions_Link().click();
+			simpleWait(1);
+			return new DrugInstructionsPage_My(driver).waitUntilAvailable();
+		}
+		
+		public DrugChangesPage_My changesPage(){
+			new DrugRegistration_Elements().getChanges_Link().click();
+			simpleWait(1);
+			return new DrugChangesPage_My(driver).waitUntilAvailable();
+		}
+		
+//		public DrugReferentsPage referentsPage() 										пока нет референтных
+//		{
+//			new DrugRegistration_Elements().getRefDrug_Link().click();
+//			simpleWait(1);
+//			return new DrugReferentsPage(driver).waitUntilAvailable();
+//		}
+	}
+	
 	public void addedPassport_Check(){
 		// Проверка тайтла
 		drugPassportTitle_Check();
@@ -47,6 +70,8 @@ public class DrugPassportPage_My extends WebPage<DrugPassportPage_My> {
 		// Проверка блока производители
 		manufacturerPart_check();
 		
+		// Проверка части 'Регистрация ЛС'
+		drugRegistrationPart_check();
 		
 		// Проверка части 'Состав ЛС'
 		drugStructurePart_check("Add");
@@ -91,6 +116,9 @@ public class DrugPassportPage_My extends WebPage<DrugPassportPage_My> {
 		
 		// Проверка части 'Состав ЛС'
 		drugStructurePart_check("Edit");
+		
+		// Проверка части 'Регистрация ЛС'
+		drugRegistrationPart_check();
 		
 		// Проверка грида 'Перерегистрация ЛС'
 		drugReRegistrationPart_check();
@@ -165,7 +193,39 @@ public class DrugPassportPage_My extends WebPage<DrugPassportPage_My> {
 		// Проверка значений грида
 		new CustomMethods().new Grid().gridValuesEqualityCheck(ExpectedValues, ActualValues);
 	}
-	
+	private void drugRegistrationPart_check(){
+		/*___________________________________________ Проверка ссылок в блоке 'Регистрация ЛС' ___________________________________________*/
+		
+		// Определение ожидаемых значений
+		String appTypeExpected = new DrugRegistration_Elements().new Values().appType;
+		String regDateExpected = new DrugRegistration_Elements().new Values().regDate;
+		String regNumExpected = new DrugRegistration_Elements().new Values().regNum;
+		String instructionsExpected = new DrugRegistration_Elements().new Values().instructionsLink;
+		String psurExpected = new DrugRegistration_Elements().new Values().psurLink;
+		String prExpected = new DrugRegistration_Elements().new Values().prLink;
+		String changesExpected = new DrugRegistration_Elements().new Values().changesLink;
+		String refDrugExpected = new DrugRegistration_Elements().new Values().refDrugLink;
+		
+		// Определение реальных значений
+		String appTypeActual = new CustomMethods().StringSpacesCut(new DrugRegistration_Elements().getAppType_Link().getText());
+		String regDateActual = new CustomMethods().StringSpacesCut(new DrugRegistration_Elements().getRegDate_Link().getText());
+		String regNumActual = new CustomMethods().StringSpacesCut(new DrugRegistration_Elements().getRegNum_Link().getText());
+		String instructionsActual = new CustomMethods().StringSpacesCut(new DrugRegistration_Elements().getInstructions_Link().getText());
+		String psurActual = new CustomMethods().StringSpacesCut(new DrugRegistration_Elements().getPsur_Link().getText());
+		String prActual = new CustomMethods().StringSpacesCut(new DrugRegistration_Elements().getPrMessages_Link().getText());
+		String changesActual = new CustomMethods().StringSpacesCut(new DrugRegistration_Elements().getChanges_Link().getText());
+		String refDrugActual = new CustomMethods().StringSpacesCut(new DrugRegistration_Elements().getRefDrug_Link().getText());
+
+		// Проверка значений
+		assertThat(appTypeActual, is(equalTo(appTypeExpected)));
+		assertThat(regDateActual, is(equalTo(regDateExpected)));
+		assertThat(regNumActual, is(equalTo(regNumExpected)));
+		assertThat(instructionsActual, is(equalTo(instructionsExpected)));
+		assertThat(psurActual, is(equalTo(psurExpected)));
+		assertThat(prActual, is(equalTo(prExpected)));
+		assertThat(changesActual, is(equalTo(changesExpected)));
+		assertThat(refDrugActual, is(equalTo(refDrugExpected)));
+	}
 	//_________________________________________________________________________________________________________________________________//
 //	/*================================================= Проверки связанные с другими тестами(пока не используется) ==============================================*/
 //	public class For_Other_Tests
@@ -209,6 +269,50 @@ public class DrugPassportPage_My extends WebPage<DrugPassportPage_My> {
 //		}
 //	}
 	//________________________________________________________________________________________________________________________________//
+	private class DrugRegistration_Elements{		
+		private Link getAppType_Link(){
+			return new Link(driver, By.xpath("(//span[contains(@onclick, 'ForEditRegistrations')])[1]"));
+		}
+		
+		private Link getRegDate_Link(){
+			return new Link(driver, By.xpath("(//span[contains(@onclick, 'ForEditRegistrations')])[2]"));
+		}
+		
+		private Link getRegNum_Link(){
+			return new Link(driver, By.xpath("(//span[contains(@onclick, 'ForEditRegistrations')])[3]"));
+		}
+		
+		private Link getInstructions_Link(){
+			return new Link(driver, By.xpath("//span[contains(@onclick, '/Instructions/List')]"));
+		}
+		
+		private Link getPsur_Link(){
+			return new Link(driver, By.xpath("//span[contains(@onclick, '?m=3')]"));
+		}
+		
+		private Link getPrMessages_Link(){
+			return new Link(driver, By.xpath("//span[contains(@onclick, '?m=4')]"));
+		}
+		
+		private Link getChanges_Link(){
+			return new Link(driver, By.xpath("//span[contains(@onclick, '/ChangesDrug/List')]"));
+		}
+		
+		private Link getRefDrug_Link(){
+			return new Link(driver, By.xpath("//span[contains(@onclick, '/ReferenceDrug/List')]"));
+		}
+		
+		private class Values{
+			private String appType = "Тестовый";	  										// Тип заявки при регистрации
+			private String regDate = "02.01.2012";	  										// Дата регистрации
+			private String regNum = "222";	  												// Номер РУ
+			private String instructionsLink = "Инструкции";	  								// Инструкции
+			private String psurLink = "Отчеты по безопасности";	  							// Отчеты по безопасности
+			private String prLink = "Сообщения о ПР/ОЭ";	  								// Сообщения о ПР/ОЭ
+			private String changesLink = "Изменения";	  									// Изменения
+			private String refDrugLink = "Референтные ЛС";	  							    // Референтные ЛС
+		}
+	}
 	private void drugReRegistrationPart_check(){
 		// Проверка отсутствия значений в гриде 'Перерегистрация ЛС'
 		new CustomMethods().elementExistenceCheck(new Grids_Elements().new Drug_Reregistration().getGridBody() , false);

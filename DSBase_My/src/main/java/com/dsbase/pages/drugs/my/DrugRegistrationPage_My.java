@@ -4,6 +4,9 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.is;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -85,7 +88,7 @@ public class DrugRegistrationPage_My extends WebPage<DrugRegistrationPage_My>{
 		
 	    // ћеждународна€ дата рождени€
 		new Main_Elements().getBirthday().click();
-		new Main_Elements().getBirthday().inputText(new Main_Elements().new Values().Birthday);
+		new Main_Elements().getBirthday().inputText(new Main_Elements().new Values().Birthday); 
 		
 		// ѕроверка подт€гивани€ страны и адреса за€вител€ при выборе за€вител€
 		new Main_Elements().getDeclarer().inputText(new Main_Elements().new Values().Declarer);

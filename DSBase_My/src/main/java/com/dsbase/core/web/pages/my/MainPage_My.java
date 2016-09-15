@@ -66,7 +66,7 @@ public class MainPage_My extends WebPage<MainPage_My>
 			new CustomMethods().new Js_Actions().webElement_Click(driver, getDrugRegistrationLink());
 			return new DrugRegistrationPage_My(driver).waitUntilAvailable();	
 		}
-		
+
 //		public DrugPassportPage_My customPage()
 //		{
 //			driver.get("http://pais:8500/Drugs/View/22111/180");
