@@ -11,6 +11,7 @@ import com.dsbase.core.web.WebPage;
 import com.dsbase.core.web.elements.Button;
 import com.dsbase.core.web.elements.Custom;
 import com.dsbase.core.web.elements.Link;
+import com.dsbase.pages.adr_reports.AddADRreport_My;
 import com.dsbase.pages.drugs.my.DrugPassportPage_My;
 import com.dsbase.pages.drugs.my.DrugRegistrationPage_My;
 import com.dsbase.pages.drugs.my.DrugRegistryPage_My;
@@ -67,12 +68,12 @@ public class MainPage_My extends WebPage<MainPage_My>
 			return new DrugRegistrationPage_My(driver).waitUntilAvailable();	
 		}
 
-//		public DrugPassportPage_My customPage()
-//		{
-//			driver.get("http://pais:8500/Drugs/View/22111/180");
-//			simpleWait(2);
-//			return new DrugPassportPage_My(driver).waitUntilAvailable();
-//		}
+		public AddADRreport_My customPage()
+	{
+			driver.get("http://pais:8500/AdverseReaction/Create");
+			simpleWait(2);
+			return new AddADRreport_My(driver).waitUntilAvailable();
+		}
 		
 	    
 		

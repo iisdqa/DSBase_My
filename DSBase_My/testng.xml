@@ -48,11 +48,11 @@
 	<test name="preserve-order Other tests" preserve-order="true">
 	    <groups>
         	<run>
-      			<include name="DrugRegistration_Test"/>
+      			<include name="TestOfTest"/>
         	</run>
     	</groups>
     	<classes>
-    		<class name="com.dsbase.drug_registry.test.my.RegistrationDrug" />
+    		<class name="com.dsbase.tests.my.TestOfTest" />
     	</classes>
 	</test>
 </suite>
