@@ -9,6 +9,7 @@ import java.util.Calendar;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.Select;
 
 import com.dsbase.core.web.CommonActions;
@@ -17,7 +18,7 @@ import com.dsbase.core.web.elements.Button;
 import com.dsbase.core.web.elements.Custom;
 import com.dsbase.core.web.elements.Link;
 import com.dsbase.core.web.elements.TextInput;
-import com.dsbase.pages.drugs.my.DrugRegistrationPage_My;
+
 
 
 
@@ -104,7 +105,17 @@ public class AddADRreport_My extends WebPage<AddADRreport_My>{
 		
 		//Ввести название препарата в поиск
 		new Drugs_add().addDrugFromRegistry().click(); 
+		new Drugs_add().getTradeName().inputText(new Drugs_add().new Values().tradeNaneDrug);
+		new Drugs_add().getSearchButton().click();
 		
+		// ожидание прогрузки грида 
+		waitForBlockStatus(new Drugs_add().getGridDownload_Div(), false);
+		simpleWait(1);
+		
+		// Кликнуть по ячейке 'Страна'(были проблемы с мозилой)
+//				Actions action = new Actions(driver);
+//				action.click((new excipients_Elements().getTestovoeCtell())).perform();
+//				simpleWait(2);
 	}
 	
 	
@@ -206,8 +217,19 @@ public class AddADRreport_My extends WebPage<AddADRreport_My>{
 		private Button addDrugFromRegistry(){
 			return new Button(driver, By.id("is_new_trade_names"));
 		}
-	
+		// Завантаження грида "реестр препаратов"
+		private Custom getGridDownload_Div(){
+			return new Custom(driver, By.id("load_list_tradenames"));
+		}
+		private TextInput getTradeName (){
+			return new TextInput(driver, By.id("TradeNameControl_Name"));
+		}
+		private Button getSearchButton(){
+			return new Button(driver, By.id("TradeNameControl_Name"));
+		}
+
 		private class Values{
+			private String tradeNaneDrug = "Тестовый препарат";													// Название препарата
 			private String addEditPopUpName = "Добавить подозреваемое ЛС";										// Название поп-апа 
 			private String addEditPopUpNameRegistry = "Выбор ЛС"; 												// Название поп-апа 
 		}
