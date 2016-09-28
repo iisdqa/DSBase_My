@@ -31,5 +31,7 @@ public class TestOfTest  extends  BaseTest{
 		ADRregistry_My aDRregistry_My = mainPage_My.new goTo().aDRregistry_My();
 		aDRregistry_My.WaitForPageReady();
 		aDRregistry_My.SearchADRreport();
+		aDRregistry_My.WaitForPageReady();
+        aDRregistry_My.FoundADRreport_Check();
 	}
 }
