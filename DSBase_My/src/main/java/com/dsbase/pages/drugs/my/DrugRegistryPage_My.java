@@ -186,14 +186,14 @@ public class DrugRegistryPage_My extends WebPage<DrugRegistryPage_My>{
 		private Custom getSearch_Accordion(){
 			return new Custom(driver, By.xpath("//div[@id='accordFilter']/h3"));
 		}
-			private TextInput getFiltrationValue_Input(){
+		private TextInput getFiltrationValue_Input(){
 			return new TextInput(driver, By.xpath("//input[contains(@id, 'value')]"));
 		}
 		private Button getSearch_Button(){
 			return new Button(driver, By.id("buttonSearch"));
 		}
-			private Custom getGridDownload_Div(){
-				return new Custom(driver, By.id("load_list_search"));
+		private Custom getGridDownload_Div(){
+			return new Custom(driver, By.id("load_list_search"));
 		}
 	}
 	private class Grid_Values{

@@ -4,8 +4,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.is;
 
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
+
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;

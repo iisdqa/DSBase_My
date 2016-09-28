@@ -1,18 +1,12 @@
 package com.dsbase.pages.adr_reports;
 
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.equalTo;
-import static org.hamcrest.Matchers.is;
-
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.Select;
 
-import com.dsbase.core.web.CommonActions;
+import com.dsbase.core.web.CustomMethods;
 import com.dsbase.core.web.WebPage;
 import com.dsbase.core.web.elements.Button;
 import com.dsbase.core.web.elements.Custom;
@@ -56,7 +50,8 @@ public class AddADRreport_My extends WebPage<AddADRreport_My>{
 		new Main_ElementsFirstTab().getEventTypeOther().inputText(new Main_ElementsFirstTab().new Values().eventTypeOther);
 		
 		// Дата получения заявителем
-		new Main_ElementsFirstTab().getApplicantReceiptDate().inputText(new Main_ElementsFirstTab().new Values().currentTime);
+		new Main_ElementsFirstTab().getApplicantReceiptDate().click();
+		new Main_ElementsFirstTab().getApplicantReceiptDate().inputText(new Main_ElementsFirstTab().new Values().documentDate);
 		
 		// Организация
 		new Main_ElementsFirstTab().getSourceOrganization().inputText(new Main_ElementsFirstTab().new Values().sourceOrganization);
@@ -112,12 +107,46 @@ public class AddADRreport_My extends WebPage<AddADRreport_My>{
 		waitForBlockStatus(new Drugs_add().getGridDownload_Div(), false);
 		simpleWait(1);
 		
-		// Кликнуть по ячейке 'Страна'(были проблемы с мозилой)
-//				Actions action = new Actions(driver);
-//				action.click((new excipients_Elements().getTestovoeCtell())).perform();
-//				simpleWait(2);
+		// Кликнуть по ячейке 'Название препарата'
+				Actions action = new Actions(driver);
+				action.click((new Drugs_add().getTradeNameCell())).perform();
+				simpleWait(2);
+		// Выбрать препарат
+		new Drugs_add().getChooseButton().click();
+		simpleWait(2);
+		
+		// нажать на кнопку "Сохранить"(Препарат)
+		new  Drugs_add().getSaveDrugButton().click();
+		simpleWait(2);
+		
 	}
-	
+	// проверка добавленного значения в грид "Подозреваемые ЛС"
+	public void addSuspectDrug_Check(){
+		// Определение ожидаемых значений
+		String[][] ExpectedValues = new String [1][];
+		ExpectedValues[0] = new String[] {  "",
+										 	new Drugs_add().new Values().tradeNaneDrug,
+										 	new Drugs_add().new Values().farmaceuticalForme,
+										 	"",
+										 	" ",
+										 	" ",
+										 	" ",
+										 	" ",
+										 	" ",
+										 	" ",
+										 	" ",
+										 	"",
+										 };
+		
+		// Определение актуальных значений
+		String[][] ActualValues = new CustomMethods().new Grid().GetAllRows(new Drugs_add().getSuspectDrugGridBody());
+		// Проверка значений грида
+		new CustomMethods().new Grid().gridValuesEqualityCheck(ExpectedValues, ActualValues);
+	}
+	public ViewADRreport_My saveADRreport(){
+		new Drugs_add().getSaveButton().click();
+		return new ViewADRreport_My(driver).waitUntilAvailable();
+	}
 	
 	/*_____________________________________________________Elements_______________________________________________________*/
 /*___________________________________________Вкладка "Информация о сообщении"___________________________________________________________*/
@@ -147,7 +176,8 @@ public class AddADRreport_My extends WebPage<AddADRreport_My>{
 		private class Values{
 			private String reportNumber = "777_AutoTest";     																	// Номер Сообщения
 			private String eventTypeOther = "Возможная передозировка";                      									// Вид случая прочее
-			private String currentTime = new SimpleDateFormat("ddMMyyyy").format(Calendar.getInstance().getTime());				// текущая дата	
+			private String currentTime = new CustomMethods().getCurrentDate();				                                    // текущая дата	
+			private String documentDate= "27.09.2016";
 			private String sourceOrganization = "USA organization";																// организация источника 
 			private String reportSourceQualification = "врач" ;  																// Квалификация источника сообщения
 		}
@@ -227,11 +257,26 @@ public class AddADRreport_My extends WebPage<AddADRreport_My>{
 		private Button getSearchButton(){
 			return new Button(driver, By.id("TradeNameControl_Name"));
 		}
+		private WebElement getTradeNameCell(){
+			return driver.findElement(By.xpath("//td[@aria-describedby='list_tradenames_TradeName']"));
+		}
+		private Button getChooseButton(){
+			return new Button(driver, By.id("TradeNameControl_Choose"));
+		}
+		private Button getSaveDrugButton(){
+			return new Button(driver, By.xpath("//input[@onclick='SaveDrugs()']"));
+		}
+		private WebElement getSuspectDrugGridBody(){
+			return driver.findElement(By.xpath("//*[@id='list_susdrugs']/tbody"));
+		}
+		private Button getSaveButton(){
+			return new Button(driver, By.id("save_btn"));
+		}
 
 		private class Values{
 			private String tradeNaneDrug = "Тестовый препарат";													// Название препарата
 			private String addEditPopUpName = "Добавить подозреваемое ЛС";										// Название поп-апа 
-			private String addEditPopUpNameRegistry = "Выбор ЛС"; 												// Название поп-апа 
+			private String farmaceuticalForme = "Таблетки";														// Форма выпуска
 		}
 	
 	}
