@@ -13,6 +13,8 @@ import com.dsbase.core.web.CustomMethods.Grid;
 import com.dsbase.core.web.elements.Button;
 import com.dsbase.core.web.elements.Custom;
 import com.dsbase.core.web.elements.TextInput;
+
+
 import org.openqa.selenium.Keys;
 
 public class ADRregistry_My extends WebPage<ADRregistry_My>{
@@ -45,7 +47,7 @@ public class ADRregistry_My extends WebPage<ADRregistry_My>{
 		simpleWait(2);
 		// Указать название и найти препарат
 		new ADRFiltration_elements().getFiltrationValue().selectByVisibleText("Номер сообщения");
-		new ADRFiltration_elements().getFiltrationValue_Input().inputText("777_AutoTest");
+		new ADRFiltration_elements().getFiltrationValue_Input().inputText("777_AutoTest"+"_"+new CustomMethods().getCurrentDate());
 		new ADRFiltration_elements().getSearch_Button().click();
 	}
 	public void FoundADRreport_Check(){
@@ -74,13 +76,33 @@ public class ADRregistry_My extends WebPage<ADRregistry_My>{
 		
 		// Определение массива ожидаемых значений
 		String[][] ExpectedValues = new String [1][];
-		ExpectedValues[0]=new String []{"","","","","1",reportNumber," ",documentDate,upToDateInformationDate,reportType,eventType,medicallyConfirmed,drugTradeNane,drugPharmaceuticalForm,"",drugAuthorizationNumber,drugManufacturer,drugManufacterCountry,
+		ExpectedValues[0]=new String []{"","","","","1",reportNumber+"_"+new CustomMethods().getCurrentDate()," ",documentDate,upToDateInformationDate,reportType,eventType,medicallyConfirmed,drugTradeNane,drugPharmaceuticalForm,"",drugAuthorizationNumber,drugManufacturer,drugManufacterCountry,
 						                       drugApplicant,drugApplicantCountry,reportSourceQualification," ",reportSourceCountry,reportSourseOrganization," ",sendersCountry,patientInitials,patientBirthday," "," ",patientSex," ","","","","","","NotNull",reportLanguage,""};
 		// Вытянуть значения из грида
 		String[][] ActualValues = new CustomMethods(). new Grid().GetAllRows(getGridBody());
 		// Проверка значений грида
 		new CustomMethods().new Grid().gridValuesEqualityCheck(ExpectedValues, ActualValues);
 	}
+	public void ADRreport_Delete(){
+
+		// Открытие поп-апа удаления 'Препарата'
+		new Deletion_PopUp().getDelete_Button().click();
+		simpleWait(2);
+		waitUntilUnblocked((new Deletion_PopUp().getDeletion_PopUp()));
+		simpleWait(2);
+			
+		// Подтверждение удаления прапарата
+		new Deletion_PopUp().getDeletionYes_Button().click();
+		simpleWait(2);
+		
+		//
+		waitUntilAvailable();
+		simpleWait(2);
+		waitForBlockStatus(new ADRFiltration_elements().getGridDownload_Div(), false);
+	
+
+	}
+	
 	
 	/*_______________________________ Elements_______________________________*/
 	private Button getADRreport(){
@@ -88,6 +110,10 @@ public class ADRregistry_My extends WebPage<ADRregistry_My>{
 	}
 	private WebElement getGridBody(){
 		return driver.findElement(By.xpath("//table[@id='list_search']/tbody"));
+	}
+	
+	private Custom getExcelButton(){
+		return new Custom(driver, By.id("export_report_btn"));
 	}
 	private class ADRFiltration_elements{
 		
@@ -105,6 +131,11 @@ public class ADRregistry_My extends WebPage<ADRregistry_My>{
 		}
 		private Select getFiltrationValue(){
 			return new Select(driver.findElement(By.xpath("//select[contains(@id,'name')]")));
+		}
+		// Крутилка
+
+		public Custom blocker() { 
+			return new Custom  (driver, By.xpath("//div[contains(@class, 'blockUI')]")); //не находит xpath
 		}
 		
 	}
@@ -130,6 +161,20 @@ public class ADRregistry_My extends WebPage<ADRregistry_My>{
 		private String patientBirthday = "06.02.1998";																		// Дата рождения пациента
 		private String patientSex = "неизвестно";																			// пол пациента
 		private String reportLanguage = "ru";																				// язык
+	}
+	private class Deletion_PopUp{
+		// Кнопка удаления
+		private Button getDelete_Button(){
+			return new Button(driver, By.xpath("//td[@aria-describedby='list_search_del']/input"));
+		}
+		// Поп-ап удаления
+		private Custom getDeletion_PopUp(){
+			return new Custom(driver, By.id("attention_delete"));
+		}
+		// Кнопка 'Да'
+		private Button getDeletionYes_Button(){
+			return new Button(driver, By.xpath("//span[text() = 'Да']"));
+		}
 	}
 	
 	

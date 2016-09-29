@@ -40,7 +40,7 @@ public class AddADRreport_My extends WebPage<AddADRreport_My>{
 	
 	    // Номер сообщения
 		new Main_ElementsFirstTab().getReportNumber().click();
-		new Main_ElementsFirstTab().getReportNumber().inputText(new Main_ElementsFirstTab().new Values().reportNumber);
+		new Main_ElementsFirstTab().getReportNumber().inputText(new Main_ElementsFirstTab().new Values().reportNumber + "_"+new CustomMethods().getCurrentDate());
 		
 		// Вид сообщения
 		new Main_ElementsFirstTab().getEventType().selectByVisibleText("Прочее");

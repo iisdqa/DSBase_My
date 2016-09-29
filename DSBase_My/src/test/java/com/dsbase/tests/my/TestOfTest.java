@@ -33,5 +33,7 @@ public class TestOfTest  extends  BaseTest{
 		aDRregistry_My.SearchADRreport();
 		aDRregistry_My.WaitForPageReady();
         aDRregistry_My.FoundADRreport_Check();
+        aDRregistry_My.ADRreport_Delete();
+      
 	}
 }

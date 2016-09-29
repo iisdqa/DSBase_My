@@ -158,15 +158,13 @@ public class DrugRegistryPage_My extends WebPage<DrugRegistryPage_My>{
 		// Проверка отсутствия значений в гриде 'Действущие вещества'
 		new CustomMethods().elementExistenceCheck(getGridBody(), false);
 	}
-	public DrugPassportPage_My passport_Open()
-	{
+	public DrugPassportPage_My passport_Open(){
 		Actions action = new Actions(driver);
 		action.doubleClick(getDrugName_Cell()).perform();
 		simpleWait(2);
 		return new DrugPassportPage_My(driver).waitUntilAvailable();
 	}
-	public LogInPage_My userOut()
-	{
+	public LogInPage_My userOut(){
 		// Выход из системы
 		return new CommonActions().userOut(driver);
 	}
