@@ -36,25 +36,25 @@ public class DriverMaster
 		switch (browser)
 		{
 			case FIREFOX_OLD:
-				FirefoxProfile profile = new FirefoxProfile();
-				profile.setPreference("network.proxy.type", 0);
-				
-				// Для загрузки файлов
-			    profile.setPreference("browser.download.folderList", 2);
-				profile.setPreference("browser.download.manager.showWhenStarting", false);
-				profile.setPreference("browser.download.dir", download_Path);
-				profile.setPreference("browser.helperApps.neverAsk.saveToDisk", "text/plain, application/octet-stream," + //applications/octet-stram сработало для *.txt
-									  "application/x-msexcel,application/excel,application/x-excel,application/vnd.ms-excel"); //для Excel файлов
-				profile.setPreference("browser.helperApps.alwaysAsk.force", false);
-				profile.setPreference("browser.download.manager.showAlertOnComplete", false);
-				
-				DesiredCapabilities FirefoxCaps = DesiredCapabilities.firefox();
-				FirefoxCaps.setJavascriptEnabled(true);
-				FirefoxCaps.setCapability(FirefoxDriver.PROFILE, profile);
-				
-				driver = new FirefoxDriver(FirefoxCaps);
-				driver.manage().window().maximize();
-				break;
+			FirefoxProfile profile = new FirefoxProfile();
+			profile.setPreference("network.proxy.type", 0);
+			
+			// Для загрузки файлов
+		    profile.setPreference("browser.download.folderList", 2);
+			profile.setPreference("browser.download.manager.showWhenStarting", false);
+			profile.setPreference("browser.download.dir", download_Path);
+			profile.setPreference("browser.helperApps.neverAsk.saveToDisk", "text/plain, application/octet-stream," + //applications/octet-stram сработало для *.txt
+								  "application/x-msexcel,application/excel,application/x-excel,application/vnd.ms-excel"); //для Excel файлов
+			profile.setPreference("browser.helperApps.alwaysAsk.force", false);
+			profile.setPreference("browser.download.manager.showAlertOnComplete", false);
+			
+			DesiredCapabilities FirefoxCaps = DesiredCapabilities.firefox();
+			FirefoxCaps.setJavascriptEnabled(true);
+			FirefoxCaps.setCapability(FirefoxDriver.PROFILE, profile);
+			
+			driver = new FirefoxDriver(FirefoxCaps);
+			driver.manage().window().maximize();
+			break;
 				
 			case FIREFOX_M:
 				FirefoxProfile m_profile = new FirefoxProfile();

@@ -5,6 +5,9 @@ import org.testng.annotations.Test;
 import com.dsbase.core.BaseTest;
 import com.dsbase.core.web.pages.my.LogInPage_My;
 import com.dsbase.core.web.pages.my.MainPage_My;
+import com.dsbase.core.web.pages.my.MainPage_My.goTo;
+import com.dsbase.pages.adr_reports.ADRregistry_My;
+import com.dsbase.pages.adr_reports.AddADRreport_My;
 import com.dsbase.pages.drugs.my.DrugEditPage_My;
 import com.dsbase.pages.drugs.my.DrugPassportPage_My;
 import com.dsbase.pages.drugs.my.DrugRegistrationPage_My;
@@ -17,7 +20,7 @@ public class RegistrationDrug extends BaseTest{
 		LogInPage_My authorizationPage = new MainPage_My(driver).redirectToLogInPage();
 		MainPage_My mainPage_My=authorizationPage.logInAs("autotest_allroles", "aut0test_allr0les7_3");
 	   
-//		DrugPassportPage_My drugPassportPage_My = mainPage_My.new goTo().customPage();
+	   //DrugPassportPage_My drugPassportPage_My = mainPage_My.new goTo().customPage();
 		
 		// нажимаем на "Регистрация ЛС"
 		
@@ -27,7 +30,7 @@ public class RegistrationDrug extends BaseTest{
 		drugRegistrationPage_My.mnn_Add();
 		drugRegistrationPage_My.addedMnn_check();
 		drugRegistrationPage_My.substance_Add();
-	    drugRegistrationPage_My.addedSubstance_check();
+		drugRegistrationPage_My.addedSubstance_check();
 	    drugRegistrationPage_My.doc_Add();
 	    drugRegistrationPage_My.addedDoc_check();
 	    drugRegistrationPage_My.employee_Add();
@@ -67,6 +70,24 @@ public class RegistrationDrug extends BaseTest{
 	    drugRegistryPage_My.foundDrug_Check();
 //	    drugRegistryPage_My.drug_Delete();
 //	    drugRegistryPage_My.deletedDrug_check();
+	   
+	    AddADRreport_My addADRreport_My = mainPage_My.new goTo().addADRreport_My();
+		addADRreport_My.mainFields_FillUpFirstTab();
+	    addADRreport_My.goToSecondTab();
+		addADRreport_My.mainFields_FillUpSecondTab();
+		addADRreport_My.goToFifthTab();
+		addADRreport_My.mainFields_FillUpFifthTab();
+		addADRreport_My.goToSixthTab();
+		addADRreport_My.suspectDrugs_Add();
+		addADRreport_My.addSuspectDrug_Check();
+		addADRreport_My.saveADRreport();
+		// реестр сообщений ПР
+		ADRregistry_My aDRregistry_My = mainPage_My.new goTo().aDRregistry_My();
+		aDRregistry_My.WaitForPageReady();
+		aDRregistry_My.SearchADRreport();
+		aDRregistry_My.WaitForPageReady();
+        aDRregistry_My.FoundADRreport_Check();
+        aDRregistry_My.ADRreport_Delete();
 	    
 	    
 	    

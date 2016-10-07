@@ -21,12 +21,6 @@ import com.dsbase.core.web.elements.Text;
 import com.dsbase.core.web.elements.TextInput;
 
 
-
-
-
-
-
-
 public class DrugRegistrationPage_My extends WebPage<DrugRegistrationPage_My>{
 	private static final String PAGE_URL = BASE_URL + "/Drugs/Registration";
 	
@@ -273,7 +267,7 @@ public class DrugRegistrationPage_My extends WebPage<DrugRegistrationPage_My>{
 		String[][] ExpectedValues = new String [1][];
 			ExpectedValues[0] = new String[] {"",
 											  new Substance_Elements().new Values().substance,
-											  new Substance_Elements().new Values().substance1,
+											  new Substance_Elements().new Values().substance1," ",
 											  ""};
 			
 		// Определение актуальных значений

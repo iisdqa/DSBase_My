@@ -173,7 +173,7 @@ public class DrugEditPage_My extends WebPage<DrugEditPage_My> {
 			String[][] ExpectedValues = new String [1][];
 			ExpectedValues[0] = new String[] {"",
 											  new Substance_Elements().new Values().substance,
-											  new Substance_Elements().new Values().substanceAuto,
+											  new Substance_Elements().new Values().substanceAuto," ",
 											  ""};
 			
 		// Определение актуальных значений
@@ -214,7 +214,7 @@ public class DrugEditPage_My extends WebPage<DrugEditPage_My> {
 			String[][] ExpectedValues = new String [1][];
 			ExpectedValues[0] = new String[] {"",
 					  						  new Substance_Elements().new Values().editedSubstance,
-					  						  new Substance_Elements().new Values().editedSubstanceAuto,
+					  						  new Substance_Elements().new Values().editedSubstanceAuto," ",
 											  ""};
 			
 			// Определение актуальных значений

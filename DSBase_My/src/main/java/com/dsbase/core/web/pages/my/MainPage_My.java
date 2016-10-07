@@ -16,6 +16,8 @@ import com.dsbase.pages.adr_reports.AddADRreport_My;
 import com.dsbase.pages.drugs.my.DrugPassportPage_My;
 import com.dsbase.pages.drugs.my.DrugRegistrationPage_My;
 import com.dsbase.pages.drugs.my.DrugRegistryPage_My;
+import com.dsbase.pages.staff.StaffAdd;
+import com.dsbase.pages.staff.StaffRegistry_My;
 
 public class MainPage_My extends WebPage<MainPage_My>
 {
@@ -69,14 +71,22 @@ public class MainPage_My extends WebPage<MainPage_My>
 			return new DrugRegistrationPage_My(driver).waitUntilAvailable();	
 		}
 
-		public AddADRreport_My customPage(){
-			driver.get("http://pais:8500/AdverseReaction/Create");
+		public StaffAdd customPage(){
+			driver.get("http://pais:8500/Staff/0/79");
 			simpleWait(2);
+			return new StaffAdd(driver).waitUntilAvailable();
+		}
+		public AddADRreport_My addADRreport_My(){
+			new CustomMethods().new Js_Actions().webElement_Click(driver, getAddADRreport_MyLink());
 			return new AddADRreport_My(driver).waitUntilAvailable();
 		}
 		public ADRregistry_My aDRregistry_My(){
 			new CustomMethods().new Js_Actions().webElement_Click(driver, getADRregistryLink());
 			return new ADRregistry_My(driver).waitUntilAvailable();
+		}
+		public StaffRegistry_My staffRegistry_My(){
+			new CustomMethods().new Js_Actions().webElement_Click(driver, getStaffRegistryLink());
+			return new StaffRegistry_My(driver); //добавить wait 
 		}
 		
 		
@@ -104,6 +114,12 @@ public class MainPage_My extends WebPage<MainPage_My>
 	}
 	private WebElement getADRregistryLink(){
 		return driver.findElement(By.xpath("//a[@href='/AdverseReaction/Search']"));
+	}
+	private WebElement getStaffRegistryLink(){
+		return driver.findElement(By.xpath("//a[@href='/Staff"));
+	}
+	private WebElement getAddADRreport_MyLink(){
+		return driver.findElement(By.xpath("//a[@href='/AdverseReaction/Create'"));
 	}
 
 	private class DictionaryBlock_Elements{
