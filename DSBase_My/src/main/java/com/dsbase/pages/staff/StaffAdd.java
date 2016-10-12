@@ -6,14 +6,17 @@ import static org.hamcrest.Matchers.is;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 
 import com.dsbase.core.web.CustomMethods;
 import com.dsbase.core.web.WebPage;
+import com.dsbase.core.web.CustomMethods.Grid;
 import com.dsbase.core.web.elements.Button;
 import com.dsbase.core.web.elements.Custom;
 import com.dsbase.core.web.elements.Text;
 import com.dsbase.core.web.elements.TextInput;
+
 
 
 
@@ -56,13 +59,17 @@ public class StaffAdd extends WebPage<StaffAdd> {
 		
 		// Открыть аккордеон(чтобы потом завязаться на закрытие при сохранении вкладки)
 		new FirstTabPersonalElements().getAdditionData_Accordion().click();
-		
 		// кнопка сохранить
 		new FirstTabPersonalElements().getSaveButton().click();
 		simpleWait(2);
 		// Ожидание закрытия аккордеона
 		new FirstTabPersonalElements().getAccortionClosed_Condition().waitUntilAvailable();
 		
+	}
+	public void SaveFormeStaff(){
+		// кнопка сохранить
+			new FirstTabPersonalElements().getSaveButton().click();
+
 	}
 	public void SecondTabAssignment_FillUp(){
 		// переход на 2 вкладку
@@ -91,7 +98,55 @@ public class StaffAdd extends WebPage<StaffAdd> {
 		new SecondTabAssignment().getActivityArea().selectByVisibleText(new SecondTabAssignment().new ValuesSecondTab().setActivityArea);
 		// Сохраняем вторую вкладку
 		new SecondTabAssignment().getSaveButtonPopUp().click();
+		waitWhileClickable(new SecondTabAssignment().getHistoryAssignmentButton());
 	}
+	public void SecondTabAssignment_Check(){
+		// Определение ожидаемых значений
+		String[][] ExpectedValues = new String [1][];
+		ExpectedValues[0] = new String[] {"", 
+										 	new SecondTabAssignment().new ValuesSecondTab().setStartDate,
+										 	new SecondTabAssignment().new ValuesSecondTab().setOrderNumber,
+										 	new SecondTabAssignment().new ValuesSecondTab().setOrderDate,
+										 	" ",
+										 	new SecondTabAssignment().new ValuesSecondTab().setArea,
+										 	" ",
+										 	new SecondTabAssignment().new ValuesSecondTab().setDepartment,
+										 	" ",
+										 	new SecondTabAssignment().new ValuesSecondTab().setCategory,
+										 	new SecondTabAssignment().new ValuesSecondTab().setActivityArea,
+										 	" ",
+										 	" ",
+										 	" ",
+										 	"Не выбрано",
+										 	"Не выбрано",
+										 	""
+										 };
+		// Определение актуальных значений
+		String[][] ActualValues = new CustomMethods().new Grid().GetAllRows(new SecondTabAssignment().getAssignmentGridBody());
+		// Проверка значений грида
+		new CustomMethods().new Grid().gridValuesEqualityCheck(ExpectedValues, ActualValues);		
+	}
+	public void SecondTabAssignment_Delete(){
+		// Открытие поп-апа удаления 'Препарата'
+		new Deletion_PopUp().getDelete_Button().click();
+		simpleWait(2);
+		waitUntilUnblocked((new Deletion_PopUp().getDeletion_PopUp()));
+		simpleWait(2);
+					
+		// Подтверждение удаления прапарата
+		new Deletion_PopUp().getDeletionYes_Button().click();
+		simpleWait(2);
+				
+		//
+
+		waitForBlockStatus(new SecondTabAssignment().getGridDownload_Div(), false);
+	
+	}
+	public void SecondTabAssignment_DeleteCheck(){
+		// Проверка отсутствия значений в гриде 'История назначений на должность'
+		new CustomMethods().elementExistenceCheck(new SecondTabAssignment().getAssignmentGridBody(), false);
+	}
+	
 	//________________________________________Elements________________________________________________//
 	private class FirstTabPersonalElements{
 		private TextInput getLastName(){																// Фамилия сотрудника
@@ -146,9 +201,15 @@ public class StaffAdd extends WebPage<StaffAdd> {
 	//_____________________________________________Вторая вкладка "Назачения"_______________________________________________________//
 	private class SecondTabAssignment{
 		// кнопка добавления истории назначений на должность
-		private Button getHistoryAssignmentButton(){
-			return new Button(driver, By.id("add_edit_tab6_1"));
+		private Custom getHistoryAssignmentButton(){
+			return new Custom(driver, By.id("add_edit_tab6_1"));
 		}
+		private Custom getGridDownload_Div(){
+			return new Custom(driver, By.id("load_list_tab_6_1"));
+		}
+		private WebElement getAssignmentGridBody(){
+			return driver.findElement(By.xpath("//table[@id='list_tab_6_1']/tbody"));
+		}										
 		// Pop-up добавления
 		private Custom getAddEditPopUp(){
 			return new Custom(driver, By.xpath("//span[text() = '" + new ValuesSecondTab().setPopUpName + "']"));
@@ -199,6 +260,20 @@ public class StaffAdd extends WebPage<StaffAdd> {
 			private String setCategory= "Медработники, фармработники, руководители";			 // категория			
 			private String setActivityArea= "комбинированное";									 // направление
 					
+		}
+	}
+	private class Deletion_PopUp{
+		// Кнопка удаления
+		private Button getDelete_Button(){
+			return new Button(driver, By.xpath("//td[@aria-describedby='list_tab_6_1_del']/input"));
+		}
+		// Поп-ап удаления
+		private Custom getDeletion_PopUp(){
+			return new Custom(driver, By.id("attention_delete"));
+		}
+		// Кнопка 'Да'
+		private Button getDeletionYes_Button(){
+			return new Button(driver, By.xpath("//span[text() = 'Да']"));
 		}
 	}
 	

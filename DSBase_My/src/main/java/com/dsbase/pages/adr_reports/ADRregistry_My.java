@@ -96,8 +96,6 @@ public class ADRregistry_My extends WebPage<ADRregistry_My>{
 		simpleWait(2);
 		
 		//
-		waitUntilAvailable();
-		simpleWait(2);
 		waitForBlockStatus(new ADRFiltration_elements().getGridDownload_Div(), false);
 	
 

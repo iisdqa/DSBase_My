@@ -16,6 +16,7 @@ import com.dsbase.pages.adr_reports.AddADRreport_My;
 import com.dsbase.pages.drugs.my.DrugPassportPage_My;
 import com.dsbase.pages.drugs.my.DrugRegistrationPage_My;
 import com.dsbase.pages.drugs.my.DrugRegistryPage_My;
+import com.dsbase.pages.events.my.EventsRegistry_My;
 import com.dsbase.pages.staff.StaffAdd;
 import com.dsbase.pages.staff.StaffRegistry_My;
 
@@ -88,6 +89,10 @@ public class MainPage_My extends WebPage<MainPage_My>
 			new CustomMethods().new Js_Actions().webElement_Click(driver, getStaffRegistryLink());
 			return new StaffRegistry_My(driver); //добавить wait 
 		}
+		public EventsRegistry_My eventsRegistry_My(){
+			new CustomMethods().new Js_Actions().webElement_Click(driver, getEventsRegister_Link());
+			return new EventsRegistry_My(driver).waitUntilAvailable();
+		}
 		
 		
 	    
@@ -116,11 +121,15 @@ public class MainPage_My extends WebPage<MainPage_My>
 		return driver.findElement(By.xpath("//a[@href='/AdverseReaction/Search']"));
 	}
 	private WebElement getStaffRegistryLink(){
-		return driver.findElement(By.xpath("//a[@href='/Staff"));
+		return driver.findElement(By.xpath("//a[@href='/Staff']"));
 	}
 	private WebElement getAddADRreport_MyLink(){
 		return driver.findElement(By.xpath("//a[@href='/AdverseReaction/Create'"));
 	}
+	private WebElement getEventsRegister_Link(){
+		return driver.findElement(By.xpath("//a[@href='/Events']"));
+	}
+
 
 	private class DictionaryBlock_Elements{
 		private WebElement getDictionaryButton(){
