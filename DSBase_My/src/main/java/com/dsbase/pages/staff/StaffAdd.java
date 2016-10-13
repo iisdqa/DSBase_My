@@ -9,13 +9,14 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 
+import com.dsbase.core.web.CommonActions;
 import com.dsbase.core.web.CustomMethods;
 import com.dsbase.core.web.WebPage;
-import com.dsbase.core.web.CustomMethods.Grid;
 import com.dsbase.core.web.elements.Button;
 import com.dsbase.core.web.elements.Custom;
 import com.dsbase.core.web.elements.Text;
 import com.dsbase.core.web.elements.TextInput;
+
 
 
 
@@ -92,10 +93,19 @@ public class StaffAdd extends WebPage<StaffAdd> {
 		simpleWait(2);
 		// выбор значения в поле Подразделение
 		new SecondTabAssignment().getDepartmentAutocomplete().click();
+		// заполненние поля "Должность"
+		new SecondTabAssignment().getPositions().inputText(new SecondTabAssignment().new ValuesSecondTab().setPosition);
+		simpleWait(2);
+		// выбор значения в поле Подразделение
+		new CommonActions().autoCompleteValue_Set(driver, new SecondTabAssignment().getPositions(), 2);
 		// заполнение поля Категория сотрудника
 		new SecondTabAssignment().getCategory().selectByVisibleText(new SecondTabAssignment().new ValuesSecondTab().setCategory);
 		// Заполнение поля направление
 		new SecondTabAssignment().getActivityArea().selectByVisibleText(new SecondTabAssignment().new ValuesSecondTab().setActivityArea);
+		// radioButton Признак актуального назначения
+		new SecondTabAssignment().getActualAssignmentSign(1).click();
+		// radioButton Признак 1-го назначения
+		new SecondTabAssignment().getFirstAssignmentSign(1).click();
 		// Сохраняем вторую вкладку
 		new SecondTabAssignment().getSaveButtonPopUp().click();
 		waitWhileClickable(new SecondTabAssignment().getHistoryAssignmentButton());
@@ -103,7 +113,7 @@ public class StaffAdd extends WebPage<StaffAdd> {
 	public void SecondTabAssignment_Check(){
 		// Определение ожидаемых значений
 		String[][] ExpectedValues = new String [1][];
-		ExpectedValues[0] = new String[] {"", 
+		ExpectedValues[0] = new String[]    {"", 
 										 	new SecondTabAssignment().new ValuesSecondTab().setStartDate,
 										 	new SecondTabAssignment().new ValuesSecondTab().setOrderNumber,
 										 	new SecondTabAssignment().new ValuesSecondTab().setOrderDate,
@@ -111,14 +121,14 @@ public class StaffAdd extends WebPage<StaffAdd> {
 										 	new SecondTabAssignment().new ValuesSecondTab().setArea,
 										 	" ",
 										 	new SecondTabAssignment().new ValuesSecondTab().setDepartment,
-										 	" ",
+										 	new SecondTabAssignment().new ValuesSecondTab().setPosition,
 										 	new SecondTabAssignment().new ValuesSecondTab().setCategory,
 										 	new SecondTabAssignment().new ValuesSecondTab().setActivityArea,
 										 	" ",
 										 	" ",
 										 	" ",
-										 	"Не выбрано",
-										 	"Не выбрано",
+										 	"Да",
+										 	"Да",
 										 	""
 										 };
 		// Определение актуальных значений
@@ -234,6 +244,10 @@ public class StaffAdd extends WebPage<StaffAdd> {
 		private TextInput getDepartment(){
 			return new TextInput (driver,By.id("Tab6_1Grid_HTADepartment"));
 		}
+		// Должность
+		private TextInput getPositions(){
+			return new TextInput(driver, By.id("Tab6_1Grid_HTAPositionIdName"));
+		}                            
 		// подразделение автокоплит
 		private Text getDepartmentAutocomplete(){
 			return new Text(driver, By.xpath("//strong[contains(text(), '" + new ValuesSecondTab().setDepartment + "')]"));
@@ -250,6 +264,14 @@ public class StaffAdd extends WebPage<StaffAdd> {
 		private Button getSaveButtonPopUp(){
 			return new Button(driver, By.id("save_dialog_btn"));
 		}
+		// кнопка Признак актуального назначения
+		private Custom getActualAssignmentSign(int buttonNum){											// buttonNum - 1 или 2 Проведение тестирования(radioButton)
+			return new Custom(driver, By.xpath("//input[@id='Tab6_1Grid_HTAIsActualDestinationMap']["+buttonNum +"]"));
+		}
+		// кнопка Признак 1-го назначения:
+		private Custom getFirstAssignmentSign(int buttonNum){											// buttonNum - 1 или 2 Проведение тестирования(radioButton)
+			return new Custom(driver, By.xpath("//input[@id='Tab6_1Grid_HTAIsFirstDestinationMap']["+buttonNum +"]"));
+		}
 		private class ValuesSecondTab{
 			private String setPopUpName = "Создание новой записи";								 // Название поп-апа 
 			private String setStartDate = new CustomMethods().getCurrentDate();                  // начало работы
@@ -257,6 +279,7 @@ public class StaffAdd extends WebPage<StaffAdd> {
 			private String setOrderDate = new CustomMethods().getChangedDate(-3); 				 // дата приказа 
 			private String setArea = "г. Киев";													 // область
 			private String setDepartment= "Administration";										 // подразделение
+			private String setPosition="Senior assistant";										 // должность
 			private String setCategory= "Медработники, фармработники, руководители";			 // категория			
 			private String setActivityArea= "комбинированное";									 // направление
 					

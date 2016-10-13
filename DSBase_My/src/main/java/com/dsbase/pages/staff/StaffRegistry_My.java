@@ -7,7 +7,6 @@ import org.openqa.selenium.support.ui.Select;
 
 import com.dsbase.core.web.CustomMethods;
 import com.dsbase.core.web.WebPage;
-import com.dsbase.core.web.CustomMethods.Grid;
 import com.dsbase.core.web.elements.Button;
 import com.dsbase.core.web.elements.Custom;
 import com.dsbase.core.web.elements.TextInput;
@@ -109,15 +108,15 @@ public class StaffRegistry_My extends WebPage<StaffRegistry_My> {
 		}                                                   
 	}
 	private class Grid_Values{
-		private String fullName="Пинкмэн Джеси Брюсович";						//ФИО
-		private String sex="мужской";											// пол
-		private String dateOfEmployment= " ";									// дата принятия на роботу
-		private String dateOfDismissal=" ";										// дата увольнения 
-		private String position=" ";											// дОЛжНОСТЬ
-		private String region=" ";												// Регион
-		private String city=" ";												// Город
-		private String direction=" ";											// Направление
-		private String employeeCategory=" ";									//  Категория сотрудника
+		private String fullName="Пинкмэн Джеси Брюсович";														// ФИО
+		private String sex="мужской";																			// пол
+		private String dateOfEmployment= new CustomMethods().getCurrentDate();									// дата принятия на роботу
+		private String dateOfDismissal=" ";																		// дата увольнения 
+		private String position="Senior assistant";																// дОЛжНОСТЬ
+		private String region=" ";																				// Регион
+		private String city=" ";																				// Город
+		private String direction="комбинированное";																// Направление
+		private String employeeCategory="Медработники, фармработники, руководители";							// Категория сотрудника
 		
 	}
 	private class Deletion_PopUp{

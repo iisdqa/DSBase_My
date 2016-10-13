@@ -140,7 +140,7 @@ public class AddEvent_My extends WebPage<AddEvent_My> {
 					" ",
 					" ",
 					" ",
-					" ",
+					"Senior assistant",
 					"Медработники, фармработники, руководители",
 					"комбинированное",
 					"Administration",
