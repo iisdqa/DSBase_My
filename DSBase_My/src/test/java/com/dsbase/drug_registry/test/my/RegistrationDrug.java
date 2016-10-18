@@ -6,12 +6,12 @@ import com.dsbase.core.BaseTest;
 import com.dsbase.core.web.pages.my.LogInPage_My;
 import com.dsbase.core.web.pages.my.MainPage_My;
 import com.dsbase.core.web.pages.my.MainPage_My.goTo;
-import com.dsbase.pages.adr_reports.ADRregistry_My;
-import com.dsbase.pages.adr_reports.AddADRreport_My;
 import com.dsbase.pages.drugs.my.DrugEditPage_My;
 import com.dsbase.pages.drugs.my.DrugPassportPage_My;
 import com.dsbase.pages.drugs.my.DrugRegistrationPage_My;
 import com.dsbase.pages.drugs.my.DrugRegistryPage_My;
+import com.dsbase.pages.safety.my.ADRregistry_My;
+import com.dsbase.pages.safety.my.AddADRreport_My;
 
 public class RegistrationDrug extends BaseTest{
 	@Test(groups = { "DrugRegistration_Test" }) 

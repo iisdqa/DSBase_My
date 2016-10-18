@@ -29,6 +29,10 @@ public class StaffRegistry_My extends WebPage<StaffRegistry_My> {
 		return getAdd_Button().isAvailable();
 	}
     //_______________________________________________Actions_____________________________________________________________//
+	public StaffAdd clickAddNewSTuffButton(){
+		getAdd_Button().click();
+		return new StaffAdd(driver).waitUntilAvailable();
+	}
 	public void WaitForPageReady(){
 		waitForBlockStatus(new StuffFiltration_elements().getGridDownload_Div(),false);
         simpleWait(2);	

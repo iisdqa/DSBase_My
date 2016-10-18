@@ -1,4 +1,4 @@
-package com.dsbase.pages.adr_reports;
+package com.dsbase.pages.safety.my;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;

@@ -5,15 +5,16 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 
-import com.dsbase.core.web.CommonActions;
+
 import com.dsbase.core.web.CustomMethods;
 import com.dsbase.core.web.WebPage;
 import com.dsbase.core.web.elements.Button;
 import com.dsbase.core.web.elements.Custom;
-import com.dsbase.core.web.elements.Link;
-import com.dsbase.pages.adr_reports.ADRregistry_My;
-import com.dsbase.pages.adr_reports.AddADRreport_My;
-import com.dsbase.pages.drugs.my.DrugPassportPage_My;
+
+import com.dsbase.pages.safety.my.ADRregistry_My;
+import com.dsbase.pages.safety.my.AddADRreport_My;
+import com.dsbase.pages.safety.my.PSURregistry_My;
+
 import com.dsbase.pages.drugs.my.DrugRegistrationPage_My;
 import com.dsbase.pages.drugs.my.DrugRegistryPage_My;
 import com.dsbase.pages.events.my.EventsRegistry_My;
@@ -87,11 +88,15 @@ public class MainPage_My extends WebPage<MainPage_My>
 		}
 		public StaffRegistry_My staffRegistry_My(){
 			new CustomMethods().new Js_Actions().webElement_Click(driver, getStaffRegistryLink());
-			return new StaffRegistry_My(driver); //добавить wait 
+			return new StaffRegistry_My(driver).waitUntilAvailable();  
 		}
 		public EventsRegistry_My eventsRegistry_My(){
 			new CustomMethods().new Js_Actions().webElement_Click(driver, getEventsRegister_Link());
 			return new EventsRegistry_My(driver).waitUntilAvailable();
+		}
+		public PSURregistry_My pSURregistry_My(){
+			new CustomMethods().new Js_Actions().webElement_Click(driver, getPSURregistry_Link());
+			return new PSURregistry_My(driver).waitUntilAvailable();
 		}
 		
 		
@@ -128,6 +133,9 @@ public class MainPage_My extends WebPage<MainPage_My>
 	}
 	private WebElement getEventsRegister_Link(){
 		return driver.findElement(By.xpath("//a[@href='/Events']"));
+	}
+	private WebElement getPSURregistry_Link(){
+		return driver.findElement(By.xpath("//a[@href='/Reports']"));
 	}
 
 

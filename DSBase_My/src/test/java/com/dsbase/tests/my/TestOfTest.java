@@ -19,7 +19,7 @@ public class TestOfTest  extends  BaseTest{
 		MainPage_My mainPage_My=authorizationPage.logInAs("autotest_allroles", "aut0test_allr0les7_3");
 	     
 		
-		StaffAdd staffAdd = mainPage_My.new goTo().customPage();
+		StaffAdd staffAdd = mainPage_My.new goTo().staffRegistry_My().clickAddNewSTuffButton();
 		staffAdd.FirstTabPersonal_FillUp();
 		staffAdd.SaveFormeStaff();
 		staffAdd.SecondTabAssignment_FillUp();

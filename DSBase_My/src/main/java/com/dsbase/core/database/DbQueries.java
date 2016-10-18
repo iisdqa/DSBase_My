@@ -11,7 +11,7 @@ import org.testng.Assert;
 
 public class DbQueries 
 {	
-	private static String queriesPath = "C:\\Selenium_TestData\\SQL\\SQL_Queries\\";
+	private static String queriesPath = "C:\\Selenium_TestData\\Projects\\DSBase\\SQL\\SQL_Queries\\";
 	
 	public static class DrugRegistryTests
 	{

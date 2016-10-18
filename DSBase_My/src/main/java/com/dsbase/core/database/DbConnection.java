@@ -13,7 +13,7 @@ public class DbConnection
 {	
 	protected static Connection connection;
 	protected static Statement st;
-	protected static String sqlPath = "C:\\Selenium_TestData\\SQL\\";
+	protected static String sqlPath = "C:\\Selenium_TestData\\Projects\\DSBase\\SQL\\";
 	
 	@Parameters({"environment"})
 	public static Connection setDbConnection(String environment)
