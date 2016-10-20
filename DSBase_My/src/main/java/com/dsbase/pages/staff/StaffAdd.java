@@ -93,7 +93,7 @@ public class StaffAdd extends WebPage<StaffAdd> {
 		simpleWait(2);
 		// выбор значения в поле Подразделение
 		new SecondTabAssignment().getDepartmentAutocomplete().click();
-		// заполненние поля "Должность"
+		// заполненние поля "Подразделение"
 		new SecondTabAssignment().getPositions().inputText(new SecondTabAssignment().new ValuesSecondTab().setPosition);
 		simpleWait(2);
 		// выбор значения в поле Подразделение

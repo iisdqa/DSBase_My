@@ -149,7 +149,7 @@ public class ADRregistry_My extends WebPage<ADRregistry_My>{
 		private String drugAuthorizationNumber = "222";																		// ПЛС (№ регистрационного удостоверения)
 		private String drugManufacturer = "Производитель для препарата";													// ПЛС (производитель)
 		private String drugManufacterCountry = "Катар";																		// ПЛС страна производителя 
-		private String drugApplicant = "Автотетст";																			// ПЛС заявитель
+		private String drugApplicant = "Автотест_(только для автотестов)";																			// ПЛС заявитель
 		private String drugApplicantCountry = "Катар";																		// ПЛС страна заявителя
 		private String reportSourceQualification = "врач";																	// Квалификация источника сообщения 
 		private String reportSourceCountry = "Катар";																		// Страна источника сообщения

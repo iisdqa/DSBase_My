@@ -85,9 +85,11 @@ public class DrugRegistrationPage_My extends WebPage<DrugRegistrationPage_My>{
 		
 		// Проверка подтягивания страны и адреса заявителя при выборе заявителя
 		new Main_Elements().getDeclarer().inputText(new Main_Elements().new Values().Declarer);
-		simpleWait(3);
-		new Main_Elements().getAutocompletedDeclarer().click();
 		simpleWait(2);
+		// выбор значения в поле Заявитель
+				new CommonActions().autoCompleteValue_Set(driver, new Main_Elements().getDeclarer(), 1);
+//		new Main_Elements().getAutocompletedDeclarer().click();
+//		simpleWait(2);
 		assertThat(new Main_Elements().getDeclarerCountry().getAttribute("value"), is(equalTo(new Main_Elements().new Values().DeclarerCountry)));
 		assertThat(new Main_Elements().getDeclarerCity().getAttribute("value"),is(equalTo(new Main_Elements().new Values().DeclarerCity)));
 		assertThat(new Main_Elements().getDeclarerAdress().getAttribute("value"), is(equalTo(new Main_Elements().new Values().DeclarerAdress)));
@@ -418,6 +420,7 @@ public class DrugRegistrationPage_My extends WebPage<DrugRegistrationPage_My>{
 		ExpectedValues[0] = new String[] {"",
 											  new Employee_Elements().new Values().fio,
 											  new Employee_Elements().new Values().position,
+											  " ",
 											  ""};
 			
 		// Определение актуальных значений
@@ -450,10 +453,10 @@ public class DrugRegistrationPage_My extends WebPage<DrugRegistrationPage_My>{
 			return new TextInput(driver,By.id("Dic_declarer_LCL_FNAM"));
 		}
 		
-		// 'Заявитель' автокомплит
-		private Text getAutocompletedDeclarer(){
-			return new Text(driver,By.xpath("//strong[contains(text(), '" + new Values().Declarer + "')]"));
-		}
+//		// 'Заявитель' автокомплит
+//		private Text getAutocompletedDeclarer(){
+//			return new Text(driver,By.xpath("//strong[contains(text(), '" + new Values().Declarer + "')]"));
+//		}
 		
 		// Держатель РУ
 		
@@ -580,8 +583,8 @@ public class DrugRegistrationPage_My extends WebPage<DrugRegistrationPage_My>{
 		private class Values{
 			private String marketingCountry = "Катар";     								// Страна маркетирования
 			private String Birthday = "01.01.2012";     								// Международная дата рождения
-			private String Declarer = "Автотетст";     					                // Заявитель
-			private String holder = "Автотетст";										// Держатель РУ
+			private String Declarer = "Автотест_(только для автотестов)";     			// Заявитель
+			private String holder = "Автотест_(только для автотестов)";					// Держатель РУ
 			private String DeclarerCountry = "Катар";     								// Страна заявителя
 			private String DeclarerCity = "Доха";                                   	// Город заявителя
 			private String DeclarerAdress = "вул.Кульчицького, 34";     				// Адрес заявителя

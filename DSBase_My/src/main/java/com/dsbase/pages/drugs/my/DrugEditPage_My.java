@@ -332,6 +332,7 @@ public class DrugEditPage_My extends WebPage<DrugEditPage_My> {
 			ExpectedValues[0] = new String[] {"",
 											  new Employee_Elements().new Values().fio,
 											  new Employee_Elements().new Values().position,
+											  " ",
 											  ""};
 			
 			// Определение актуальных значений
@@ -368,6 +369,7 @@ public class DrugEditPage_My extends WebPage<DrugEditPage_My> {
 			ExpectedValues[0] = new String[] {"",
 					  						  new Employee_Elements().new Values().fio,
 					  						  new Employee_Elements().new Values().editedPosition,
+					  						  " ",
 					  						  ""};
 			
 			// Определение актуальных значений

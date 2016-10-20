@@ -129,7 +129,7 @@ public class MainPage_My extends WebPage<MainPage_My>
 		return driver.findElement(By.xpath("//a[@href='/Staff']"));
 	}
 	private WebElement getAddADRreport_MyLink(){
-		return driver.findElement(By.xpath("//a[@href='/AdverseReaction/Create'"));
+		return driver.findElement(By.xpath("//a[@href='/AdverseReaction/Create']"));
 	}
 	private WebElement getEventsRegister_Link(){
 		return driver.findElement(By.xpath("//a[@href='/Events']"));
