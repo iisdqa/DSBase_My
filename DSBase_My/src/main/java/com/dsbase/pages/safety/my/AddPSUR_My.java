@@ -87,6 +87,49 @@ public class AddPSUR_My extends WebPage<AddPSUR_My> {
 		new OtherPSURFields().getSaveButton().click();
 	new BodyOfPSUR().getReportSectionsButton().waitUntilAvailable();
 	}
+	// заполнение разделов ПСУРа
+	public void TitlePagePSUR_FillUp(){
+		new BodyOfPSUR().getReportSectionsButton().click();
+		simpleWait(2);
+		// заполнение вкладки "Титульный лист"
+		new BodyOfPSUR().new TitlePageElements().getDocumetsButton().waitUntilAvailable();
+		new BodyOfPSUR().new TitlePageElements().getDatabaseClosureDate().click();
+		new BodyOfPSUR().new TitlePageElements().getDatabaseClosureDate().inputText(new BodyOfPSUR().new TitlePageElements().new TitlePageValues().databaseClosureDate);
+		new CustomMethods().new WorkWith_TextEditor().setTextValue(driver, new BodyOfPSUR().new TitlePageElements().getTitlePageText(), new BodyOfPSUR().new TitlePageElements().new TitlePageValues().titlePageText);
+		new CustomMethods().new WorkWith_TextEditor().setTextValue(driver, new BodyOfPSUR().new TitlePageElements().getPrivacyPolicy(), new BodyOfPSUR().new TitlePageElements().new TitlePageValues().privacyPolicy);
+		new BodyOfPSUR().new TitlePageElements().getQualifiedPerson().inputText(new BodyOfPSUR().new TitlePageElements().new TitlePageValues().qualifiedPerson);
+		new BodyOfPSUR().new TitlePageElements().getContactData().inputText(new BodyOfPSUR().new TitlePageElements().new TitlePageValues().contactData);
+		new BodyOfPSUR().getSaveButton().click();
+	}
+	public void ContentsAndSummary_FillUP(){
+		// переход на вкладку "Оглавление и резюме" 
+		new BodyOfPSUR().new ContentsAndSummary().getContentAndSummaryTab().click();
+		new BodyOfPSUR().getAddDocumentButton().waitUntilAvailable();
+		new CustomMethods().new WorkWith_TextEditor().setTextValue(driver, new BodyOfPSUR().new ContentsAndSummary().getFormatAndContentText(), "Тест поля ФиС");
+		simpleWait(2);
+		new BodyOfPSUR().getSaveButton().click();
+		new BodyOfPSUR().getAddDocumentButton().waitUntilAvailable();
+	}
+	public void Introduction_FillUp(){
+		// переход на вкладку "Введение"
+		new BodyOfPSUR().new Introduction().getIntroductionTab().click();
+		new BodyOfPSUR().getAddDocumentButton().waitUntilAvailable();
+		// заполнение поля "Текст Раздела 1"
+		new CustomMethods().new WorkWith_TextEditor().setTextValue(driver, new BodyOfPSUR().new Introduction().get1SectionTeхt(), "Тест вкладки Введение");
+		simpleWait(2);
+		new BodyOfPSUR().getSaveButton().click();
+		new BodyOfPSUR().getAddDocumentButton().waitUntilAvailable();
+	}
+	public void WorldwideAuthorisationStatus_FillUp(){
+		// переход на вкладку "2. Регистрационный статус в мире"
+		new BodyOfPSUR().new WorldwideStatus().getWorldwideStatusTab().click();
+		new BodyOfPSUR().getAddDocumentButton().waitUntilAvailable();
+		// заполнение поля "Текст Раздела 2"
+		new CustomMethods().new WorkWith_TextEditor().setTextValue(driver, new BodyOfPSUR().new WorldwideStatus().get2SectionTeхt(), "Тест вкладки 2. Регистрационный статус в мире");
+		simpleWait(2);
+		new BodyOfPSUR().getSaveButton().click();
+		new BodyOfPSUR().getAddDocumentButton().waitUntilAvailable();
+	}
 	
 	
 		
@@ -121,7 +164,6 @@ public class AddPSUR_My extends WebPage<AddPSUR_My> {
 			return driver.findElement(By.xpath("//td[@aria-describedby='list_tradenames_TradeName']"));
 		}
 		private class Values{
-			private String tradeNamePopUpName = "Сопоставление ЛС с отчетом по безопасности";
 			private String marketingCountry = "Катар";                                   // Страна маркетирования
 			private String tradeName = "Тестовый препарат";								 // Торговое название
 			
@@ -165,8 +207,8 @@ public class AddPSUR_My extends WebPage<AddPSUR_My> {
 			return new TextInput(driver, By.id("end_next_period"));
 		}
 		// Необходимая дата предоставления следующего отчета:
-				private TextInput getNextReportSubmitionDate(){
-					return new TextInput(driver, By.id("required_provision_next"));
+		private TextInput getNextReportSubmitionDate(){
+			return new TextInput(driver, By.id("required_provision_next"));
 		}
 		// Кнопка сохранить
 		private Button getSaveButton(){
@@ -191,6 +233,83 @@ public class AddPSUR_My extends WebPage<AddPSUR_My> {
 		private Button getReportSectionsButton(){
 			return new Button(driver, By.xpath("//input[contains(@onclick, 'RedirectWithControllEdit')]"));
 		}
+		// Кнопка "Сохранить"(разделы ПСУРа)
+		private Button getSaveButton(){
+			return new Button(driver, By.id("save_btn"));
+		}
+		// кнопка добавить "Документ"
+		private Button getAddDocumentButton(){
+			return new Button(driver, By.id("add_edit_file"));
+		}
+		private class TitlePageElements{
+			// Дата закрытия базы данных
+			private TextInput getDatabaseClosureDate(){
+				return new TextInput(driver, By.id("Tab0_ClosureDate"));
+			}
+			// Текст ТЛ:
+			private WebElement getTitlePageText(){
+				return driver.findElement(By.id("customTextEditor_Tab0Text1_DesignIFrame"));
+						
+			}
+			// Положение о конфиденциальности
+			private WebElement getPrivacyPolicy(){
+				return driver.findElement(By.id("customTextEditor_Tab0PrivacyStatement_DesignIFrame"));
+			}
+			
+			// Кнопка добавления документа 
+			private Button getDocumetsButton(){
+				return new Button(driver, By.id("add_edit_file"));
+			}
+			// Поле "Уполномоченное лицо по фармаконадзору"
+			private TextInput getQualifiedPerson(){
+				return new TextInput(driver, By.id("Tab0_PersonPharmacovigilance"));
+			}
+			// Данные для контакта
+			private TextInput getContactData(){
+				return new TextInput(driver, By.id("Tab0_ContactData"));
+			}
+			private class TitlePageValues{
+				private String databaseClosureDate= new CustomMethods().getChangedDate(2);
+				private String titlePageText = "тестовая информация";                                    	// поле Текст ТЛ
+				private String privacyPolicy = "тестовая информация политики конфедициальности";			// поле политика Положения о конфиденциальности
+				private String qualifiedPerson = "Бильбо Бэггинс";											// Поле "Уполномоченное лицо по фармаконадзору"
+				private String contactData = "Шир, Ривенделл";												// Данные для контакта
+			}	
+		}
+		private class ContentsAndSummary{
+			//кнопка перехода на вкладку "Оглавление и резюме"
+			private Custom getContentAndSummaryTab(){
+				return new Custom(driver, By.xpath("//div[contains(text(), 'Оглавление и резюме')]"));
+			}
+			// поле Текст ФиС
+			private WebElement	getFormatAndContentText(){
+				return driver.findElement(By.id("customTextEditor_Tab1Text1_DesignIFrame"));
+			}
+			
+			
+		}
+		private class Introduction{
+			//кнопка перехода на вкладку "Введение"
+			private Custom getIntroductionTab(){
+				return new Custom(driver, By.xpath("//div[contains(text(), '1. Введение')]"));
+			}
+			// поле "Текст Раздела 1"
+			private WebElement	get1SectionTeхt(){
+				return driver.findElement(By.id("customTextEditor_Tab2Text1_DesignIFrame"));
+			}
+			
+		}
+		private class WorldwideStatus{
+			//кнопка перехода на вкладку "2. Регистрационный статус в мире"
+			private Custom getWorldwideStatusTab(){
+				return new Custom(driver, By.xpath("//div[contains(text(), '2. Регистрационный статус в мире')]"));
+			}
+			// поле "Текст Раздела 2"
+			private WebElement	get2SectionTeхt(){
+				return driver.findElement(By.id("customTextEditor_Tab3Text1_DesignIFrame"));
+			}
+		}
+		
 	}
 
 }

@@ -115,6 +115,10 @@ public class TestOfTest  extends  BaseTest{
 		addPSUR_My.PopUpTradeNameFields_FillUp();
 		addPSUR_My.OtherFields_FillUp();
 		addPSUR_My.SavePSUR();
+		addPSUR_My.TitlePagePSUR_FillUp();
+		addPSUR_My.ContentsAndSummary_FillUP();
+		addPSUR_My.Introduction_FillUp();
+		addPSUR_My.WorldwideAuthorisationStatus_FillUp();
       
 	}
 }

@@ -218,16 +218,21 @@ public class CustomMethods
 	}
 	
 	// For working with text redactor
-	public class WorkWith_TextEditor
-	{
-		public String getTextValue(WebDriver driver, WebElement frame)
-		{
-			driver.switchTo().frame(frame);
-			WebElement body = driver.findElement(By.cssSelector("body"));
-			String value = body.getText();
-			driver.switchTo().defaultContent();
+	public class WorkWith_TextEditor{
+			public void setTextValue(WebDriver driver, WebElement frame, String text){
+				driver.switchTo().frame(frame);
+				WebElement body = driver.findElement(By.cssSelector("body"));
+				body.sendKeys(text);
+				driver.switchTo().defaultContent();
+			}
 			
-			return value;
+			public String getTextValue(WebDriver driver, WebElement frame){
+				driver.switchTo().frame(frame);
+				WebElement body = driver.findElement(By.cssSelector("body"));
+				String value = body.getText();
+				driver.switchTo().defaultContent();
+				
+				return value;
+			}
 		}
-	}
 }
