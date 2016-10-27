@@ -351,7 +351,7 @@ public class AddPSUR_My extends WebPage<AddPSUR_My> {
 		}
 		private class Values{
 			private String pSURfilePath = "C:\\Selenium_TestData\\Projects\\DSBase\\PSUR\\";									 	// путь к файлу текстом для разделов 
-			// Вытяжка юзера из файла
+			// Вытяжка юзера из файла 
 //			private String[] user = new CustomMethods().new WorkWith_TextFiles().file_Read(testfilePath + "PSUR.txt").split("#");
 //			private String contentsAndSummary = user[1].trim().replace("\r\n", "");
 			private String user = new CustomMethods().new WorkWith_TextFiles().file_Read(pSURfilePath + "PSUR.txt");				// чтение файла (переобразованеие в строку)
