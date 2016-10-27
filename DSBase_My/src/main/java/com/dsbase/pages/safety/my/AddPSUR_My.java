@@ -105,7 +105,7 @@ public class AddPSUR_My extends WebPage<AddPSUR_My> {
 		// переход на вкладку "Оглавление и резюме" 
 		new BodyOfPSUR().new ContentsAndSummary().getContentAndSummaryTab().click();
 		new BodyOfPSUR().getAddDocumentButton().waitUntilAvailable();
-		new CustomMethods().new WorkWith_TextEditor().setTextValue(driver, new BodyOfPSUR().new ContentsAndSummary().getFormatAndContentText(), "Тест поля ФиС");
+		new CustomMethods().new WorkWith_TextEditor().setTextValue(driver, new BodyOfPSUR().new ContentsAndSummary().getFormatAndContentText(), new BodyOfPSUR().new Values().contentsAndSummary);
 		simpleWait(2);
 		new BodyOfPSUR().getSaveButton().click();
 		new BodyOfPSUR().getAddDocumentButton().waitUntilAvailable();
@@ -115,7 +115,7 @@ public class AddPSUR_My extends WebPage<AddPSUR_My> {
 		new BodyOfPSUR().new Introduction().getIntroductionTab().click();
 		new BodyOfPSUR().getAddDocumentButton().waitUntilAvailable();
 		// заполнение поля "Текст Раздела 1"
-		new CustomMethods().new WorkWith_TextEditor().setTextValue(driver, new BodyOfPSUR().new Introduction().get1SectionTeхt(), "Тест вкладки Введение");
+		new CustomMethods().new WorkWith_TextEditor().setTextValue(driver, new BodyOfPSUR().new Introduction().get1SectionTeхt(), new BodyOfPSUR().new Values().introduction);
 		simpleWait(2);
 		new BodyOfPSUR().getSaveButton().click();
 		new BodyOfPSUR().getAddDocumentButton().waitUntilAvailable();
@@ -125,7 +125,27 @@ public class AddPSUR_My extends WebPage<AddPSUR_My> {
 		new BodyOfPSUR().new WorldwideStatus().getWorldwideStatusTab().click();
 		new BodyOfPSUR().getAddDocumentButton().waitUntilAvailable();
 		// заполнение поля "Текст Раздела 2"
-		new CustomMethods().new WorkWith_TextEditor().setTextValue(driver, new BodyOfPSUR().new WorldwideStatus().get2SectionTeхt(), "Тест вкладки 2. Регистрационный статус в мире");
+		new CustomMethods().new WorkWith_TextEditor().setTextValue(driver, new BodyOfPSUR().new WorldwideStatus().get2SectionTeхt(), new BodyOfPSUR().new Values().worldwideStatus);
+		simpleWait(2);
+		new BodyOfPSUR().getSaveButton().click();
+		new BodyOfPSUR().getAddDocumentButton().waitUntilAvailable();
+	}
+	public void ActionsTaken_FillUP(){
+		// переход на вкладку "3. Меры в связи с новыми данными по безопасности"
+		new BodyOfPSUR().new ActionsTaken().getActionsTakenTab().click();
+		new BodyOfPSUR().getAddDocumentButton().waitUntilAvailable();
+		// заполнение поля "Текст Раздела 2"
+		new CustomMethods().new WorkWith_TextEditor().setTextValue(driver, new BodyOfPSUR().new ActionsTaken().get3SectionTeхt(), new BodyOfPSUR().new Values().actionsTaken);
+		simpleWait(2);
+		new BodyOfPSUR().getSaveButton().click();
+		new BodyOfPSUR().getAddDocumentButton().waitUntilAvailable();
+	}
+	public void ChangesSafetyInformation_FillUp(){
+		// переход на вкладку "4. Изменения в СИ по безопасности"
+		new BodyOfPSUR().new ChangesSafetyInformation().getChangesSafetyInformationTab().click();
+		new BodyOfPSUR().getAddDocumentButton().waitUntilAvailable();
+		// заполнение поля "Текст Раздела 4"
+		new CustomMethods().new WorkWith_TextEditor().setTextValue(driver, new BodyOfPSUR().new ChangesSafetyInformation().get4SectionTeхt(), new BodyOfPSUR().new Values().changesSafetyInformation);
 		simpleWait(2);
 		new BodyOfPSUR().getSaveButton().click();
 		new BodyOfPSUR().getAddDocumentButton().waitUntilAvailable();
@@ -309,7 +329,38 @@ public class AddPSUR_My extends WebPage<AddPSUR_My> {
 				return driver.findElement(By.id("customTextEditor_Tab3Text1_DesignIFrame"));
 			}
 		}
-		
+		private class ActionsTaken{
+			//кнопка перехода на вкладку "3. Меры в связи с новыми данными по безопасности"
+			private Custom getActionsTakenTab(){
+				return new Custom(driver, By.xpath("//div[contains(text(), '3. Меры в связи с новыми данными по безопасности')]"));
+			}
+			// поле "Текст Раздела 3"
+			private WebElement	get3SectionTeхt(){
+				return driver.findElement(By.id("customTextEditor_Tab4Text1_DesignIFrame"));
+			}
+		}
+		private class ChangesSafetyInformation{
+			//кнопка перехода на вкладку "4. Изменения в СИ по безопасности"
+			private Custom getChangesSafetyInformationTab(){
+				return new Custom(driver, By.xpath("//div[contains(text(), '4. Изменения в СИ по безопасности')]"));
+			}
+			// поле "Текст Раздела 3"
+			private WebElement	get4SectionTeхt(){
+				return driver.findElement(By.id("customTextEditor_Tab5Text1_DesignIFrame"));
+			}
+		}
+		private class Values{
+			private String pSURfilePath = "C:\\Selenium_TestData\\Projects\\DSBase\\PSUR\\";									 	// путь к файлу текстом для разделов 
+			// Вытяжка юзера из файла
+//			private String[] user = new CustomMethods().new WorkWith_TextFiles().file_Read(testfilePath + "PSUR.txt").split("#");
+//			private String contentsAndSummary = user[1].trim().replace("\r\n", "");
+			private String user = new CustomMethods().new WorkWith_TextFiles().file_Read(pSURfilePath + "PSUR.txt");				// чтение файла (переобразованеие в строку)
+			private String contentsAndSummary = user.substring(user.indexOf("#1"), user.indexOf("#2")); 							// "Оглавление и резюме"
+			private String introduction = user.substring(user.indexOf("#2"), user.indexOf("#3"));                                   // "Введение"
+			private String worldwideStatus = user.substring(user.indexOf("#3"), user.indexOf("#4"));								// 2. Регистрационный статус в мире
+			private String actionsTaken = user.substring(user.indexOf("#4"), user.indexOf("#5")); 									// 3. Меры, принятые за отчетный период, в связи с выявлением новых данных по безопасности
+			private String changesSafetyInformation = user.substring(user.indexOf("#5"), user.indexOf("#6"));						// 4. Изменения в СИ по безопасности
+		}
 	}
 
 }

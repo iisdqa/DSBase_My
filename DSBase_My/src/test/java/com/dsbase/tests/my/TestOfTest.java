@@ -119,6 +119,8 @@ public class TestOfTest  extends  BaseTest{
 		addPSUR_My.ContentsAndSummary_FillUP();
 		addPSUR_My.Introduction_FillUp();
 		addPSUR_My.WorldwideAuthorisationStatus_FillUp();
+		addPSUR_My.ActionsTaken_FillUP();
+		addPSUR_My.ChangesSafetyInformation_FillUp();
       
 	}
 }

@@ -1,9 +1,7 @@
 package com.dsbase.core.web.pages.my;
 import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
 
 
 import com.dsbase.core.web.CustomMethods;
@@ -21,8 +19,7 @@ import com.dsbase.pages.events.my.EventsRegistry_My;
 import com.dsbase.pages.staff.StaffAdd;
 import com.dsbase.pages.staff.StaffRegistry_My;
 
-public class MainPage_My extends WebPage<MainPage_My>
-{
+public class MainPage_My extends WebPage<MainPage_My>{
     private static final String PAGE_URL = BASE_URL; // ћожно мен€ть, нужно дл€ пр€мого редирект
 
     /*_______________________________ Core _______________________________*/
