@@ -150,6 +150,20 @@ public class AddPSUR_My extends WebPage<AddPSUR_My> {
 		new BodyOfPSUR().getSaveButton().click();
 		new BodyOfPSUR().getAddDocumentButton().waitUntilAvailable();
 	}
+	public void EstimatedExposure_FillUp(){
+		// переход на вкладку переход на вкладку "5. Сведения о количестве пациентов, получавших лекарственный препарат за отчетный период"
+		new BodyOfPSUR().new EstimatedExposure().getEstimatedExposureTab().click();;
+		new BodyOfPSUR().getAddDocumentButton().waitUntilAvailable();
+		// заполнение поля "Текст Раздела 5"
+		new CustomMethods().new WorkWith_TextEditor().setTextValue(driver, new BodyOfPSUR().new EstimatedExposure().get5SectionTeхt(), new BodyOfPSUR().new Values().fiveSectionTeхt);
+		// заполнение поля "Текст Текст пункта 5.1"
+		new CustomMethods().new WorkWith_TextEditor().setTextValue(driver, new BodyOfPSUR().new EstimatedExposure().get51ItemTeхt(), new BodyOfPSUR().new Values().fivePoint1Section);
+		// заполнение поля "Текст Текст пункта 5.2"
+				new CustomMethods().new WorkWith_TextEditor().setTextValue(driver, new BodyOfPSUR().new EstimatedExposure().get52ItemTeхt(), new BodyOfPSUR().new Values().fivePoint2Section);
+		simpleWait(2);
+		new BodyOfPSUR().getSaveButton().click();
+		new BodyOfPSUR().getAddDocumentButton().waitUntilAvailable();
+	}
 	
 	
 		
@@ -344,22 +358,66 @@ public class AddPSUR_My extends WebPage<AddPSUR_My> {
 			private Custom getChangesSafetyInformationTab(){
 				return new Custom(driver, By.xpath("//div[contains(text(), '4. Изменения в СИ по безопасности')]"));
 			}
-			// поле "Текст Раздела 3"
+			// поле "Текст Раздела 4"
 			private WebElement	get4SectionTeхt(){
 				return driver.findElement(By.id("customTextEditor_Tab5Text1_DesignIFrame"));
 			}
 		}
+		private class EstimatedExposure{
+			//кнопка перехода на вкладку "5. Сведения о пациентах, получавших ЛП"
+			private Custom getEstimatedExposureTab(){
+				return new Custom(driver, By.xpath("//div[contains(text(), '5. Сведения о пациентах, получавших ЛП')]"));
+			}
+			// поле "Текст Раздела 5"
+			private WebElement	get5SectionTeхt(){
+				return driver.findElement(By.id("customTextEditor_Tab6Text_DesignIFrame"));
+			}
+			// поле "Текст пункта 5.1"
+			private WebElement	get51ItemTeхt(){
+				return driver.findElement(By.id("customTextEditor_Tab6Text1_DesignIFrame"));
+			}
+			// поле "Текст пункта 5.2"
+			private WebElement	get52ItemTeхt(){
+				return driver.findElement(By.id("customTextEditor_Tab6Text2_DesignIFrame"));
+			}
+		}
+		private class DataInSummaryTabulations{
+			//кнопка перехода на вкладку "6. Обобщенные таблицы  о НР"
+			private Custom getDataInSummaryTabulationsTab(){
+				return new Custom(driver, By.xpath("//div[contains(text(), '6. Обобщенные таблицы  о НР')]"));
+			}
+			// поле "Текст Раздела 6"
+			private WebElement	get6SectionTeхt(){
+				return driver.findElement(By.id("customTextEditor_Tab7Text_DesignIFrame"));
+			}
+			// поле "Текст пункта 6.1"
+			private WebElement	get61ItemTeхt(){
+				return driver.findElement(By.id("customTextEditor_Tab7Text1_DesignIFrame"));
+			}
+			// поле "Текст пункта 6.2"
+			private WebElement	get62ItemTeхt(){
+				return driver.findElement(By.id("customTextEditor_Tab7Text2_DesignIFrame"));
+			}
+			// кнопка добавления значения в "таблицу 6.2"
+			private Button getNewValueTab(){
+				return new Button(driver, By.id("add_edit_tab7"));
+			}
+			
+		}
 		private class Values{
-			private String pSURfilePath = "C:\\Selenium_TestData\\Projects\\DSBase\\PSUR\\";									 	// путь к файлу текстом для разделов 
-			// Вытяжка юзера из файла 
-//			private String[] user = new CustomMethods().new WorkWith_TextFiles().file_Read(testfilePath + "PSUR.txt").split("#");
-//			private String contentsAndSummary = user[1].trim().replace("\r\n", "");
-			private String user = new CustomMethods().new WorkWith_TextFiles().file_Read(pSURfilePath + "PSUR.txt");				// чтение файла (переобразованеие в строку)
-			private String contentsAndSummary = user.substring(user.indexOf("#1"), user.indexOf("#2")); 							// "Оглавление и резюме"
-			private String introduction = user.substring(user.indexOf("#2"), user.indexOf("#3"));                                   // "Введение"
-			private String worldwideStatus = user.substring(user.indexOf("#3"), user.indexOf("#4"));								// 2. Регистрационный статус в мире
-			private String actionsTaken = user.substring(user.indexOf("#4"), user.indexOf("#5")); 									// 3. Меры, принятые за отчетный период, в связи с выявлением новых данных по безопасности
-			private String changesSafetyInformation = user.substring(user.indexOf("#5"), user.indexOf("#6"));						// 4. Изменения в СИ по безопасности
+			private String pSURfilePath = "C:\\Selenium_TestData\\Projects\\DSBase\\PSUR\\";									 				// путь к файлу текстом для разделов 
+			private String readFile = new CustomMethods().new WorkWith_TextFiles().file_Read(pSURfilePath + "PSUR.txt");						// чтение файла (переобразованеие в строку)
+			private String contentsAndSummary = readFile.substring(readFile.indexOf("#1"), readFile.indexOf("#2")); 							// "Оглавление и резюме"
+			private String introduction = readFile.substring(readFile.indexOf("#2"), readFile.indexOf("#3"));                                   // "Введение"
+			private String worldwideStatus = readFile.substring(readFile.indexOf("#3"), readFile.indexOf("#4"));								// 2. Регистрационный статус в мире
+			private String actionsTaken = readFile.substring(readFile.indexOf("#4"), readFile.indexOf("#5")); 									// 3. Меры, принятые за отчетный период, в связи с выявлением новых данных по безопасности
+			private String changesSafetyInformation = readFile.substring(readFile.indexOf("#5"), readFile.indexOf("#6"));						// 4. Изменения в СИ по безопасности
+			private String fiveSectionTeхt = readFile.substring(readFile.indexOf("#6"), readFile.indexOf("#7"));								// Текст Раздела 5:
+			private String fivePoint1Section = readFile.substring(readFile.indexOf("#7"), readFile.indexOf("#8"));								// текст пункта 5.1
+			private String fivePoint2Section = readFile.substring(readFile.indexOf("#8"), readFile.indexOf("#9"));								// текст пункта 5.2
+//never used			private String sixSectionText = readFile.substring(readFile.indexOf("#9"), readFile.indexOf("#10"));
+			
+			
 		}
 	}
 
