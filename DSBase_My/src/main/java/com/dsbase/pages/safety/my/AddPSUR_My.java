@@ -95,8 +95,10 @@ public class AddPSUR_My extends WebPage<AddPSUR_My> {
 		new BodyOfPSUR().new TitlePageElements().getDocumetsButton().waitUntilAvailable();
 		new BodyOfPSUR().new TitlePageElements().getDatabaseClosureDate().click();
 		new BodyOfPSUR().new TitlePageElements().getDatabaseClosureDate().inputText(new BodyOfPSUR().new TitlePageElements().new TitlePageValues().databaseClosureDate);
-		new CustomMethods().new WorkWith_TextEditor().setTextValue(driver, new BodyOfPSUR().new TitlePageElements().getTitlePageText(), new BodyOfPSUR().new TitlePageElements().new TitlePageValues().titlePageText);
-		new CustomMethods().new WorkWith_TextEditor().setTextValue(driver, new BodyOfPSUR().new TitlePageElements().getPrivacyPolicy(), new BodyOfPSUR().new TitlePageElements().new TitlePageValues().privacyPolicy);
+		new CustomMethods().new WorkWith_TextEditor().setTextValue(driver, new BodyOfPSUR().new TitlePageElements().getTitlePageText(), 
+																   new BodyOfPSUR().new TitlePageElements().new TitlePageValues().titlePageText);
+		new CustomMethods().new WorkWith_TextEditor().setTextValue(driver, new BodyOfPSUR().new TitlePageElements().getPrivacyPolicy(),
+																   new BodyOfPSUR().new TitlePageElements().new TitlePageValues().privacyPolicy);
 		new BodyOfPSUR().new TitlePageElements().getQualifiedPerson().inputText(new BodyOfPSUR().new TitlePageElements().new TitlePageValues().qualifiedPerson);
 		new BodyOfPSUR().new TitlePageElements().getContactData().inputText(new BodyOfPSUR().new TitlePageElements().new TitlePageValues().contactData);
 		new BodyOfPSUR().getSaveButton().click();
@@ -105,7 +107,8 @@ public class AddPSUR_My extends WebPage<AddPSUR_My> {
 		// переход на вкладку "Оглавление и резюме" 
 		new BodyOfPSUR().new ContentsAndSummary().getContentAndSummaryTab().click();
 		new BodyOfPSUR().getAddDocumentButton().waitUntilAvailable();
-		new CustomMethods().new WorkWith_TextEditor().setTextValue(driver, new BodyOfPSUR().new ContentsAndSummary().getFormatAndContentText(), new BodyOfPSUR().new Values().contentsAndSummary);
+		new CustomMethods().new WorkWith_TextEditor().setTextValue(driver,new BodyOfPSUR().new ContentsAndSummary().getFormatAndContentText(),
+																   new BodyOfPSUR().new ContentsAndSummary().new Values().contentsAndSummary);
 		simpleWait(2);
 		new BodyOfPSUR().getSaveButton().click();
 		new BodyOfPSUR().getAddDocumentButton().waitUntilAvailable();
@@ -115,7 +118,8 @@ public class AddPSUR_My extends WebPage<AddPSUR_My> {
 		new BodyOfPSUR().new Introduction().getIntroductionTab().click();
 		new BodyOfPSUR().getAddDocumentButton().waitUntilAvailable();
 		// заполнение поля "Текст Раздела 1"
-		new CustomMethods().new WorkWith_TextEditor().setTextValue(driver, new BodyOfPSUR().new Introduction().get1SectionTeхt(), new BodyOfPSUR().new Values().introduction);
+		new CustomMethods().new WorkWith_TextEditor().setTextValue(driver, new BodyOfPSUR().new Introduction().get1SectionTeхt(),
+																   new BodyOfPSUR().new Introduction().new Values().introduction);
 		simpleWait(2);
 		new BodyOfPSUR().getSaveButton().click();
 		new BodyOfPSUR().getAddDocumentButton().waitUntilAvailable();
@@ -125,7 +129,8 @@ public class AddPSUR_My extends WebPage<AddPSUR_My> {
 		new BodyOfPSUR().new WorldwideStatus().getWorldwideStatusTab().click();
 		new BodyOfPSUR().getAddDocumentButton().waitUntilAvailable();
 		// заполнение поля "Текст Раздела 2"
-		new CustomMethods().new WorkWith_TextEditor().setTextValue(driver, new BodyOfPSUR().new WorldwideStatus().get2SectionTeхt(), new BodyOfPSUR().new Values().worldwideStatus);
+		new CustomMethods().new WorkWith_TextEditor().setTextValue(driver, new BodyOfPSUR().new WorldwideStatus().get2SectionTeхt(),
+																  new BodyOfPSUR().new WorldwideStatus().new Values().worldwideStatus);
 		simpleWait(2);
 		new BodyOfPSUR().getSaveButton().click();
 		new BodyOfPSUR().getAddDocumentButton().waitUntilAvailable();
@@ -135,7 +140,8 @@ public class AddPSUR_My extends WebPage<AddPSUR_My> {
 		new BodyOfPSUR().new ActionsTaken().getActionsTakenTab().click();
 		new BodyOfPSUR().getAddDocumentButton().waitUntilAvailable();
 		// заполнение поля "Текст Раздела 2"
-		new CustomMethods().new WorkWith_TextEditor().setTextValue(driver, new BodyOfPSUR().new ActionsTaken().get3SectionTeхt(), new BodyOfPSUR().new Values().actionsTaken);
+		new CustomMethods().new WorkWith_TextEditor().setTextValue(driver, new BodyOfPSUR().new ActionsTaken().get3SectionTeхt(),
+																   new BodyOfPSUR().new ActionsTaken().new Values().actionsTaken);
 		simpleWait(2);
 		new BodyOfPSUR().getSaveButton().click();
 		new BodyOfPSUR().getAddDocumentButton().waitUntilAvailable();
@@ -145,7 +151,8 @@ public class AddPSUR_My extends WebPage<AddPSUR_My> {
 		new BodyOfPSUR().new ChangesSafetyInformation().getChangesSafetyInformationTab().click();
 		new BodyOfPSUR().getAddDocumentButton().waitUntilAvailable();
 		// заполнение поля "Текст Раздела 4"
-		new CustomMethods().new WorkWith_TextEditor().setTextValue(driver, new BodyOfPSUR().new ChangesSafetyInformation().get4SectionTeхt(), new BodyOfPSUR().new Values().changesSafetyInformation);
+		new CustomMethods().new WorkWith_TextEditor().setTextValue(driver, new BodyOfPSUR().new ChangesSafetyInformation().get4SectionTeхt(),
+																   new BodyOfPSUR().new ChangesSafetyInformation().new Values().changesSafetyInformation);
 		simpleWait(2);
 		new BodyOfPSUR().getSaveButton().click();
 		new BodyOfPSUR().getAddDocumentButton().waitUntilAvailable();
@@ -155,16 +162,26 @@ public class AddPSUR_My extends WebPage<AddPSUR_My> {
 		new BodyOfPSUR().new EstimatedExposure().getEstimatedExposureTab().click();;
 		new BodyOfPSUR().getAddDocumentButton().waitUntilAvailable();
 		// заполнение поля "Текст Раздела 5"
-		new CustomMethods().new WorkWith_TextEditor().setTextValue(driver, new BodyOfPSUR().new EstimatedExposure().get5SectionTeхt(), new BodyOfPSUR().new Values().fiveSectionTeхt);
+		new CustomMethods().new WorkWith_TextEditor().setTextValue(driver, new BodyOfPSUR().new EstimatedExposure().get5SectionTeхt(),
+																  new BodyOfPSUR().new EstimatedExposure().new Values().fiveSectionTeхt);
 		// заполнение поля "Текст Текст пункта 5.1"
-		new CustomMethods().new WorkWith_TextEditor().setTextValue(driver, new BodyOfPSUR().new EstimatedExposure().get51ItemTeхt(), new BodyOfPSUR().new Values().fivePoint1Section);
+		new CustomMethods().new WorkWith_TextEditor().setTextValue(driver, new BodyOfPSUR().new EstimatedExposure().get51ItemTeхt(),
+																   new BodyOfPSUR().new EstimatedExposure().new Values().fivePoint1Section);
 		// заполнение поля "Текст Текст пункта 5.2"
-				new CustomMethods().new WorkWith_TextEditor().setTextValue(driver, new BodyOfPSUR().new EstimatedExposure().get52ItemTeхt(), new BodyOfPSUR().new Values().fivePoint2Section);
+				new CustomMethods().new WorkWith_TextEditor().setTextValue(driver, new BodyOfPSUR().new EstimatedExposure().get52ItemTeхt(),
+																		  new BodyOfPSUR().new EstimatedExposure().new Values().fivePoint2Section);
 		simpleWait(2);
 		new BodyOfPSUR().getSaveButton().click();
 		new BodyOfPSUR().getAddDocumentButton().waitUntilAvailable();
 	}
-	
+	public void DataInSummaryTabulations_FillUp(){
+		// переход на вкладку переход на вкладку "6. Обобщенные табличные данные о выявленных нежелательных реакциях"
+				new BodyOfPSUR().new DataInSummaryTabulations().getDataInSummaryTabulationsTab().click();;
+				new BodyOfPSUR().getAddDocumentButton().waitUntilAvailable();
+				// заполнение поля "Текст Раздела 6"
+				new CustomMethods().new WorkWith_TextEditor().setTextValue(driver, new BodyOfPSUR().new DataInSummaryTabulations().get6SectionTeхt(), 
+																		   new BodyOfPSUR().new DataInSummaryTabulations().new Values().sixSectionText);
+	}
 	
 		
 	//______________________________________________Elements_____________________________________________________//
@@ -263,6 +280,8 @@ public class AddPSUR_My extends WebPage<AddPSUR_My> {
 		}
 	}
 	private class BodyOfPSUR{
+		private final String pSURfilePath = "C:\\Selenium_TestData\\Projects\\DSBase\\PSUR\\";									 				// путь к файлу текстом для разделов 
+		private final String readFile = new CustomMethods().new WorkWith_TextFiles().file_Read(pSURfilePath + "PSUR.txt");						// чтение файла (переобразованеие в строку)
 		// Кнопка разделы отчета
 		private Button getReportSectionsButton(){
 			return new Button(driver, By.xpath("//input[contains(@onclick, 'RedirectWithControllEdit')]"));
@@ -319,6 +338,9 @@ public class AddPSUR_My extends WebPage<AddPSUR_My> {
 			private WebElement	getFormatAndContentText(){
 				return driver.findElement(By.id("customTextEditor_Tab1Text1_DesignIFrame"));
 			}
+			private class Values{
+				private String contentsAndSummary = readFile.substring(readFile.indexOf("#1"), readFile.indexOf("#2")); 							// "Оглавление и резюме"
+			}
 			
 			
 		}
@@ -331,6 +353,9 @@ public class AddPSUR_My extends WebPage<AddPSUR_My> {
 			private WebElement	get1SectionTeхt(){
 				return driver.findElement(By.id("customTextEditor_Tab2Text1_DesignIFrame"));
 			}
+			private class Values{
+				private String introduction = readFile.substring(readFile.indexOf("#2"), readFile.indexOf("#3"));                                   // "Введение"
+			}
 			
 		}
 		private class WorldwideStatus{
@@ -342,6 +367,9 @@ public class AddPSUR_My extends WebPage<AddPSUR_My> {
 			private WebElement	get2SectionTeхt(){
 				return driver.findElement(By.id("customTextEditor_Tab3Text1_DesignIFrame"));
 			}
+			private class Values{
+				private String worldwideStatus = readFile.substring(readFile.indexOf("#3"), readFile.indexOf("#4"));								// 2. Регистрационный статус в мире
+			}
 		}
 		private class ActionsTaken{
 			//кнопка перехода на вкладку "3. Меры в связи с новыми данными по безопасности"
@@ -352,6 +380,9 @@ public class AddPSUR_My extends WebPage<AddPSUR_My> {
 			private WebElement	get3SectionTeхt(){
 				return driver.findElement(By.id("customTextEditor_Tab4Text1_DesignIFrame"));
 			}
+			private class Values{
+				private String actionsTaken = readFile.substring(readFile.indexOf("#4"), readFile.indexOf("#5")); 									// 3. Меры, принятые за отчетный период, в связи с выявлением новых данных по безопасности
+			}
 		}
 		private class ChangesSafetyInformation{
 			//кнопка перехода на вкладку "4. Изменения в СИ по безопасности"
@@ -361,6 +392,9 @@ public class AddPSUR_My extends WebPage<AddPSUR_My> {
 			// поле "Текст Раздела 4"
 			private WebElement	get4SectionTeхt(){
 				return driver.findElement(By.id("customTextEditor_Tab5Text1_DesignIFrame"));
+			}
+			private class Values{
+				private String changesSafetyInformation = readFile.substring(readFile.indexOf("#5"), readFile.indexOf("#6"));						// 4. Изменения в СИ по безопасности
 			}
 		}
 		private class EstimatedExposure{
@@ -379,6 +413,11 @@ public class AddPSUR_My extends WebPage<AddPSUR_My> {
 			// поле "Текст пункта 5.2"
 			private WebElement	get52ItemTeхt(){
 				return driver.findElement(By.id("customTextEditor_Tab6Text2_DesignIFrame"));
+			}
+			private class Values{
+				private String fiveSectionTeхt = readFile.substring(readFile.indexOf("#6"), readFile.indexOf("#7"));								// Текст Раздела 5:
+				private String fivePoint1Section = readFile.substring(readFile.indexOf("#7"), readFile.indexOf("#8"));								// текст пункта 5.1
+				private String fivePoint2Section = readFile.substring(readFile.indexOf("#8"), readFile.indexOf("#9"));								// текст пункта 5.2
 			}
 		}
 		private class DataInSummaryTabulations{
@@ -402,21 +441,9 @@ public class AddPSUR_My extends WebPage<AddPSUR_My> {
 			private Button getNewValueTab(){
 				return new Button(driver, By.id("add_edit_tab7"));
 			}
-			
-		}
-		private class Values{
-			private String pSURfilePath = "C:\\Selenium_TestData\\Projects\\DSBase\\PSUR\\";									 				// путь к файлу текстом для разделов 
-			private String readFile = new CustomMethods().new WorkWith_TextFiles().file_Read(pSURfilePath + "PSUR.txt");						// чтение файла (переобразованеие в строку)
-			private String contentsAndSummary = readFile.substring(readFile.indexOf("#1"), readFile.indexOf("#2")); 							// "Оглавление и резюме"
-			private String introduction = readFile.substring(readFile.indexOf("#2"), readFile.indexOf("#3"));                                   // "Введение"
-			private String worldwideStatus = readFile.substring(readFile.indexOf("#3"), readFile.indexOf("#4"));								// 2. Регистрационный статус в мире
-			private String actionsTaken = readFile.substring(readFile.indexOf("#4"), readFile.indexOf("#5")); 									// 3. Меры, принятые за отчетный период, в связи с выявлением новых данных по безопасности
-			private String changesSafetyInformation = readFile.substring(readFile.indexOf("#5"), readFile.indexOf("#6"));						// 4. Изменения в СИ по безопасности
-			private String fiveSectionTeхt = readFile.substring(readFile.indexOf("#6"), readFile.indexOf("#7"));								// Текст Раздела 5:
-			private String fivePoint1Section = readFile.substring(readFile.indexOf("#7"), readFile.indexOf("#8"));								// текст пункта 5.1
-			private String fivePoint2Section = readFile.substring(readFile.indexOf("#8"), readFile.indexOf("#9"));								// текст пункта 5.2
-//never used			private String sixSectionText = readFile.substring(readFile.indexOf("#9"), readFile.indexOf("#10"));
-			
+			private class Values{
+				private String sixSectionText = readFile.substring(readFile.indexOf("#9"), readFile.indexOf("#10"));
+			}
 			
 		}
 	}
