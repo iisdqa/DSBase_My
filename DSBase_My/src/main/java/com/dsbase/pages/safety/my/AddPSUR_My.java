@@ -195,6 +195,7 @@ public class AddPSUR_My extends WebPage<AddPSUR_My> {
 		new BodyOfPSUR().new DataInSummaryTabulations().getBlinded().inputText(new BodyOfPSUR().new DataInSummaryTabulations().new Values().setBlinded);
 		new BodyOfPSUR().new DataInSummaryTabulations().getActiveComparator().inputText(new BodyOfPSUR().new DataInSummaryTabulations().new Values().setActiveComparator );
 		new BodyOfPSUR().new DataInSummaryTabulations().getPlacebo().inputText(new BodyOfPSUR().new DataInSummaryTabulations().new Values().setPlacebo );
+		simpleWait(2);
 		new BodyOfPSUR().new DataInSummaryTabulations().getSaveDialogButton().click();
 		simpleWait(2);
 		waitForBlockStatus(new BodyOfPSUR().new DataInSummaryTabulations().getGridDownload_Div(), false);
@@ -752,7 +753,7 @@ public class AddPSUR_My extends WebPage<AddPSUR_My> {
 			}
 			// поле "Текст Раздела 11"
 			private WebElement	get11SectionTeхt(){
-				return driver.findElement(By.id("customTextEditor_Tab11Text1_DesignIFrame"));
+				return driver.findElement(By.id("customTextEditor_Tab12Text1_DesignIFrame"));
 			}
 			private class Values{
 				private String set11SectionText = readFile.substring(readFile.indexOf("#21"), readFile.indexOf("#22"));	    // Текст раздела 11
