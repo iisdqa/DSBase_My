@@ -176,13 +176,181 @@ public class AddPSUR_My extends WebPage<AddPSUR_My> {
 	}
 	public void DataInSummaryTabulations_FillUp(){
 		// переход на вкладку переход на вкладку "6. Обобщенные табличные данные о выявленных нежелательных реакциях"
-				new BodyOfPSUR().new DataInSummaryTabulations().getDataInSummaryTabulationsTab().click();;
-				new BodyOfPSUR().getAddDocumentButton().waitUntilAvailable();
-				// заполнение поля "Текст Раздела 6"
-				new CustomMethods().new WorkWith_TextEditor().setTextValue(driver, new BodyOfPSUR().new DataInSummaryTabulations().get6SectionTeхt(), 
-																		   new BodyOfPSUR().new DataInSummaryTabulations().new Values().sixSectionText);
+		new BodyOfPSUR().new DataInSummaryTabulations().getDataInSummaryTabulationsTab().click();;
+		new BodyOfPSUR().getAddDocumentButton().waitUntilAvailable();
+		// заполнение поля "Текст Раздела 6"
+		new CustomMethods().new WorkWith_TextEditor().setTextValue(driver, new BodyOfPSUR().new DataInSummaryTabulations().get6SectionTeхt(), 
+																   new BodyOfPSUR().new DataInSummaryTabulations().new Values().sixSectionText);
+		// Заполненние поля "Текст пункта 6.1"
+		new CustomMethods().new WorkWith_TextEditor().setTextValue(driver, new BodyOfPSUR().new DataInSummaryTabulations().get61ItemTeхt(),
+																   new BodyOfPSUR().new DataInSummaryTabulations().new Values().sixPoint1ItemText);
+		// Заполненние поля Текст пункта 6.2
+		new CustomMethods().new WorkWith_TextEditor().setTextValue(driver, new BodyOfPSUR().new DataInSummaryTabulations().get62ItemTeхt(), 
+																		new BodyOfPSUR().new DataInSummaryTabulations().new Values().sixPoint2ItemText);
+		// добавление сзначения в таблицу "Таблица 6.2"
+		new BodyOfPSUR().new DataInSummaryTabulations().getNewTabValue().click();
+		new BodyOfPSUR().new DataInSummaryTabulations().getMedDraButton().waitUntilAvailable();
+		new BodyOfPSUR().new DataInSummaryTabulations().getSystemOrganClass().inputText(new BodyOfPSUR().new DataInSummaryTabulations().new Values().setSystemOrganClass); 
+		new BodyOfPSUR().new DataInSummaryTabulations().getInvestigationalProduct().inputText(new BodyOfPSUR().new DataInSummaryTabulations().new Values().setInvestigationalProduct);
+		new BodyOfPSUR().new DataInSummaryTabulations().getBlinded().inputText(new BodyOfPSUR().new DataInSummaryTabulations().new Values().setBlinded);
+		new BodyOfPSUR().new DataInSummaryTabulations().getActiveComparator().inputText(new BodyOfPSUR().new DataInSummaryTabulations().new Values().setActiveComparator );
+		new BodyOfPSUR().new DataInSummaryTabulations().getPlacebo().inputText(new BodyOfPSUR().new DataInSummaryTabulations().new Values().setPlacebo );
+		new BodyOfPSUR().new DataInSummaryTabulations().getSaveDialogButton().click();
+		simpleWait(2);
+		waitForBlockStatus(new BodyOfPSUR().new DataInSummaryTabulations().getGridDownload_Div(), false);
+		new CustomMethods().new WorkWith_TextEditor().setTextValue(driver, new BodyOfPSUR().new DataInSummaryTabulations().get63ItemTeхt(),
+																	new BodyOfPSUR().new DataInSummaryTabulations().new Values().sixPoint3ItemText);
+		simpleWait(2);
+		new BodyOfPSUR().getSaveButton().click();
+		new BodyOfPSUR().getAddDocumentButton().waitUntilAvailable();
 	}
-	
+	public void SummariesOfSignificantFindings_FillUp(){
+		// переход на вкладку переход на вкладку "7. Резюме важных данных, полученных в ходе клинических исследований за отчетный период"
+		new BodyOfPSUR().new SummariesOfSignificantFindings().getSummariesOfSignificantFindingsTab().click();;
+		new BodyOfPSUR().getAddDocumentButton().waitUntilAvailable();
+		// заполнение поля "Текст Раздела 7"
+		new CustomMethods().new WorkWith_TextEditor().setTextValue(driver, new BodyOfPSUR().new SummariesOfSignificantFindings().get7SectionTeхt()
+																   ,new BodyOfPSUR().new SummariesOfSignificantFindings().new Values().setSevenSectionText);	
+		// Заполненние поля "Текст пункта 7.1"
+		new CustomMethods().new WorkWith_TextEditor().setTextValue(driver, new BodyOfPSUR().new SummariesOfSignificantFindings().get71ItemTeхt()
+																   ,new BodyOfPSUR().new SummariesOfSignificantFindings().new Values().setSevenPoint1ItemText);
+		// Заполненние поля Текст пункта 7.2
+		new CustomMethods().new WorkWith_TextEditor().setTextValue(driver, new BodyOfPSUR().new SummariesOfSignificantFindings().get72ItemTeхt() 
+																   ,new BodyOfPSUR().new SummariesOfSignificantFindings().new Values().setSevenPoint2ItemText);
+		// Заполненние поля Текст пункта 7.3
+		new CustomMethods().new WorkWith_TextEditor().setTextValue(driver, new BodyOfPSUR().new SummariesOfSignificantFindings().get73ItemTeхt()
+																   ,new BodyOfPSUR().new SummariesOfSignificantFindings().new Values().setSevenPoint3ItemText);
+		// Заполненние поля Текст пункта 7.4
+		new CustomMethods().new WorkWith_TextEditor().setTextValue(driver, new BodyOfPSUR().new SummariesOfSignificantFindings().get74ItemTeхt() 
+																   ,new BodyOfPSUR().new SummariesOfSignificantFindings().new Values().setSevenPoint4ItemText);
+		// Заполненние поля Текст пункта 7.5
+		new CustomMethods().new WorkWith_TextEditor().setTextValue(driver, new BodyOfPSUR().new SummariesOfSignificantFindings().get75ItemTeхt()
+																   ,new BodyOfPSUR().new SummariesOfSignificantFindings().new Values().setSevenPoint5ItemText);
+		simpleWait(2);
+		new BodyOfPSUR().getSaveButton().click();
+		new BodyOfPSUR().getAddDocumentButton().waitUntilAvailable();
+	}
+	public void FindingsFromNonInterventionalStudies_FillUp(){
+	// переход на вкладку "8 Данніе неинтервенционных иследований"
+		new BodyOfPSUR().new FindingsFromNonInterventionalStudies().getFindingsFromNonInterventionalStudiesTab().click();
+		new BodyOfPSUR().getAddDocumentButton().waitUntilAvailable();
+		// заполнение поля "Текст Раздела 8"
+		new CustomMethods().new WorkWith_TextEditor().setTextValue(driver, new BodyOfPSUR().new FindingsFromNonInterventionalStudies().get8SectionTeхt(),
+																		   new BodyOfPSUR().new FindingsFromNonInterventionalStudies().new Values().setEightSectionText);
+		simpleWait(2);
+		new BodyOfPSUR().getSaveButton().click();
+		new BodyOfPSUR().getAddDocumentButton().waitUntilAvailable();
+	}
+	public void InformationFromOtherClinicalTrials_FillUp(){
+		// переход на вкладку "8 Данніе неинтервенционных иследований"
+		new BodyOfPSUR().new InformationFromOtherClinicalTrials().getInformationFromOtherClinicalTrialsTab().click();
+		new BodyOfPSUR().getAddDocumentButton().waitUntilAvailable();
+		// заполнение поля "Текст Раздела 9"
+		new CustomMethods().new WorkWith_TextEditor().setTextValue(driver, new BodyOfPSUR().new InformationFromOtherClinicalTrials().get9SectionTeхt(),
+																   new BodyOfPSUR().new InformationFromOtherClinicalTrials().new Values().setNineSectionText);
+		// Заполненние поля "Текст пункта 9.1"
+		new CustomMethods().new WorkWith_TextEditor().setTextValue(driver, new BodyOfPSUR().new InformationFromOtherClinicalTrials().get91ItemTeхt()
+																  ,new BodyOfPSUR().new InformationFromOtherClinicalTrials().new Values().setNinePoint1ItemText);
+		// Заполненние поля Текст пункта 9.2
+		new CustomMethods().new WorkWith_TextEditor().setTextValue(driver, new BodyOfPSUR().new InformationFromOtherClinicalTrials().get92ItemTeхt() 
+																   ,new BodyOfPSUR().new InformationFromOtherClinicalTrials().new Values().setNinePoint2ItemText);
+		simpleWait(2);
+		new BodyOfPSUR().getSaveButton().click();
+		new BodyOfPSUR().getAddDocumentButton().waitUntilAvailable();
+	}
+	public void NonClinicalData_FillUp(){
+		// переход на вкладку "10. Данные доклинических исследований"
+		new BodyOfPSUR().new NonClinicalData().getNonClinicalDataTab().click();
+		new BodyOfPSUR().getAddDocumentButton().waitUntilAvailable();
+		// заполнение поля "Текст Раздела 10"
+		new CustomMethods().new WorkWith_TextEditor().setTextValue(driver, new BodyOfPSUR().new NonClinicalData().get10SectionTeхt(),
+																		   new BodyOfPSUR().new NonClinicalData().new Values().setTenSectionText);
+		simpleWait(2);
+		new BodyOfPSUR().getSaveButton().click();
+		new BodyOfPSUR().getAddDocumentButton().waitUntilAvailable();
+	}
+	public void Literature_FillUp(){
+		// переход на вкладку "10. Данные доклинических исследований"
+		new BodyOfPSUR().new Literature().getLiteratureTab().click();
+		new BodyOfPSUR().getAddDocumentButton().waitUntilAvailable();
+		// заполнение поля "Текст Раздела 10"
+		new CustomMethods().new WorkWith_TextEditor().setTextValue(driver, new BodyOfPSUR().new Literature().get11SectionTeхt(),
+																		   new BodyOfPSUR().new Literature().new Values().set11SectionText);
+		simpleWait(2);
+		new BodyOfPSUR().getSaveButton().click();
+		new BodyOfPSUR().getAddDocumentButton().waitUntilAvailable();
+	}
+	public void OtherPeriodicReports_FillUp(){
+		// переход на вкладку "12. Другие периодические отчеты (при наличии)"
+		new BodyOfPSUR().new OtherPeriodicReports().getOtherPeriodicReportsTab().click();
+		new BodyOfPSUR().getAddDocumentButton().waitUntilAvailable();
+		// заполнение поля "Текст Раздела 12"
+		new CustomMethods().new WorkWith_TextEditor().setTextValue(driver, new BodyOfPSUR().new OtherPeriodicReports().get12SectionTeхt(),
+																		   new BodyOfPSUR().new OtherPeriodicReports().new Values().set12SectionText);
+		simpleWait(2);
+		new BodyOfPSUR().getSaveButton().click();
+		new BodyOfPSUR().getAddDocumentButton().waitUntilAvailable();
+	}
+	public void LackOfEfficacy_FillUp(){
+		// переход на вкладку 13. Недостаточная терапевтическая эффективность в контролируемых клинических исследованиях
+		new BodyOfPSUR().new LackOfEfficacy().getLackOfEfficacyTab().click();
+		new BodyOfPSUR().getAddDocumentButton().waitUntilAvailable();
+		// заполнение поля "Текст Раздела 13"
+		new CustomMethods().new WorkWith_TextEditor().setTextValue(driver, new BodyOfPSUR().new LackOfEfficacy().get13SectionTeхt(),
+																		   new BodyOfPSUR().new LackOfEfficacy().new Values().set13SectionText);
+		simpleWait(2);
+		new BodyOfPSUR().getSaveButton().click();
+		new BodyOfPSUR().getAddDocumentButton().waitUntilAvailable();
+	}
+	public void LateBreakingInformation_FillUp(){
+		// переход на вкладку 14. Важная информация, полученная после завершения подготовки ПОБ
+		new BodyOfPSUR().new LateBreakingInformation().getLateBreakingInformationTab().click();
+		new BodyOfPSUR().getAddDocumentButton().waitUntilAvailable();
+		// заполнение поля "Текст Раздела 14"
+		new CustomMethods().new WorkWith_TextEditor().setTextValue(driver, new BodyOfPSUR().new LateBreakingInformation().get14SectionTeхt(),
+																		   new BodyOfPSUR().new LateBreakingInformation().new Values().set14SectionText);
+		simpleWait(2);
+		new BodyOfPSUR().getSaveButton().click();
+		new BodyOfPSUR().getAddDocumentButton().waitUntilAvailable();
+	}
+	public void OverviewOfSignals_FillUP(){
+		// переход на вкладку 14. Важная информация, полученная после завершения подготовки ПОБ
+		new BodyOfPSUR().new OverviewOfSignals().getOverviewOfSignalsTab().click();
+		new BodyOfPSUR().getAddDocumentButton().waitUntilAvailable();
+		// заполнение поля "Текст Раздела 14"
+		new CustomMethods().new WorkWith_TextEditor().setTextValue(driver, new BodyOfPSUR().new OverviewOfSignals().get15SectionTeхt(),
+																	       new BodyOfPSUR().new OverviewOfSignals().new Values().set15SectionText);
+		simpleWait(2);
+		new BodyOfPSUR().getSaveButton().click();
+		new BodyOfPSUR().getAddDocumentButton().waitUntilAvailable();
+	}
+	public void SignalAndRiskEvaluation_FillUp(){
+		// переход на вкладку переход на вкладку "16. Сигналы безопасности и оценка риска применения лекарственного препарата"
+		new BodyOfPSUR().new SignalAndRiskEvaluation().getSignalAndRiskEvaluationTab().click();;
+		new BodyOfPSUR().getAddDocumentButton().waitUntilAvailable();
+		// заполнение поля "Текст Раздела 16"
+		new CustomMethods().new WorkWith_TextEditor().setTextValue(driver, new BodyOfPSUR().new SignalAndRiskEvaluation().get16SectionTeхt()
+																  ,new BodyOfPSUR().new SignalAndRiskEvaluation().new Values().set16SectionText);	
+		// Заполненние поля "Текст пункта 16.1"
+		new CustomMethods().new WorkWith_TextEditor().setTextValue(driver, new BodyOfPSUR().new SignalAndRiskEvaluation().get16Point1ItemTeхt()
+																   ,new BodyOfPSUR().new SignalAndRiskEvaluation().new Values().set16Point1ItemText);
+		// Заполненние поля Текст пункта 16.2
+		new CustomMethods().new WorkWith_TextEditor().setTextValue(driver, new BodyOfPSUR().new SignalAndRiskEvaluation().get16Point2ItemTeхt() 
+																   ,new BodyOfPSUR().new SignalAndRiskEvaluation().new Values().set16Point2ItemText);
+		// Заполненние поля Текст пункта 16.3
+		new CustomMethods().new WorkWith_TextEditor().setTextValue(driver, new BodyOfPSUR().new SignalAndRiskEvaluation().get16Point3ItemTeхt()
+																   ,new BodyOfPSUR().new SignalAndRiskEvaluation().new Values().set16Point3ItemText);
+		// Заполненние поля Текст пункта 16.4
+		new CustomMethods().new WorkWith_TextEditor().setTextValue(driver, new BodyOfPSUR().new SignalAndRiskEvaluation().get16Point4ItemTeхt() 
+																   ,new BodyOfPSUR().new SignalAndRiskEvaluation().new Values().set16Point4ItemText);
+		// Заполненние поля Текст пункта 16.5
+		new CustomMethods().new WorkWith_TextEditor().setTextValue(driver, new BodyOfPSUR().new SignalAndRiskEvaluation().get16Point5ItemTeхt()
+																		   ,new BodyOfPSUR().new SignalAndRiskEvaluation().new Values().set16Point5ItemText);
+		simpleWait(2);
+		new BodyOfPSUR().getSaveButton().click();
+		new BodyOfPSUR().getAddDocumentButton().waitUntilAvailable();
+	}
+
 		
 	//______________________________________________Elements_____________________________________________________//
 	
@@ -437,14 +605,248 @@ public class AddPSUR_My extends WebPage<AddPSUR_My> {
 			private WebElement	get62ItemTeхt(){
 				return driver.findElement(By.id("customTextEditor_Tab7Text2_DesignIFrame"));
 			}
+			// поле "Текст пункта 6.3"
+			private WebElement	get63ItemTeхt(){
+				return driver.findElement(By.id("customTextEditor_Tab7Text3_DesignIFrame"));
+			}
 			// кнопка добавления значения в "таблицу 6.2"
-			private Button getNewValueTab(){
+			private Button getNewTabValue(){
 				return new Button(driver, By.id("add_edit_tab7"));
 			}
-			private class Values{
-				private String sixSectionText = readFile.substring(readFile.indexOf("#9"), readFile.indexOf("#10"));
+			// кнопка открытия pop-up "MedDRA"
+			private Button getMedDraButton(){
+				return new Button(driver, By.xpath("//input[contains(@onclick, 'psur_tab7')]"));
 			}
+			// поле "Класс систем и органов"
+			private TextInput getSystemOrganClass(){
+				return new TextInput(driver, By.id("Tab7Grid_ClassSystems"));
+			}
+			// поле "Исследуемое лекарственное средство"
+			private TextInput getInvestigationalProduct(){
+				return new TextInput(driver, By.id("Tab7Grid_InvestigationalDrug"));
+			}
+			// поле "Ослепление"
+			private TextInput getBlinded(){
+				return new TextInput(driver, By.id("Tab7Grid_Blinding"));
+			}
+			// поле "Препарат сравнения"
+			private TextInput getActiveComparator(){
+				return new TextInput(driver, By.id("Tab7Grid_DrugComparisons"));
+			}
+			// поле "Плацебо"
+			private TextInput getPlacebo(){
+				return new TextInput(driver, By.id("Tab7Grid_Placebo"));
+			}
+			// кнопка сохранения в Поп-ап
+			private Button getSaveDialogButton(){
+				return new Button(driver, By.id("save_dialog_btn"));
+			}
+			// прогрузка грида
+			private Custom getGridDownload_Div(){
+				return new Custom(driver, By.id("load_list_tab7"));
+			}
+			private class Values{
+				private String sixSectionText = readFile.substring(readFile.indexOf("#9"), readFile.indexOf("#10"));	    // Текст раздела 6
+				private String sixPoint1ItemText = readFile.substring(readFile.indexOf("#10"), readFile.indexOf("#11"));    // Текст пункта 6.1
+				private String sixPoint2ItemText = readFile.substring(readFile.indexOf("#11"), readFile.indexOf("#12"));    // Текст пункта 6.2
+				private String sixPoint3ItemText = readFile.substring(readFile.indexOf("#12"), readFile.indexOf("#13"));    // Текст пункта 6.3
+				private String setSystemOrganClass = "10002019 - Amylobarbitone dependency"; 								// Класс систем и органов
+				private String setInvestigationalProduct = "Тестовый препарат";      										// Исследуемое лекарственное средство
+				private String setBlinded = "Sleeping";																		// Ослепление
+				private String setActiveComparator = "Testing drug"; 														// Препарат сравнения
+				private String setPlacebo = "vitamin";																		// Плацебо
+		    }
 			
+		}
+		private class SummariesOfSignificantFindings{
+			//кнопка перехода на вкладку "7.  Резюме важных данных, полученных в ходе клинических исследований за отчетный период"
+			private Custom getSummariesOfSignificantFindingsTab(){
+				return new Custom(driver, By.xpath("//div[contains(text(), '7. Резюме клинических исследований')]"));
+			}
+			// поле "Текст Раздела 7"
+			private WebElement	get7SectionTeхt(){
+				return driver.findElement(By.id("customTextEditor_Tab8Text_DesignIFrame"));
+			}
+			// поле "Текст пункта 7.1"
+			private WebElement	get71ItemTeхt(){
+				return driver.findElement(By.id("customTextEditor_Tab8Text1_DesignIFrame"));
+			}
+			// поле "Текст пункта 7.2"
+			private WebElement	get72ItemTeхt(){
+				return driver.findElement(By.id("customTextEditor_Tab8Text2_DesignIFrame"));
+			}
+			// поле "Текст пункта 7.3"
+			private WebElement	get73ItemTeхt(){
+				return driver.findElement(By.id("customTextEditor_Tab8Text3_DesignIFrame"));
+			}
+			// поле "Текст пункта 7.4"
+			private WebElement	get74ItemTeхt(){
+				return driver.findElement(By.id("customTextEditor_Tab8Text4_DesignIFrame"));
+			}
+			// поле "Текст пункта 7.5"
+			private WebElement	get75ItemTeхt(){
+				return driver.findElement(By.id("customTextEditor_Tab8Text5_DesignIFrame"));
+			}
+			private class Values{
+				private String setSevenSectionText = readFile.substring(readFile.indexOf("#9"), readFile.indexOf("#10"));	     // Текст раздела 7
+				private String setSevenPoint1ItemText = readFile.substring(readFile.indexOf("#10"), readFile.indexOf("#11"));    // Текст пункта 7.1
+				private String setSevenPoint2ItemText = readFile.substring(readFile.indexOf("#11"), readFile.indexOf("#12"));    // Текст пункта 7.2
+				private String setSevenPoint3ItemText = readFile.substring(readFile.indexOf("#12"), readFile.indexOf("#13"));    // Текст пункта 7.3
+				private String setSevenPoint4ItemText = readFile.substring(readFile.indexOf("#13"), readFile.indexOf("#14"));    // Текст пункта 7.4
+				private String setSevenPoint5ItemText = readFile.substring(readFile.indexOf("#14"), readFile.indexOf("#15"));    // Текст пункта 7.5
+			}
+		}
+		private class FindingsFromNonInterventionalStudies{
+			//кнопка перехода на вкладку "8. Данные неинтервенционных исследований"
+			private Custom getFindingsFromNonInterventionalStudiesTab(){
+				return new Custom(driver, By.xpath("//div[contains(text(), '8. Данные неинтервенционных исследований')]"));
+			}
+			// поле "Текст Раздела 8"
+			private WebElement	get8SectionTeхt(){
+				return driver.findElement(By.id("customTextEditor_Tab9Text1_DesignIFrame"));
+			}
+			private class Values{
+				private String setEightSectionText = readFile.substring(readFile.indexOf("#15"), readFile.indexOf("#16"));	    // Текст раздела 8
+			}
+		}
+		private class InformationFromOtherClinicalTrials{
+			//кнопка перехода на вкладку "9. Данные других клинических исследований и из других источников"
+			private Custom getInformationFromOtherClinicalTrialsTab(){
+				return new Custom(driver, By.xpath("//div[contains(text(), '9. Данные других КИ и источников')]"));
+			}
+			// поле "Текст Раздела 9"
+			private WebElement	get9SectionTeхt(){
+				return driver.findElement(By.id("customTextEditor_Tab10Text_DesignIFrame"));
+			}
+			// поле "Текст пункта 9.1"
+			private WebElement	get91ItemTeхt(){
+				return driver.findElement(By.id("customTextEditor_Tab10Text1_DesignIFrame"));
+			}
+			// поле "Текст пункта 9.2"
+			private WebElement	get92ItemTeхt(){
+				return driver.findElement(By.id("customTextEditor_Tab10Text2_DesignIFrame"));
+			}
+			private class Values{
+				private String setNineSectionText = readFile.substring(readFile.indexOf("#16"), readFile.indexOf("#17"));	    // Текст раздела 9
+				private String setNinePoint1ItemText = readFile.substring(readFile.indexOf("#17"), readFile.indexOf("#18"));    // Текст пункта 9.1
+				private String setNinePoint2ItemText = readFile.substring(readFile.indexOf("#18"), readFile.indexOf("#19"));    // Текст пункта 9.2
+			}
+		}
+		private class NonClinicalData{
+			//кнопка перехода на вкладку "10. Данные доклинических исследований"
+			private Custom getNonClinicalDataTab(){
+				return new Custom(driver, By.xpath("//div[contains(text(), '10. Данные доклинических исследований')]"));
+			}
+			// поле "Текст Раздела 10"
+			private WebElement	get10SectionTeхt(){
+				return driver.findElement(By.id("customTextEditor_Tab11Text1_DesignIFrame"));
+			}
+			private class Values{
+				private String setTenSectionText = readFile.substring(readFile.indexOf("#20"), readFile.indexOf("#21"));	    // Текст раздела 10
+			}
+		}
+		private class Literature{
+			//кнопка перехода на вкладку "11. Литература"
+			private Custom getLiteratureTab(){
+				return new Custom(driver, By.xpath("//div[contains(text(), '11. Литература')]"));
+			}
+			// поле "Текст Раздела 11"
+			private WebElement	get11SectionTeхt(){
+				return driver.findElement(By.id("customTextEditor_Tab11Text1_DesignIFrame"));
+			}
+			private class Values{
+				private String set11SectionText = readFile.substring(readFile.indexOf("#21"), readFile.indexOf("#22"));	    // Текст раздела 11
+			}
+		}
+		private class OtherPeriodicReports{
+			//кнопка перехода на вкладку "12. Другие периодические отчеты (при наличии)"
+			private Custom getOtherPeriodicReportsTab(){
+				return new Custom(driver, By.xpath("//div[contains(text(), '12. Другие периодические отчеты')]"));
+			}
+			// поле "Текст Раздела 12"
+			private WebElement	get12SectionTeхt(){
+				return driver.findElement(By.id("customTextEditor_Tab13Text1_DesignIFrame"));
+			}
+			private class Values{
+				private String set12SectionText = readFile.substring(readFile.indexOf("#22"), readFile.indexOf("#23"));	    // Текст раздела 12
+			}
+		}
+		private class LackOfEfficacy{
+			//кнопка перехода на вкладку "13. Недостаточная терапевтическая эффективность в контролируемых клинических исследованиях"
+			private Custom getLackOfEfficacyTab(){
+				return new Custom(driver, By.xpath("//div[contains(text(), '13. Недостаточная ТЭ в контролируемых КИ')]"));
+			}
+			// поле "Текст Раздела 13"
+			private WebElement	get13SectionTeхt(){
+				return driver.findElement(By.id("customTextEditor_Tab14Text1_DesignIFrame"));
+			}
+			private class Values{
+				private String set13SectionText = readFile.substring(readFile.indexOf("#23"), readFile.indexOf("#24"));	    // Текст раздела 13
+			}	
+		}
+		private class LateBreakingInformation{
+			//кнопка перехода на вкладку "14. Важная информация, полученная после завершения подготовки ПОБ"
+			private Custom getLateBreakingInformationTab(){
+				return new Custom(driver, By.xpath("//div[contains(text(), '14. Инф-ия, после подготовки ПОБ')]"));
+			}
+			// поле "Текст Раздела 14"
+			private WebElement	get14SectionTeхt(){
+				return driver.findElement(By.id("customTextEditor_Tab15Text1_DesignIFrame"));
+			}
+			private class Values{
+				private String set14SectionText = readFile.substring(readFile.indexOf("#24"), readFile.indexOf("#25"));	    // Текст раздела 14
+			}	
+		}
+		private class OverviewOfSignals{
+			//кнопка перехода на вкладку "15. Обзор сигналов: новые, рассматриваемые и завершенные"
+			private Custom getOverviewOfSignalsTab(){
+				return new Custom(driver, By.xpath("//div[contains(text(), '15. Обзор сигналов')]"));
+			}
+			// поле "Текст Раздела 14"
+			private WebElement	get15SectionTeхt(){
+				return driver.findElement(By.id("customTextEditor_Tab16Text1_DesignIFrame"));
+			}
+			private class Values{
+				private String set15SectionText = readFile.substring(readFile.indexOf("#25"), readFile.indexOf("#26"));	    // Текст раздела 15
+			}	
+		}
+		private class SignalAndRiskEvaluation{
+			//кнопка перехода на вкладку "16. Сигналы безопасности и оценка риска применения лекарственного препарата"
+			private Custom getSignalAndRiskEvaluationTab(){
+				return new Custom(driver, By.xpath("//div[contains(text(), '16. Сигналы и оценка риска')]"));
+			}
+			// поле "Текст Раздела 16"
+			private WebElement	get16SectionTeхt(){
+				return driver.findElement(By.id("customTextEditor_Tab17Text_DesignIFrame"));
+			}
+			// поле "Текст пункта 16.1"
+			private WebElement	get16Point1ItemTeхt(){
+				return driver.findElement(By.id("customTextEditor_Tab17Text1_DesignIFrame"));
+			}
+			// поле "Текст пункта 16.2"
+			private WebElement	get16Point2ItemTeхt(){
+				return driver.findElement(By.id("customTextEditor_Tab17Text2_DesignIFrame"));
+			}
+			// поле "Текст пункта 16.3"
+			private WebElement	get16Point3ItemTeхt(){
+				return driver.findElement(By.id("customTextEditor_Tab17Text3_DesignIFrame"));
+			}
+			// поле "Текст пункта 16.4"
+			private WebElement	get16Point4ItemTeхt(){
+				return driver.findElement(By.id("customTextEditor_Tab17Text4_DesignIFrame"));
+			}
+			// поле "Текст пункта 16.5"
+			private WebElement	get16Point5ItemTeхt(){
+				return driver.findElement(By.id("customTextEditor_Tab17Text5_DesignIFrame"));
+			}
+			private class Values{
+				private String set16SectionText = readFile.substring(readFile.indexOf("#26"), readFile.indexOf("#27"));	      // Текст раздела 16
+				private String set16Point1ItemText = readFile.substring(readFile.indexOf("#27"), readFile.indexOf("#28"));    // Текст пункта 16.1
+				private String set16Point2ItemText = readFile.substring(readFile.indexOf("#28"), readFile.indexOf("#29"));    // Текст пункта 16.2
+				private String set16Point3ItemText = readFile.substring(readFile.indexOf("#29"), readFile.indexOf("#30"));    // Текст пункта 16.3
+				private String set16Point4ItemText = readFile.substring(readFile.indexOf("#30"), readFile.indexOf("#31"));    // Текст пункта 16.4
+				private String set16Point5ItemText = readFile.substring(readFile.indexOf("#31"), readFile.indexOf("#32"));    // Текст пункта 16.5
+			}
 		}
 	}
 

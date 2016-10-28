@@ -121,6 +121,18 @@ public class TestOfTest  extends  BaseTest{
 		addPSUR_My.WorldwideAuthorisationStatus_FillUp();
 		addPSUR_My.ActionsTaken_FillUP();
 		addPSUR_My.ChangesSafetyInformation_FillUp();
+		addPSUR_My.EstimatedExposure_FillUp();
+		addPSUR_My.DataInSummaryTabulations_FillUp();
+		addPSUR_My.FindingsFromNonInterventionalStudies_FillUp();
+		addPSUR_My.InformationFromOtherClinicalTrials_FillUp();
+		addPSUR_My.NonClinicalData_FillUp();
+		addPSUR_My.Literature_FillUp();
+		addPSUR_My.OtherPeriodicReports_FillUp();
+		addPSUR_My.LackOfEfficacy_FillUp();
+		addPSUR_My.LateBreakingInformation_FillUp();
+		addPSUR_My.OverviewOfSignals_FillUP();
+		addPSUR_My.SignalAndRiskEvaluation_FillUp();
+		
       
 	}
 }
