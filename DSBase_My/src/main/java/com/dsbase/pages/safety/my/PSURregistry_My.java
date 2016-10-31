@@ -2,9 +2,16 @@ package com.dsbase.pages.safety.my;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.Select;
 
+import com.dsbase.core.web.CustomMethods;
 import com.dsbase.core.web.WebPage;
+import com.dsbase.core.web.CustomMethods.Grid;
 import com.dsbase.core.web.elements.Button;
+import com.dsbase.core.web.elements.Custom;
+import com.dsbase.core.web.elements.TextInput;
+
 
 
 
@@ -28,12 +35,79 @@ public class PSURregistry_My extends WebPage<PSURregistry_My> {
 		getAdd_Button().click();
 		return new AddPSUR_My(driver).waitUntilAvailable();
 	}
-	
+	public void WaitForPageReady(){
+		simpleWait(2);
+		waitForBlockStatus(new PSURregistry().getGridDownload_Div() , false);
+	}
+	public void SearchPSUR(){
+		// Открыть аккордеон
+		new PSURregistry().getSearchAccordion().click();
+		simpleWait(2);
+		new PSURregistry().getFiltrationValue().selectByVisibleText("Название");
+		new PSURregistry().getFiltrationValue_Input().inputText(new Grid_Values().title);
+		new PSURregistry().getSearch_Button().click();
+	}
+	public void FoundPSUR_Check(){
+		// Определение переменных с значениями
+		String title = new Grid_Values().title;
+		String reportingPeriodSartDate = new Grid_Values().reportingPeriodSartDate;
+		String reportingPeriodEndDate = new Grid_Values().reportingPeriodEndDate;
+		String reportCreationDate = new Grid_Values().reportCreationDate;
+		String requiredDate = new Grid_Values().requiredDate;
+		String actualDate = new Grid_Values().actualDate;
+		String submissionDate = new Grid_Values().submissionDate;
+		String nextStartDate = new Grid_Values().nextStartDate;
+		String nextEndDate = new Grid_Values().nextEndDate;
+		String nextReportSubmitionDate = new Grid_Values().nextReportSubmitionDate;
+		
+		
+		// Определение массива ожидаемых значений
+		String[][] ExpectedValues = new String [1][];
+		ExpectedValues[0]=new String []{"1","","","","",title,reportingPeriodSartDate,reportingPeriodEndDate,reportCreationDate,requiredDate,
+						actualDate,submissionDate,nextStartDate,nextEndDate,nextReportSubmitionDate,"Файл","Тестовый препарат, Таблетки, 02.01.2012, 222","ru",""};
+		// Вытянуть значения из грида
+		String[][] ActualValues = new CustomMethods(). new Grid().GetAllRows(getGridBody());
+		// Проверка значений грида
+		new CustomMethods().new Grid().gridValuesEqualityCheck(ExpectedValues, ActualValues);
+		
+	}
 	
 	//_______________________________________________Elements____________________________________________________________//
 	// Кнопка добавления
 	private Button getAdd_Button(){
 		return new Button(driver, By.xpath("//input[contains(@title, 'Создать новую запись')]"));
+	}
+	private WebElement getGridBody(){
+		return driver.findElement(By.xpath("//table[@id='list_search']/tbody"));
+	}
+	private class PSURregistry{
+		private Custom getGridDownload_Div(){
+			return new Custom(driver, By.id("load_list_search"));	
+		}
+		private Custom	getSearchAccordion(){
+			return new Custom(driver, By.id("ui-accordion-accordFilter-header-0"));
+		}
+		private TextInput getFiltrationValue_Input(){
+			return new TextInput(driver, By.xpath("//input[contains(@id,'value')]"));
+		}
+		private Button getSearch_Button(){
+			return new Button(driver, By.id("buttonSearch"));
+		}
+		private Select getFiltrationValue(){
+			return new Select(driver.findElement(By.xpath("//select[contains(@id,'name')]")));
+		}
+	}
+	private class Grid_Values{
+		private String title = "AutoTestPSUR";     // название "ПСУРа"
+		private String reportingPeriodSartDate = new CustomMethods().getCurrentDate(); 		// Дата начала отчетного периода
+		private String reportingPeriodEndDate = new CustomMethods().getChangedDate(4);		// Дата окончания отчетного периода
+		private String reportCreationDate = new CustomMethods().getCurrentDate(); 		    // Дата формирования отчета
+		private String requiredDate = new CustomMethods().getCurrentDate();					// Необходимая дата предоставления отчета в регуляторный орган
+		private String actualDate = new CustomMethods().getChangedDate(1);					// Фактическая дата предоставления отчета в регуляторный орган
+		private String submissionDate = new CustomMethods().getChangedDate(5);				// Дата подачи отчета в составе материалов на перерегистрацию:
+		private String nextStartDate = new CustomMethods().getChangedDate(5);				// Дата начала следующего отчетного периода
+		private String nextEndDate = new CustomMethods().getChangedDate(7);					// Дата окончания следующего отчетного периода
+		private String nextReportSubmitionDate = new CustomMethods().getChangedDate(8);		// Необходимая дата предоставления следующего отчета:
 	}
 
 }

@@ -1,5 +1,9 @@
 package com.dsbase.pages.safety.my;
 
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.equalTo;
+import static org.hamcrest.Matchers.is;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -11,6 +15,7 @@ import com.dsbase.core.web.WebPage;
 import com.dsbase.core.web.elements.Button;
 import com.dsbase.core.web.elements.Custom;
 import com.dsbase.core.web.elements.TextInput;
+
 
 
 
@@ -82,6 +87,46 @@ public class AddPSUR_My extends WebPage<AddPSUR_My> {
 		// Необходимая дата предоставления следующего отчета:
 		new OtherPSURFields().getNextReportSubmitionDate().click();
 		new OtherPSURFields().getNextReportSubmitionDate().inputText(new OtherPSURFields().new OtherValues().NextReportSubmitionDate);
+	}
+	public void doc_Add(){		
+		// Открытие поп-апа добавления документа
+		new Docs_Elements().getAddButton().click();
+			simpleWait(2);
+			waitUntilUnblocked((new Docs_Elements().getAddEditPopUp()));
+			simpleWait(2);
+			
+		// Дата
+		new Docs_Elements().getDate_Field().click();
+			simpleWait(1);
+		    new Docs_Elements().getDate_Field().inputText(new Docs_Elements().new Values().date);
+			
+		// Название документа
+		new Docs_Elements().getName_Field().inputText(new Docs_Elements().new Values().name);
+			
+		// Описание документа
+		new Docs_Elements().getDescription_Field().inputText(new Docs_Elements().new Values().docDescription);
+			
+		// Тип документа
+		new Docs_Elements().getDocType_Field().selectByVisibleText(new Docs_Elements().new Values().docType);
+			
+		// Добавление файл + проверка подстановки в текстовое поле
+		new Docs_Elements().getFileUpload_Button().inputText(new Docs_Elements().new Values().fileWay);
+			simpleWait(2);
+			assertThat(new Docs_Elements().getFile_Field().getAttribute("value"), is(equalTo(new Docs_Elements().new Values().fileName)));
+			
+		// Ссылка на файл
+		new Docs_Elements().getFileLink_Field().inputText(new Docs_Elements().new Values().fileLink);
+			
+		// Сохранение действующее вещество
+		new Docs_Elements().getSaveButton().click();
+		    simpleWait(1);
+			
+		// Ожидание прогрузки грида
+		waitForBlockStatus(new Docs_Elements().getGridDownload_Div(), false);
+			simpleWait(1);
+	}
+	public void fileUnload_check(){
+		new CustomMethods().new WorkWith_TextFiles().fileDownload_Check(new Docs_Elements().getFileDownloadButton(), "ForDocAdd.txt");
 	}
 	public void SavePSUR(){
 		new OtherPSURFields().getSaveButton().click();
@@ -453,9 +498,104 @@ public class AddPSUR_My extends WebPage<AddPSUR_My> {
 		private class Values{
 			private String marketingCountry = "Катар";                                   // Страна маркетирования
 			private String tradeName = "Тестовый препарат";								 // Торговое название
-			
 		}
+		
 	}
+	// Элементы блока 'Документы'
+		private class Docs_Elements{
+			// Кнопка добавления
+			private Button getAddButton(){
+				return new Button(driver, By.xpath("//input[@onclick='AddEditFile()']"));
+			}
+						
+			// Поп-ап добавления
+			private Custom getAddEditPopUp(){
+				return new Custom(driver, By.xpath("//span[text() = '" + new Values().addEditPopUpName + "']"));
+			}
+						
+			// "Завантаження"
+			private Custom getGridDownload_Div(){
+				return new Custom(driver, By.id("load_list_file_load"));
+			}
+						
+			// <tbody> грида
+			private WebElement getDocsGridBody(){
+				return driver.findElement(By.xpath("//*[@id='list_file_load']/tbody"));
+			}
+						
+			// Дата
+			private TextInput getDate_Field(){
+				return new TextInput(driver, By.id("Date"));
+			}
+						
+			// Название документа
+			private TextInput getName_Field(){
+				return new TextInput(driver, By.id("Title"));
+			}
+						
+			// Описание документа
+			private TextInput getDescription_Field(){
+				return new TextInput(driver, By.id("Description"));
+			}
+						
+			// Описание документа
+			private Select getDocType_Field(){
+				return new Select(driver.findElement(By.id("TypeId")));
+			}
+						
+			// Файл
+			private TextInput getFile_Field(){
+				return new TextInput(driver, By.id("FileName"));
+			}
+						
+			private TextInput getFileUpload_Button(){
+					return new TextInput(driver, By.id("file_source"));
+			}
+						
+			// Ссылка на файл
+			private TextInput getFileLink_Field(){
+				return new TextInput(driver, By.id("FileLink"));
+			}
+						
+			// Кнопка 'Сохранить'
+			private Button getSaveButton(){
+				return new Button(driver, By.id("save_file_btn"));
+			}
+						
+			// Кнопка выгрузки файла
+			private Button getFileDownloadButton(){
+				return new Button(driver, By.xpath("//td[@aria-describedby='list_file_load_load']/input"));
+			}
+						
+			private class Values{
+				private String addEditPopUpName = "Добавление документа";				// Название поп-апа добавления/редактирования документа
+				private String date = new CustomMethods().getCurrentDate(); 	 		// Дата
+				private String name = "Файл";						     				// Название документа
+				private String docDescription = "Тестовое";						    	// Описание документа
+				private String docType = "Инструкция";						     		// Инструкция
+				private String fileWay = "D:\\DSBase\\Files for testing\\ForDocAdd.txt";	// Ссылка на файл(реальная)
+				private String fileName = "ForDocAdd.txt";								// Название файла
+				private String fileLink = "www.getFile.com/get";			     		// Ссылка на файл 
+			}
+		}
+		public void addedDoc_check(){
+			// Определение ожидаемых значений
+			String[][] ExpectedValues = new String [1][];
+			ExpectedValues[0] = new String[] {"",
+						  						  new Docs_Elements().new Values().date,
+												  new Docs_Elements().new Values().name,
+												  new Docs_Elements().new Values().docDescription,
+												  new Docs_Elements().new Values().docType,
+												  new Docs_Elements().new Values().fileLink,
+												  "",
+												  ""};
+				
+			// Определение актуальных значений
+			String[][] ActualValues = new CustomMethods().new Grid().GetAllRows(new Docs_Elements().getDocsGridBody());
+				
+			// Проверка значений грида
+			new CustomMethods().new Grid().gridValuesEqualityCheck(ExpectedValues, ActualValues);
+			}
 	private class OtherPSURFields{
 		// Название псура
 		private TextInput getNamePSUR(){

@@ -111,9 +111,13 @@ public class TestOfTest  extends  BaseTest{
 //		eventsRegistry_My.SearchEvent_Check();
 //		eventsRegistry_My.Event_Delete();
 		PSURregistry_My pSURregistry_My = mainPage_My.new goTo().pSURregistry_My();
-			AddPSUR_My addPSUR_My = pSURregistry_My.clickAddPSURButton();
+		AddPSUR_My addPSUR_My = pSURregistry_My.clickAddPSURButton();
 		addPSUR_My.PopUpTradeNameFields_FillUp();
 		addPSUR_My.OtherFields_FillUp();
+		addPSUR_My.doc_Add();
+		addPSUR_My.addedDoc_check();
+		addPSUR_My.addedDoc_check();
+		addPSUR_My.fileUnload_check();
 		addPSUR_My.SavePSUR();
 		addPSUR_My.TitlePagePSUR_FillUp();
 		addPSUR_My.ContentsAndSummary_FillUP();
@@ -137,7 +141,11 @@ public class TestOfTest  extends  BaseTest{
 		addPSUR_My.ConclusionsAndActions_FillUp();
 		addPSUR_My.AppendicesToThePSUR_FillUp();
 		addPSUR_My.MappingSignalsAndRisksToPSUR_FillUp();
-		
+		pSURregistry_My= mainPage_My.new goTo().pSURregistry_My();
+		pSURregistry_My.WaitForPageReady();
+		pSURregistry_My.SearchPSUR();
+		pSURregistry_My.WaitForPageReady();
+		pSURregistry_My.FoundPSUR_Check();
       
 	}
 }
