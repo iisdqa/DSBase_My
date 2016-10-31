@@ -38,13 +38,14 @@
     	</classes>
 	</test>
 </suite>
+
+	
 -->
 
 <suite name="For testing">
 	<listeners>
 		<listener class-name="com.dsbase.core.Listeners" />
 	</listeners>
-	
 	<test name="preserve-order Other tests" preserve-order="true">
 	    <groups>
         	<run>
