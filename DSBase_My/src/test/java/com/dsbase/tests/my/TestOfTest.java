@@ -132,6 +132,11 @@ public class TestOfTest  extends  BaseTest{
 		addPSUR_My.LateBreakingInformation_FillUp();
 		addPSUR_My.OverviewOfSignals_FillUP();
 		addPSUR_My.SignalAndRiskEvaluation_FillUp();
+		addPSUR_My.BenefitEvaluation_FillUp();
+		addPSUR_My.IntegratedBenefitRisk_FillUp();
+		addPSUR_My.ConclusionsAndActions_FillUp();
+		addPSUR_My.AppendicesToThePSUR_FillUp();
+		addPSUR_My.MappingSignalsAndRisksToPSUR_FillUp();
 		
       
 	}

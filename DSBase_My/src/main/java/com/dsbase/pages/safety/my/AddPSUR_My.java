@@ -351,6 +351,73 @@ public class AddPSUR_My extends WebPage<AddPSUR_My> {
 		new BodyOfPSUR().getSaveButton().click();
 		new BodyOfPSUR().getAddDocumentButton().waitUntilAvailable();
 	}
+	public void BenefitEvaluation_FillUp(){
+		// переход на вкладку переход на вкладку "17. Оценка пользы"
+		new BodyOfPSUR().new BenefitEvaluation().getBenefitEvaluationTab().click();;
+		new BodyOfPSUR().getAddDocumentButton().waitUntilAvailable();
+		// заполнение поля "Текст Раздела 17"
+		new CustomMethods().new WorkWith_TextEditor().setTextValue(driver, new BodyOfPSUR().new BenefitEvaluation().get17SectionTeхt()
+																   ,new BodyOfPSUR().new BenefitEvaluation().new Values().set17SectionText);	
+		// Заполненние поля "Текст пункта 17.1"
+		new CustomMethods().new WorkWith_TextEditor().setTextValue(driver, new BodyOfPSUR().new BenefitEvaluation().get17Point1ItemTeхt()
+																   ,new BodyOfPSUR().new BenefitEvaluation().new Values().set17Point1ItemText);
+		// Заполненние поля Текст пункта 17.2
+		new CustomMethods().new WorkWith_TextEditor().setTextValue(driver, new BodyOfPSUR().new BenefitEvaluation().get17Point2ItemTeхt() 
+																   ,new BodyOfPSUR().new BenefitEvaluation().new Values().set17Point2ItemText);
+		// Заполненние поля Текст пункта 17.3
+		new CustomMethods().new WorkWith_TextEditor().setTextValue(driver, new BodyOfPSUR().new BenefitEvaluation().get17Point3ItemTeхt()
+																   ,new BodyOfPSUR().new BenefitEvaluation().new Values().set17Point3ItemText);
+		simpleWait(2);
+		new BodyOfPSUR().getSaveButton().click();
+		new BodyOfPSUR().getAddDocumentButton().waitUntilAvailable();
+	}
+	public void IntegratedBenefitRisk_FillUp(){
+		// переход на вкладку переход на вкладку "18. Оценка пользы"
+		new BodyOfPSUR().new IntegratedBenefitRisk().getIntegratedBenefitRiskTab().click();;
+		new BodyOfPSUR().getAddDocumentButton().waitUntilAvailable();
+		// заполнение поля "Текст Раздела 18"
+		new CustomMethods().new WorkWith_TextEditor().setTextValue(driver, new BodyOfPSUR().new IntegratedBenefitRisk().get18SectionTeхt()
+																   ,new BodyOfPSUR().new IntegratedBenefitRisk().new Values().set18SectionText);	
+		// Заполненние поля "Текст пункта 18.1"
+		new CustomMethods().new WorkWith_TextEditor().setTextValue(driver, new BodyOfPSUR().new IntegratedBenefitRisk().get18Point1ItemTeхt()
+																   ,new BodyOfPSUR().new IntegratedBenefitRisk().new Values().set18Point1ItemText);
+		// Заполненние поля Текст пункта 18.2
+		new CustomMethods().new WorkWith_TextEditor().setTextValue(driver, new BodyOfPSUR().new IntegratedBenefitRisk().get18Point2ItemTeхt() 
+																   ,new BodyOfPSUR().new IntegratedBenefitRisk().new Values().set18Point2ItemText);
+	}
+	public void ConclusionsAndActions_FillUp(){
+		// переход на вкладку "19. Заключение и действия"
+		new BodyOfPSUR().new ConclusionsAndActions().getConclusionsAndActionsTab().click();
+		new BodyOfPSUR().getAddDocumentButton().waitUntilAvailable();
+		// заполнение поля "Текст Раздела 19"
+		new CustomMethods().new WorkWith_TextEditor().setTextValue(driver, new BodyOfPSUR().new ConclusionsAndActions().get19SectionTeхt(),
+																		   new BodyOfPSUR().new ConclusionsAndActions().new Values().set19SectionText);
+		simpleWait(2);
+		new BodyOfPSUR().getSaveButton().click();
+		new BodyOfPSUR().getAddDocumentButton().waitUntilAvailable();
+	}
+	public void AppendicesToThePSUR_FillUp(){
+		// переход на вкладку "20. Приложения к ПОБ"
+		new BodyOfPSUR().new AppendicesToThePSUR().getAppendicesToThePSURTab().click();
+		new BodyOfPSUR().getAddDocumentButton().waitUntilAvailable();
+		// заполнение поля "Текст Раздела 20"
+		new CustomMethods().new WorkWith_TextEditor().setTextValue(driver, new BodyOfPSUR().new AppendicesToThePSUR().get20SectionTeхt(),
+																		   new BodyOfPSUR().new AppendicesToThePSUR().new Values().set20SectionText);
+		simpleWait(2);
+		new BodyOfPSUR().getSaveButton().click();
+		new BodyOfPSUR().getAddDocumentButton().waitUntilAvailable();
+	}
+	public void MappingSignalsAndRisksToPSUR_FillUp(){
+		// переход на вкладку "21. Отображение сигналов и рисков"
+		new BodyOfPSUR().new MappingSignalsAndRisksToPSUR().getMappingSignalsAndRisksToPSURTab().click();
+		new BodyOfPSUR().getAddDocumentButton().waitUntilAvailable();
+		// заполнение поля "Текст Раздела 21"
+		new CustomMethods().new WorkWith_TextEditor().setTextValue(driver, new BodyOfPSUR().new MappingSignalsAndRisksToPSUR().get21SectionTeхt(),
+																		   new BodyOfPSUR().new MappingSignalsAndRisksToPSUR().new Values().set21SectionText);
+		simpleWait(2);
+		new BodyOfPSUR().getSaveButton().click();
+		new BodyOfPSUR().getAddDocumentButton().waitUntilAvailable();
+	}
 
 		
 	//______________________________________________Elements_____________________________________________________//
@@ -849,6 +916,97 @@ public class AddPSUR_My extends WebPage<AddPSUR_My> {
 				private String set16Point5ItemText = readFile.substring(readFile.indexOf("#31"), readFile.indexOf("#32"));    // Текст пункта 16.5
 			}
 		}
+		private class  BenefitEvaluation{
+			//кнопка перехода на вкладку "17. Оценка пользы"
+			private Custom getBenefitEvaluationTab(){
+				return new Custom(driver, By.xpath("//div[contains(text(), '17. Оценка пользы')]"));
+			}
+			// поле "Текст Раздела 17"
+			private WebElement	get17SectionTeхt(){
+				return driver.findElement(By.id("customTextEditor_Tab18Text_DesignIFrame"));
+			}
+			// поле "Текст пункта 17.1"
+			private WebElement	get17Point1ItemTeхt(){
+				return driver.findElement(By.id("customTextEditor_Tab18Text1_DesignIFrame"));
+			}
+			// поле "Текст пункта 17.2"
+			private WebElement	get17Point2ItemTeхt(){
+				return driver.findElement(By.id("customTextEditor_Tab18Text2_DesignIFrame"));
+			}
+			// поле "Текст пункта 17.3"
+			private WebElement	get17Point3ItemTeхt(){
+				return driver.findElement(By.id("customTextEditor_Tab18Text3_DesignIFrame"));
+			}
+			private class Values{
+				private String set17SectionText = readFile.substring(readFile.indexOf("#32"), readFile.indexOf("#33"));	      // Текст раздела 17
+				private String set17Point1ItemText = readFile.substring(readFile.indexOf("#33"), readFile.indexOf("#34"));    // Текст пункта 17.1
+				private String set17Point2ItemText = readFile.substring(readFile.indexOf("#34"), readFile.indexOf("#35"));    // Текст пункта 17.2
+				private String set17Point3ItemText = readFile.substring(readFile.indexOf("#35"), readFile.indexOf("#36"));    // Текст пункта 17.3	
+			}
+		}
+		private class IntegratedBenefitRisk{
+			//кнопка перехода на вкладку "18. Интегрированный анализ соотношения польза-риск по одобренным показаниям"
+			private Custom getIntegratedBenefitRiskTab(){
+				return new Custom(driver, By.xpath("//div[contains(text(), '18. Инт-й анализ пользы-риска по ОП')]"));
+			}
+			// поле "Текст Раздела 18"
+			private WebElement	get18SectionTeхt(){
+				return driver.findElement(By.id("customTextEditor_Tab19Text_DesignIFrame"));
+			}
+			// поле "Текст пункта 18.1"
+			private WebElement	get18Point1ItemTeхt(){
+				return driver.findElement(By.id("customTextEditor_Tab19Text1_DesignIFrame"));
+			}
+			// поле "Текст пункта 18.2"
+			private WebElement	get18Point2ItemTeхt(){
+				return driver.findElement(By.id("customTextEditor_Tab19Text2_DesignIFrame"));
+			}
+			private class Values{
+				private String set18SectionText = readFile.substring(readFile.indexOf("#36"), readFile.indexOf("#37"));	      // Текст раздела 18
+				private String set18Point1ItemText = readFile.substring(readFile.indexOf("#37"), readFile.indexOf("#38"));    // Текст пункта 18.1
+				private String set18Point2ItemText = readFile.substring(readFile.indexOf("#38"), readFile.indexOf("#39"));    // Текст пункта 18.2
+			}
+		}
+		private class ConclusionsAndActions{
+			//кнопка перехода на вкладку "19. Заключение и действия"
+			private Custom getConclusionsAndActionsTab(){
+				return new Custom(driver, By.xpath("//div[contains(text(), '19. Заключение и действия')]"));
+			}
+			// поле "Текст Раздела 19"
+			private WebElement	get19SectionTeхt(){
+				return driver.findElement(By.id("customTextEditor_Tab20Text1_DesignIFrame"));
+			}
+			private class Values{
+				private String set19SectionText = readFile.substring(readFile.indexOf("#39"), readFile.indexOf("#40"));	    // Текст раздела 19
+			}
+		}
+		private class AppendicesToThePSUR{
+			//кнопка перехода на вкладку "20. Приложения к ПОБ"
+			private Custom getAppendicesToThePSURTab(){
+				return new Custom(driver, By.xpath("//div[contains(text(), '20. Приложения к ПОБ')]"));
+			}
+			// поле "Текст Раздела 20"
+			private WebElement	get20SectionTeхt(){
+				return driver.findElement(By.id("customTextEditor_Tab21Text1_DesignIFrame"));
+			}
+			private class Values{
+				private String set20SectionText = readFile.substring(readFile.indexOf("#40"), readFile.indexOf("#41"));	    // Текст раздела 20
+			}
+		}
+		private class MappingSignalsAndRisksToPSUR{
+			//кнопка перехода на вкладку "21. Отображение сигналов и рисков"
+			private Custom getMappingSignalsAndRisksToPSURTab(){
+				return new Custom(driver, By.xpath("//div[contains(text(), '21. Отображение сигналов и рисков')]"));
+			}
+			// поле "Текст Раздела 21"
+			private WebElement	get21SectionTeхt(){
+				return driver.findElement(By.id("customTextEditor_Tab22Text1_DesignIFrame"));
+			}
+			private class Values{
+				private String set21SectionText = readFile.substring(readFile.indexOf("#41"), readFile.indexOf("#42"));	    // Текст раздела 21
+			}
+		}
+		
 	}
 
 }
