@@ -994,7 +994,7 @@ public class AddPSUR_My extends WebPage<AddPSUR_My> {
 			}
 		}
 		private class MappingSignalsAndRisksToPSUR{
-			//кнопка перехода на вкладку "21. Отображение сигналов и рисков"
+			//кнопка перехода на вкладку "21. Отображение сигналов и рисков" 
 			private Custom getMappingSignalsAndRisksToPSURTab(){
 				return new Custom(driver, By.xpath("//div[contains(text(), '21. Отображение сигналов и рисков')]"));
 			}
