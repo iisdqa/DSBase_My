@@ -99,31 +99,24 @@ public class AddPSUR_My extends WebPage<AddPSUR_My> {
 		new Docs_Elements().getDate_Field().click();
 			simpleWait(1);
 		    new Docs_Elements().getDate_Field().inputText(new Docs_Elements().new Values().date);
-			
 		// Название документа
 		new Docs_Elements().getName_Field().inputText(new Docs_Elements().new Values().name);
-			
 		// Описание документа
-		new Docs_Elements().getDescription_Field().inputText(new Docs_Elements().new Values().docDescription);
-			
+		new Docs_Elements().getDescription_Field().inputText(new Docs_Elements().new Values().docDescription);	
 		// Тип документа
 		new Docs_Elements().getDocType_Field().selectByVisibleText(new Docs_Elements().new Values().docType);
-			
 		// Добавление файл + проверка подстановки в текстовое поле
 		new Docs_Elements().getFileUpload_Button().inputText(new Docs_Elements().new Values().fileWay);
-			simpleWait(2);
-			assertThat(new Docs_Elements().getFile_Field().getAttribute("value"), is(equalTo(new Docs_Elements().new Values().fileName)));
-			
+		simpleWait(2);
+		assertThat(new Docs_Elements().getFile_Field().getAttribute("value"), is(equalTo(new Docs_Elements().new Values().fileName)));
 		// Ссылка на файл
 		new Docs_Elements().getFileLink_Field().inputText(new Docs_Elements().new Values().fileLink);
-			
-		// Сохранение действующее вещество
+		// Сохранение файла
 		new Docs_Elements().getSaveButton().click();
-		    simpleWait(1);
-			
+		simpleWait(1);
 		// Ожидание прогрузки грида
 		waitForBlockStatus(new Docs_Elements().getGridDownload_Div(), false);
-			simpleWait(1);
+		simpleWait(1);
 	}
 	public void fileUnload_check(){
 		new CustomMethods().new WorkWith_TextFiles().fileDownload_Check(new Docs_Elements().getFileDownloadButton(), "ForDocAdd.txt");

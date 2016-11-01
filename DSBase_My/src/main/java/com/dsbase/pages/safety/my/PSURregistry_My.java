@@ -3,14 +3,18 @@ package com.dsbase.pages.safety.my;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.Select;
 
 import com.dsbase.core.web.CustomMethods;
 import com.dsbase.core.web.WebPage;
-import com.dsbase.core.web.CustomMethods.Grid;
 import com.dsbase.core.web.elements.Button;
 import com.dsbase.core.web.elements.Custom;
 import com.dsbase.core.web.elements.TextInput;
+
+
+
+
 
 
 
@@ -69,13 +73,66 @@ public class PSURregistry_My extends WebPage<PSURregistry_My> {
 		String[][] ActualValues = new CustomMethods(). new Grid().GetAllRows(getGridBody());
 		// Проверка значений грида
 		new CustomMethods().new Grid().gridValuesEqualityCheck(ExpectedValues, ActualValues);
-		
 	}
+	public void DocumentsGrid_Check(){
+		// Кликнуть по ячейке 'Название препарата'
+		Actions action = new Actions(driver);
+		action.click(getPSURnameCell()).perform();
+		simpleWait(2);
+		// Определение ожидаемых значений
+		String[][] ExpectedValues = new String [1][];
+		ExpectedValues[0] = new String[] {"",
+										 new Docs_Elements().new Values().date,
+										 new Docs_Elements().new Values().name,
+										 new Docs_Elements().new Values().docDescription,
+									     new Docs_Elements().new Values().docType,
+										 new Docs_Elements().new Values().fileLink,
+										 "",
+										 ""};
+					
+		// Определение актуальных значений
+		String[][] ActualValues = new CustomMethods().new Grid().GetAllRows(new Docs_Elements().getDocsGridBody());
+					
+		// Проверка значений грида
+		new CustomMethods().new Grid().gridValuesEqualityCheck(ExpectedValues, ActualValues);
+	}
+	public void fileUnload_check(){
+		new CustomMethods().new WorkWith_TextFiles().fileDownload_Check(new Docs_Elements().getFileDownloadButton(), new Docs_Elements().new Values().fileName);
+	}
+	public void File_Delete(){
+		// Открытие поп-апа удаления 'Препарата'
+		new FileDeletion_PopUp().getDelete_Button().click();
+		simpleWait(2);
+		waitUntilUnblocked((new FileDeletion_PopUp().getDeletion_PopUp()));
+		simpleWait(2);
+			
+		// Подтверждение удаления прапарата
+		new FileDeletion_PopUp().getDeletionYes_Button().click();
+		simpleWait(2);
+		//
+		waitForBlockStatus(new Docs_Elements().getGridDownload_Div(), false);
+	}
+	public void PSUR_Delete(){
+	// Открытие поп-апа удаления 'Препарата'
+	new PSURDeletion_Elements().getDelete_Button().click();
+	simpleWait(2);
+	waitUntilUnblocked((new PSURDeletion_Elements().getDeletion_PopUp()));
+	simpleWait(2);
+	// Подтверждение удаления прапарата
+	new PSURDeletion_Elements().getDeletionYes_Button().click();
+	simpleWait(2);
+	//
+	waitForBlockStatus(new PSURregistry().getGridDownload_Div(), false);
+	}
+	
 	
 	//_______________________________________________Elements____________________________________________________________//
 	// Кнопка добавления
 	private Button getAdd_Button(){
 		return new Button(driver, By.xpath("//input[contains(@title, 'Создать новую запись')]"));
+	}
+	private WebElement getPSURnameCell(){
+		return driver.findElement(By.xpath("//td[@title='AutoTestPSUR']"));
 	}
 	private WebElement getGridBody(){
 		return driver.findElement(By.xpath("//table[@id='list_search']/tbody"));
@@ -108,6 +165,57 @@ public class PSURregistry_My extends WebPage<PSURregistry_My> {
 		private String nextStartDate = new CustomMethods().getChangedDate(5);				// Дата начала следующего отчетного периода
 		private String nextEndDate = new CustomMethods().getChangedDate(7);					// Дата окончания следующего отчетного периода
 		private String nextReportSubmitionDate = new CustomMethods().getChangedDate(8);		// Необходимая дата предоставления следующего отчета:
+	}
+	// Элементы блока 'Документы'
+	private class Docs_Elements{	
+		// <tbody> грида
+		private WebElement getDocsGridBody(){
+			return driver.findElement(By.xpath("//*[@id='list_file_load']/tbody"));
+		}
+		// "Завантаження"
+		private Custom getGridDownload_Div(){
+			return new Custom(driver, By.id("load_list_file_load"));
+		}
+		// Кнопка выгрузки файла
+		private Button getFileDownloadButton(){
+			return new Button(driver, By.xpath("//td[@aria-describedby='list_file_load_load']/input"));
+		}
+		private class Values{
+			private String fileName = "ForDocAdd.txt";								// Название файла
+			private String date = new CustomMethods().getCurrentDate(); 	 		// Дата
+			private String name = "Файл";						     				// Название документа
+			private String docDescription = "Тестовое";						    	// Описание документа
+			private String docType = "Инструкция";						     		// Инструкция
+			private String fileLink = "www.getFile.com/get";			     		// Ссылка на файл 
+		}
+	}
+	private class FileDeletion_PopUp{
+		// Кнопка удаления
+		private Button getDelete_Button(){
+			return new Button(driver, By.xpath("//td[@aria-describedby='list_file_load_del']/input"));
+		}
+		// Поп-ап удаления
+		private Custom getDeletion_PopUp(){
+			return new Custom(driver, By.id("attention_delete"));
+		}
+		// Кнопка 'Да'
+		private Button getDeletionYes_Button(){
+			return new Button(driver, By.xpath("//span[text() = 'Да']"));
+		}
+	}
+	private class PSURDeletion_Elements{
+		// Кнопка удаления
+		private Button getDelete_Button(){
+			return new Button(driver, By.xpath("//td[@aria-describedby='list_search_del']/input"));
+		}
+		// Поп-ап удаления
+		private Custom getDeletion_PopUp(){
+			return new Custom(driver, By.id("attention_delete"));
+		}
+		// Кнопка 'Да'
+		private Button getDeletionYes_Button(){
+			return new Button(driver, By.xpath("//span[text() = 'Да']"));
+		}
 	}
 
 }

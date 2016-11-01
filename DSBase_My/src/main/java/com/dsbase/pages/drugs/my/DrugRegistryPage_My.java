@@ -89,13 +89,15 @@ public class DrugRegistryPage_My extends WebPage<DrugRegistryPage_My>{
 	    String orderNum = new Grid_Values().orderNum;
 		String endRuDate = new Grid_Values().endRegDate;
 		String drugCondition = new Grid_Values().drugCondition;
+		String groupOfDrugs = new Grid_Values().groupOfDrugs;										
+		String employeeFullName = new Grid_Values().employeeFullName;			 
 		String language= new Grid_Values().language;
 		
 		
 		// Определение массива ожидаемых значений
 		String[][] ExpectedValues = new String [1][];
 		ExpectedValues[0] = new String[] {"1", drugTradeName, drugOutputForm, packing, mnn, editedActiveSubstance, atcCode, atcGroup, manufactererName,
-										  manufactererCountry, declarer, declarerCountry, regDate, regNum, reRegDate, reRegNum, orderNum, endRuDate, drugCondition, language, ""};
+										  manufactererCountry, declarer, declarerCountry, regDate, regNum, reRegDate, reRegNum, orderNum, endRuDate, drugCondition,groupOfDrugs,employeeFullName, language, ""};
 		
 		// Вытянуть значения из грида
 		String[][] ActualValues = new CustomMethods(). new Grid().GetAllRows(getGridBody());
@@ -123,13 +125,15 @@ public class DrugRegistryPage_My extends WebPage<DrugRegistryPage_My>{
 	    String orderNum = new Grid_Values().orderNum;
 		String endRuDate = new Grid_Values().endRegDate;
 		String drugCondition = new Grid_Values().drugCondition;
+		String groupOfDrugs = new Grid_Values().groupOfDrugs;										
+		String employeeFullName = new Grid_Values().employeeFullName;
 		String language= new Grid_Values().language;
 		
 		
 		// Определение массива ожидаемых значений
 		String[][] ExpectedValues = new String [1][];
 		ExpectedValues[0] = new String[] {"1", drugTradeName, drugOutputForm, packing, mnn, editedActiveSubstance, atcCode, atcGroup, manufactererName,
-										  manufactererCountry, declarer, declarerCountry, regDate, regNum, reRegDate, reRegNum, orderNum, endRuDate, drugCondition,language, ""};
+										  manufactererCountry, declarer, declarerCountry, regDate, regNum, reRegDate, reRegNum, orderNum, endRuDate, drugCondition,groupOfDrugs,employeeFullName,language, ""};
 		
 		// Вытянуть значения из грида
 		String[][] ActualValues = new CustomMethods(). new Grid().GetAllRows(getGridBody());
@@ -213,6 +217,8 @@ public class DrugRegistryPage_My extends WebPage<DrugRegistryPage_My>{
 		private String orderNum = "333";	  										// Номер приказа
 		private String endRegDate = "01.01.2014";	  							    // Срок действия регистрации
 		private String drugCondition = "в стадии разработки";	  				    // Состояние по препарату
+		private String groupOfDrugs = " ";											// Группа препаратов
+		private String employeeFullName = "Автоматичний Петро Васильович";			// ФИО
 		private String language="ru"; 												// Язык
 	}
 	private class Deletion_PopUp{

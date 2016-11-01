@@ -111,6 +111,7 @@ public class StaffAdd extends WebPage<StaffAdd> {
 		waitWhileClickable(new SecondTabAssignment().getHistoryAssignmentButton());
 	}
 	public void SecondTabAssignment_Check(){
+		simpleWait(2);
 		// Определение ожидаемых значений
 		String[][] ExpectedValues = new String [1][];
 		ExpectedValues[0] = new String[]    {"", 
@@ -282,7 +283,6 @@ public class StaffAdd extends WebPage<StaffAdd> {
 			private String setPosition="Senior assistant";										 // должность
 			private String setCategory= "Медработники, фармработники, руководители";			 // категория			
 			private String setActivityArea= "комбинированное";									 // направление
-					
 		}
 	}
 	private class Deletion_PopUp{

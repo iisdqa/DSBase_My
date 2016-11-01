@@ -69,17 +69,17 @@ public class AddEvent_My extends WebPage<AddEvent_My> {
 		new PopUpParticipantsFromRegistry().getActivityArea().selectByVisibleText(new PopUpParticipantsFromRegistry().new ValuesFromStaffRegistry().activityArea);
 		// нажимаем на кнопку найти
 		new PopUpParticipantsFromRegistry().getSearchButton().click();
+		simpleWait(2);
 		waitForBlockStatus(new PopUpParticipantsFromRegistry().getGridDownload_Div(), false);
 		// выбираем сотрудника
 		new PopUpParticipantsFromRegistry().getSelectStaff().click();
+		simpleWait(2);
 		// добавл€ем сотрудника в грид "”часники"
 		new PopUpParticipantsFromRegistry().getChooseStaff().click();
-		simpleWait(2);
-		waitForBlockStatus(new SecondPartEventsElements().getGridDownload_Div() , false);
 	}
 	public void PopUpNewParticipants_FillUp(){
 		// открытие поп-апа "ƒобавление нового сотрудника"
-		
+		waitWhileClickable(new SecondPartEventsElements().getParticipants());
 		new SecondPartEventsElements().getParticipants().click();
 		new PopUpNewParticipants().getNewParticipants().click();
 		new PopUpNewParticipants().getSaveNewParticipantButton().waitUntilAvailable();
