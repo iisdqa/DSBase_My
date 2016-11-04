@@ -208,7 +208,7 @@ public class DrugRegistryPage_My extends WebPage<DrugRegistryPage_My>{
 		private String atcGroup = "Тестовая";	  									// АТС группа
 		private String manufactererName = "Производитель для препарата";	  		// Название производителя
 		private String manufactererCountry = "Катар";	  							// Страна производителя
-		private String declarer = "Автотест_(только для автотестов)";     									// Заявитель
+		private String declarer = "Автотест_(только для автотестов)";     			// Заявитель
 		private String declarerCountry = "Катар";     								// Страна заявителя
 		private String regDate = "02.01.2012";	  									// Дата регистрации
 		private String regNum = "222";	  											// Номер 1-го РУ

@@ -12,7 +12,7 @@ import com.dsbase.core.web.elements.Custom;
 import com.dsbase.pages.safety.my.ADRregistry_My;
 import com.dsbase.pages.safety.my.AddADRreport_My;
 import com.dsbase.pages.safety.my.PSURregistry_My;
-
+import com.dsbase.pages.dcuments.my.MasterFileRegistry_My;
 import com.dsbase.pages.drugs.my.DrugRegistrationPage_My;
 import com.dsbase.pages.drugs.my.DrugRegistryPage_My;
 import com.dsbase.pages.events.my.EventsRegistry_My;
@@ -95,6 +95,10 @@ public class MainPage_My extends WebPage<MainPage_My>{
 			new CustomMethods().new Js_Actions().webElement_Click(driver, getPSURregistry_Link());
 			return new PSURregistry_My(driver).waitUntilAvailable();
 		}
+		public MasterFileRegistry_My masterFileRegistry_My(){
+			new CustomMethods().new Js_Actions().webElement_Click(driver, getMasterFileRegistry_Link());
+			return new MasterFileRegistry_My(driver).waitUntilAvailable();
+		}
 		
 		
 	    
@@ -133,6 +137,9 @@ public class MainPage_My extends WebPage<MainPage_My>{
 	}
 	private WebElement getPSURregistry_Link(){
 		return driver.findElement(By.xpath("//a[@href='/Reports']"));
+	}
+	private WebElement getMasterFileRegistry_Link(){
+		return driver.findElement(By.xpath("//a[@href='/MasterFile']"));
 	}
 
 
