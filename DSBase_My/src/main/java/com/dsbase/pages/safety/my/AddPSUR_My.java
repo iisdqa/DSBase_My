@@ -4,6 +4,8 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.is;
 
+import java.util.ArrayList;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -456,6 +458,14 @@ public class AddPSUR_My extends WebPage<AddPSUR_My> {
 		new BodyOfPSUR().getSaveButton().click();
 		new BodyOfPSUR().getAddDocumentButton().waitUntilAvailable();
 	}
+//	public void tesr(){
+//		ArrayList<String> tabs = new ArrayList<String> (driver.getWindowHandles());
+//		  driver.switchTo().window(tabs.get(1));
+//		 /* ПРоверяешь что тебе надо*/
+//		 driver.close();
+//		driver.switchTo().window(tabs.get(0));
+//		
+//	}
 
 		
 	//______________________________________________Elements_____________________________________________________//

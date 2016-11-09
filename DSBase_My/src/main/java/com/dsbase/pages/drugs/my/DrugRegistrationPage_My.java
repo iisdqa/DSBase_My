@@ -76,8 +76,6 @@ public class DrugRegistrationPage_My extends WebPage<DrugRegistrationPage_My>{
 	assertThat(chosenCountry, is(equalTo(country)));
 	}
 	public void mainFields_FillUp(){    // Заполнение обязательных полей
-		// Страна маркетирования
-		marketingCountry_Set();
 		
 	    // Международная дата рождения
 		new Main_Elements().getBirthday().click();

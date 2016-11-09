@@ -14,3 +14,8 @@ environments:
    scheme: http
    host: dsbase_demo
    port: 9000
+   
+  demo1:
+   scheme: http
+   host: dsbase
+   port: 8501
