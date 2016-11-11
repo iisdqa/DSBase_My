@@ -3,8 +3,10 @@ package com.dsbase.pages.dcuments.my;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
+import com.dsbase.core.web.CommonActions;
 import com.dsbase.core.web.WebPage;
 import com.dsbase.core.web.elements.Button;
+import com.dsbase.core.web.pages.my.LogInPage_My;
 
 
 public class MasterFileRegistry_My extends WebPage<MasterFileRegistry_My> {
@@ -26,6 +28,10 @@ public class MasterFileRegistry_My extends WebPage<MasterFileRegistry_My> {
 		simpleWait(2);
 		getAdd_Button().click();
 		return new AddMasterFile_My(driver).waitUntilAvailable();
+	}
+	public LogInPage_My userOut(){
+		// Выход из системы
+		return new CommonActions().userOut(driver);
 	}
 	
 	

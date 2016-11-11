@@ -45,6 +45,7 @@ public class AddPSUR_My extends WebPage<AddPSUR_My> {
 		new DrugPopUp().getSearchButton().waitUntilAvailable();
 		// заполнение поля страна маркетирования
 		new DrugPopUp().getMarketingCountry().selectByVisibleText(new DrugPopUp().new Values().marketingCountry);
+		simpleWait(2);
 		// заполнение поля Торговое название:
 		new DrugPopUp().getTradeName().inputText(new DrugPopUp().new Values().tradeName);
 		// нажимаем на кнопку "Найти"

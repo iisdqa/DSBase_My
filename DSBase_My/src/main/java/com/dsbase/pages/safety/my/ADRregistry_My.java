@@ -7,13 +7,14 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.Select;
 
+import com.dsbase.core.web.CommonActions;
 import com.dsbase.core.web.CustomMethods;
 import com.dsbase.core.web.WebPage;
 import com.dsbase.core.web.CustomMethods.Grid;
 import com.dsbase.core.web.elements.Button;
 import com.dsbase.core.web.elements.Custom;
 import com.dsbase.core.web.elements.TextInput;
-
+import com.dsbase.core.web.pages.my.LogInPage_My;
 
 import org.openqa.selenium.Keys;
 
@@ -76,7 +77,7 @@ public class ADRregistry_My extends WebPage<ADRregistry_My>{
 		
 		// Определение массива ожидаемых значений
 		String[][] ExpectedValues = new String [1][];
-		ExpectedValues[0]=new String []{"","","","","1",reportNumber+"_"+new CustomMethods().getCurrentDate()," ",documentDate,upToDateInformationDate,reportType,eventType,medicallyConfirmed,drugTradeNane,drugPharmaceuticalForm,"",drugAuthorizationNumber,drugManufacturer,drugManufacterCountry,
+		ExpectedValues[0]=new String []{"","","","","NotNull",reportNumber+"_"+new CustomMethods().getCurrentDate()," ",documentDate,upToDateInformationDate,reportType,eventType,medicallyConfirmed,drugTradeNane,drugPharmaceuticalForm,"",drugAuthorizationNumber,drugManufacturer,drugManufacterCountry,
 						                       drugApplicant,drugApplicantCountry,reportSourceQualification," ",reportSourceCountry,reportSourseOrganization," ",sendersCountry,patientInitials,patientBirthday," "," ",patientSex," ","","","","","","NotNull",reportLanguage,""};
 		// Вытянуть значения из грида
 		String[][] ActualValues = new CustomMethods(). new Grid().GetAllRows(getGridBody());
@@ -100,7 +101,10 @@ public class ADRregistry_My extends WebPage<ADRregistry_My>{
 	
 
 	}
-	
+	public LogInPage_My userOut(){
+		// Выход из системы
+		return new CommonActions().userOut(driver);
+	}
 	
 	/*_______________________________ Elements_______________________________*/
 	private Button getADRreport(){

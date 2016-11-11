@@ -370,7 +370,7 @@ public class DrugEditPage_My extends WebPage<DrugEditPage_My> {
 					  						  new Employee_Elements().new Values().fio,
 					  						  new Employee_Elements().new Values().editedPosition,
 					  						  " ",
-					  						  ""};
+					  						   ""};
 			
 			// Определение актуальных значений
 			String[][] ActualValues = new CustomMethods().new Grid().GetAllRows(new Employee_Elements().getEmployeeGridBody());

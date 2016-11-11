@@ -8,6 +8,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.Select;
 
 import com.dsbase.core.web.CommonActions;
 import com.dsbase.core.web.CustomMethods;
@@ -40,7 +41,7 @@ public class DrugRegistryPage_My extends WebPage<DrugRegistryPage_My>{
 	public DrugRegistryPage_My load() {
 		// TODO Auto-generated method stub
 		driver.get(PAGE_URL);
-		return null;
+		return this;
 	} 
 	/*_______________________________ Actions _______________________________*/
 	
@@ -57,7 +58,10 @@ public class DrugRegistryPage_My extends WebPage<DrugRegistryPage_My>{
 		simpleWait(1);
 	}
 	public void drug_Search(){
+		// Страна маркетирования
+	    new filtration_Elements().getMarcetingCountry().selectByVisibleText("Катар");
 		// Открыть аккордеон
+		simpleWait(2);
 		new filtration_Elements().getSearch_Accordion().click();
 		simpleWait(2);
 		
@@ -110,7 +114,7 @@ public class DrugRegistryPage_My extends WebPage<DrugRegistryPage_My>{
 		String drugTradeName = new Grid_Values().drugTradeName;
 		String drugOutputForm = new Grid_Values().drugOutputForm;
 		String packing = new Grid_Values().packing;
-		String mnn = " ";
+		String mnn = "111222333444";
 		String editedActiveSubstance = "";
 		String atcCode = new Grid_Values().atcCode;
 		String atcGroup = new Grid_Values().atcGroup;
@@ -185,6 +189,9 @@ public class DrugRegistryPage_My extends WebPage<DrugRegistryPage_My>{
 		return new Text(driver, By.xpath("//*[@class='log left']/div"));
 	}
 	private class filtration_Elements{
+		private Select getMarcetingCountry(){
+			return new Select(driver.findElement(By.id("MarketingCountry")));
+		}
 		private Custom getSearch_Accordion(){
 			return new Custom(driver, By.xpath("//div[@id='accordFilter']/h3"));
 		}

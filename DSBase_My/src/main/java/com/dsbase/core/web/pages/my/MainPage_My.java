@@ -3,7 +3,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-
+import com.dsbase.core.web.CommonActions;
 import com.dsbase.core.web.CustomMethods;
 import com.dsbase.core.web.WebPage;
 import com.dsbase.core.web.elements.Button;
@@ -29,7 +29,7 @@ public class MainPage_My extends WebPage<MainPage_My>{
 		
 	@Override
 	public boolean isAvailable(){
-			return getAdministrationButton().isAvailable(); // Ёлемент, который ожидаетс€ при загрузке страницы(т.е. можно мен€ть)
+			return getLicense_Link().isAvailable(); // Ёлемент, который ожидаетс€ при загрузке страницы(т.е. можно мен€ть)
 	}
 		
 	@Override
@@ -52,6 +52,10 @@ public class MainPage_My extends WebPage<MainPage_My>{
 		// ќжидание прогрузки страницы
 		waitForBlockStatus(getPageDownload(), false);
 		simpleWait(1);
+	}
+	public LogInPage_My userOut(){
+		// ¬ыход из системы
+		return new CommonActions().userOut(driver);
 	}
 	
 	public class goTo{
@@ -141,7 +145,9 @@ public class MainPage_My extends WebPage<MainPage_My>{
 	private WebElement getMasterFileRegistry_Link(){
 		return driver.findElement(By.xpath("//a[@href='/MasterFile']"));
 	}
-
+	private Custom getLicense_Link(){
+		return new Custom(driver, By.xpath("//span[text() = 'Ћицензи€']"));
+	}
 
 	private class DictionaryBlock_Elements{
 		private WebElement getDictionaryButton(){

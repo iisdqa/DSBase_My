@@ -25,7 +25,7 @@ import com.dsbase.pages.staff.StaffRegistry_My;
 public class TestOfTest  extends  BaseTest{
 	@Test(groups = { "TestOfTest" }) 
 	public void DrugRegistration_TestMethod(){
-//		// Переход на главную
+		// Переход на главную
 		LogInPage_My authorizationPage = new MainPage_My(driver).redirectToLogInPage();
 		MainPage_My mainPage_My=authorizationPage.logInAs("autotest_allroles", "aut0test_allr0les7_3");
 //		DrugRegistrationPage_My drugRegistrationPage_My = mainPage_My.new goTo().drugRegistrationPage_My();
@@ -44,9 +44,9 @@ public class TestOfTest  extends  BaseTest{
 //	    drugRegistrationPage_My.addExcipients();
 //	    drugRegistrationPage_My.addExcipients_Check();
 //	    DrugPassportPage_My drugPassportPage_My = drugRegistrationPage_My.drug_Save();
-////	    
-////	    // Редактируем сохраненный препарат
-////	    
+//	    
+//	    // Редактируем сохраненный препарат
+//    
 //	    DrugEditPage_My drugEditPage_My= drugPassportPage_My.drug_Edit();
 //	    drugEditPage_My.addedMnn_check();
 //	    drugEditPage_My.mnn_Edit();
@@ -64,17 +64,17 @@ public class TestOfTest  extends  BaseTest{
 //	    drugEditPage_My.employee_Edit();
 //	    drugEditPage_My.editedEmployee_check();
 //	    drugPassportPage_My = drugEditPage_My.drug_Save();	   
-////	    
-////	    // переход на реестр ЛС, проверка на то что все поля заполнены верно, удаление препарата.
-////	    
+//    
+//	    // переход на реестр ЛС, проверка на то что все поля заполнены верно, удаление препарата.
+//	    
 //	    DrugRegistryPage_My drugRegistryPage_My=mainPage_My.new goTo().drugRegistryMy();
 //	    drugRegistryPage_My.WaitForPageReady();
 //	    drugRegistryPage_My.userNameCheck("Тамин бин Хамад Аль Тани");
 //	    drugRegistryPage_My.drug_Search();
 //	    drugRegistryPage_My.foundDrug_Check();
-//////	    drugRegistryPage_My.drug_Delete();
-//////      drugRegistryPage_My.deletedDrug_check();
-////	   
+////	    drugRegistryPage_My.drug_Delete();      
+////	    drugRegistryPage_My.deletedDrug_check();
+//	   
 //	    AddADRreport_My addADRreport_My = mainPage_My.new goTo().addADRreport_My();
 //		addADRreport_My.mainFields_FillUpFirstTab();
 //	    addADRreport_My.goToSecondTab();
@@ -163,6 +163,21 @@ public class TestOfTest  extends  BaseTest{
         addMasterFile_My.PharmacovigilanceProcesses_FillUp();
         addMasterFile_My.PharmacovigilanceSystem_FillUp();
         addMasterFile_My.QualitySystem_FillUp();
+        addMasterFile_My.AnneхA_FillUp();
+        addMasterFile_My.AnneхB_FillUp();
+        addMasterFile_My.AnneхC_FillUp();
+        
+        
+        
+        
+        
+//        
+//        masterFileRegistry_My.userOut();
+//        authorizationPage.logInAs("autotest_allroles", "aut0test_allr0les7_3");
+//        mainPage_My.new goTo().eventsRegistry_My().waitUntilAvailable();
+//        masterFileRegistry_My.userOut();
+//        authorizationPage.logInAs("autotest_allroles", "aut0test_allr0les7_3");
+//        mainPage_My.new goTo().aDRregistry_My().waitUntilAvailable();
         
 	}
 }

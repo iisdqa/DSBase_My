@@ -100,7 +100,12 @@ public class AddADRreport_My extends WebPage<AddADRreport_My>{
 		
 		//Ввести название препарата в поиск
 		new Drugs_add().addDrugFromRegistry().click(); 
+		// страна маркетирования 
+		new Drugs_add().getMarketingCountry().selectByVisibleText("Катар");
+		waitWhileClickable(new Drugs_add().getSaveDrugButton());
+		simpleWait(2);
 		new Drugs_add().getTradeName().inputText(new Drugs_add().new Values().tradeNaneDrug);
+		simpleWait(2);
 		new Drugs_add().getSearchButton().click();
 		
 		// ожидание прогрузки грида 
@@ -234,6 +239,10 @@ public class AddADRreport_My extends WebPage<AddADRreport_My>{
 		private Link getSixthTab (){
 			return new Link(driver, By.xpath("//a[@href='#tab6']"));
 		}
+		//страна маркетирования 
+		private Select getMarketingCountry(){
+			return new Select(driver.findElement(By.id("TradeNameControl_Country")));
+		}
 		// кнопка поп-ап "подозвеваемый ЛС"
 		private Button getAddButton(){
 			return new Button(driver, By.xpath("//input[contains(@onclick,'AddEditDrug(null, 1)')]"));
@@ -255,7 +264,7 @@ public class AddADRreport_My extends WebPage<AddADRreport_My>{
 			return new TextInput(driver, By.id("TradeNameControl_Name"));
 		}
 		private Button getSearchButton(){
-			return new Button(driver, By.id("TradeNameControl_Name"));
+			return new Button(driver, By.id("TradeNameControl_Find"));
 		}
 		private WebElement getTradeNameCell(){
 			return driver.findElement(By.xpath("//td[@aria-describedby='list_tradenames_TradeName']"));

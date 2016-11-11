@@ -6,11 +6,13 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.Select;
 
+import com.dsbase.core.web.CommonActions;
 import com.dsbase.core.web.CustomMethods;
 import com.dsbase.core.web.WebPage;
 import com.dsbase.core.web.elements.Button;
 import com.dsbase.core.web.elements.Custom;
 import com.dsbase.core.web.elements.TextInput;
+import com.dsbase.core.web.pages.my.LogInPage_My;
 
 
 
@@ -44,6 +46,9 @@ public class PSURregistry_My extends WebPage<PSURregistry_My> {
 		waitForBlockStatus(new PSURregistry().getGridDownload_Div() , false);
 	}
 	public void SearchPSUR(){
+		new PSURregistry().getMarketingCountry().selectByVisibleText("Катар");
+		simpleWait(2);
+		new PSURregistry().getSearchAccordion().waitUntilAvailable();
 		// Открыть аккордеон
 		new PSURregistry().getSearchAccordion().click();
 		simpleWait(2);
@@ -124,7 +129,10 @@ public class PSURregistry_My extends WebPage<PSURregistry_My> {
 	//
 	waitForBlockStatus(new PSURregistry().getGridDownload_Div(), false);
 	}
-	
+	public LogInPage_My userOut(){
+		// Выход из системы
+		return new CommonActions().userOut(driver);
+	}
 	
 	//_______________________________________________Elements____________________________________________________________//
 	// Кнопка добавления
@@ -138,6 +146,9 @@ public class PSURregistry_My extends WebPage<PSURregistry_My> {
 		return driver.findElement(By.xpath("//table[@id='list_search']/tbody"));
 	}
 	private class PSURregistry{
+		private Select getMarketingCountry(){
+			return new Select(driver.findElement(By.id("MarketingCountry")));
+		}
 		private Custom getGridDownload_Div(){
 			return new Custom(driver, By.id("load_list_search"));	
 		}
