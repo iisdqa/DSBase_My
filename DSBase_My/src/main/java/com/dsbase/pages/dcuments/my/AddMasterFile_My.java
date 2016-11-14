@@ -338,6 +338,378 @@ public class AddMasterFile_My extends WebPage<AddMasterFile_My> {
 		getSaveButton().click();
 		getSaveButton().waitUntilAvailable();
 	}
+	public void AnneхD_FillUp(){
+		// переход на вкладку приложение D
+		new AnneхD().getAnneхDTab().click();
+		// заплнение поля "Текст приложения"
+		new CustomMethods().new WorkWith_TextEditor().setTextValue(driver, new AnneхD().getAnneхDTeхt(),
+				new AnneхD().new Values().setAnneхDText);
+		simpleWait(2);
+		// добавление значения в грид "Элементы приложения"
+		new AnneхD().getAnneхDElementsButton().click();
+		new AnneхD().getNumberAnneхD().waitUntilAvailable();
+		new AnneхD().getNumberAnneхD().inputText(new AnneхD().new Values().setNumberAnneхD);
+		new AnneхD().getTitleAnneхD().inputText(new AnneхD().new Values().setTitleAnnexD);
+		new AnneхD().getDateAnneхD().click();
+		new AnneхD().getDateAnneхD().inputText(new AnneхD().new Values().setDateAnnexD);
+		new AnneхD().getNoteAnneхD().inputText(new AnneхD().new Values().setNoteAnnexD);
+		new AnneхD().getSaveAnneхDElemetsButton().click();
+		simpleWait(2);
+		waitForBlockStatus(new AnneхD().getGridDownload_Div(), false);
+
+		// Кликнуть по ячейке 'Название'
+		Actions action = new Actions(driver);
+		action.click(new AnneхD().getElementNameCell()).perform();
+		simpleWait(2);
+
+		// Добавление документа
+
+		// Открытие поп-апа добавления документа
+		new AnneхD().new Docs_Elements().getAddButton().click();
+		simpleWait(2);
+		waitUntilUnblocked((new AnneхD().new Docs_Elements().getAddEditPopUp()));
+		simpleWait(2);
+
+		// Дата
+		new AnneхD().new Docs_Elements().getDate_Field().click();
+		simpleWait(1);
+		new AnneхD().new Docs_Elements().getDate_Field().inputText(new AnneхD().new Docs_Elements().new Values().date);
+		// Название документа
+		new AnneхD().new Docs_Elements().getName_Field().inputText(new AnneхD().new Docs_Elements().new Values().name);
+		// Описание документа
+		new AnneхD().new Docs_Elements().getDescription_Field()
+				.inputText(new AnneхD().new Docs_Elements().new Values().docDescription);
+		// Тип документа
+		new AnneхD().new Docs_Elements().getDocType_Field()
+				.selectByVisibleText(new AnneхD().new Docs_Elements().new Values().docType);
+		// Добавление файл + проверка подстановки в текстовое поле
+		new AnneхD().new Docs_Elements().getFileUpload_Button()
+				.inputText(new AnneхD().new Docs_Elements().new Values().fileWay);
+		simpleWait(2);
+		assertThat(new AnneхD().new Docs_Elements().getFile_Field().getAttribute("value"),
+				is(equalTo(new AnneхD().new Docs_Elements().new Values().fileName)));
+		// Ссылка на файл
+		new AnneхD().new Docs_Elements().getFileLink_Field()
+				.inputText(new AnneхD().new Docs_Elements().new Values().fileLink);
+		// Сохранение файла
+		new AnneхD().new Docs_Elements().getSaveButton().click();
+		simpleWait(1);
+		// Ожидание прогрузки грида
+		waitForBlockStatus(new AnneхD().new Docs_Elements().getGridDownload_Div(), false);
+		simpleWait(2);
+		getSaveButton().click();
+		getSaveButton().waitUntilAvailable();
+	}
+	public void AnneхE_FillUp(){
+		// переход на вкладку приложение E
+		new AnneхE().getAnneхETab().click();
+		// заплнение поля "Текст приложения"
+		new CustomMethods().new WorkWith_TextEditor().setTextValue(driver, new AnneхE().getAnneхETeхt(),
+				new AnneхE().new Values().setAnneхEText);
+		simpleWait(2);
+		// добавление значения в грид "Элементы приложения"
+		new AnneхE().getAnneхEElementsButton().click();
+		new AnneхE().getNumberAnneхE().waitUntilAvailable();
+		new AnneхE().getNumberAnneхE().inputText(new AnneхE().new Values().setNumberAnneхE);
+		new AnneхE().getTitleAnneхE().inputText(new AnneхE().new Values().setTitleAnneхE);
+		new AnneхE().getDateAnneхE().click();
+		new AnneхE().getDateAnneхE().inputText(new AnneхE().new Values().setDateAnneхE);
+		new AnneхE().getNoteAnneхE().inputText(new AnneхE().new Values().setNoteAnneхE);
+		new AnneхE().getSaveAnneхEElemetsButton().click();
+		simpleWait(2);
+		waitForBlockStatus(new AnneхE().getGridDownload_Div(), false);
+
+		// Кликнуть по ячейке 'Название'
+		Actions action = new Actions(driver);
+		action.click(new AnneхE().getElementNameCell()).perform();
+		simpleWait(2);
+
+		// Добавление документа
+
+		// Открытие поп-апа добавления документа
+		new AnneхE().new Docs_Elements().getAddButton().click();
+		simpleWait(2);
+		waitUntilUnblocked((new AnneхE().new Docs_Elements().getAddEditPopUp()));
+		simpleWait(2);
+
+		// Дата
+		new AnneхE().new Docs_Elements().getDate_Field().click();
+		simpleWait(1);
+		new AnneхE().new Docs_Elements().getDate_Field().inputText(new AnneхE().new Docs_Elements().new Values().date);
+		// Название документа
+		new AnneхE().new Docs_Elements().getName_Field().inputText(new AnneхE().new Docs_Elements().new Values().name);
+		// Описание документа
+		new AnneхE().new Docs_Elements().getDescription_Field()
+				.inputText(new AnneхE().new Docs_Elements().new Values().docDescription);
+		// Тип документа
+		new AnneхE().new Docs_Elements().getDocType_Field()
+				.selectByVisibleText(new AnneхE().new Docs_Elements().new Values().docType);
+		// Добавление файл + проверка подстановки в текстовое поле
+		new AnneхE().new Docs_Elements().getFileUpload_Button()
+				.inputText(new AnneхE().new Docs_Elements().new Values().fileWay);
+		simpleWait(2);
+		assertThat(new AnneхE().new Docs_Elements().getFile_Field().getAttribute("value"),
+				is(equalTo(new AnneхE().new Docs_Elements().new Values().fileName)));
+		// Ссылка на файл
+		new AnneхE().new Docs_Elements().getFileLink_Field()
+				.inputText(new AnneхE().new Docs_Elements().new Values().fileLink);
+		// Сохранение файла
+		new AnneхE().new Docs_Elements().getSaveButton().click();
+		simpleWait(1);
+		// Ожидание прогрузки грида
+		waitForBlockStatus(new AnneхE().new Docs_Elements().getGridDownload_Div(), false);
+		simpleWait(2);
+		getSaveButton().click();
+		getSaveButton().waitUntilAvailable();
+	}
+	public void AnneхF_FillUp(){
+		// переход на вкладку приложение F
+		new AnneхF().getAnneхFTab().click();
+		// заплнение поля "Текст приложения"
+		new CustomMethods().new WorkWith_TextEditor().setTextValue(driver, new AnneхF().getAnneхFTeхt(),
+				new AnneхF().new Values().setAnneхFText);
+		simpleWait(2);
+		// добавление значения в грид "Элементы приложения"
+		new AnneхF().getAnneхFElementsButton().click();
+		new AnneхF().getNumberAnneхF().waitUntilAvailable();
+		new AnneхF().getNumberAnneхF().inputText(new AnneхF().new Values().setNumberAnneхF);
+		new AnneхF().getTitleAnneхF().inputText(new AnneхF().new Values().setTitleAnneхF);
+		new AnneхF().getDateAnneхF().click();
+		new AnneхF().getDateAnneхF().inputText(new AnneхF().new Values().setDateAnneхF);
+		new AnneхF().getNoteAnneхF().inputText(new AnneхF().new Values().setNoteAnneхF);
+		new AnneхF().getSaveAnneхFElemetsButton().click();
+		simpleWait(2);
+		waitForBlockStatus(new AnneхF().getGridDownload_Div(), false);
+
+		// Кликнуть по ячейке 'Название'
+		Actions action = new Actions(driver);
+		action.click(new AnneхF().getElementNameCell()).perform();
+		simpleWait(2);
+
+		// Добавление документа
+
+		// Открытие поп-апа добавления документа
+		new AnneхF().new Docs_Elements().getAddButton().click();
+		simpleWait(2);
+		waitUntilUnblocked((new AnneхF().new Docs_Elements().getAddEditPopUp()));
+		simpleWait(2);
+
+		// Дата
+		new AnneхF().new Docs_Elements().getDate_Field().click();
+		simpleWait(1);
+		new AnneхF().new Docs_Elements().getDate_Field().inputText(new AnneхF().new Docs_Elements().new Values().date);
+		// Название документа
+		new AnneхF().new Docs_Elements().getName_Field().inputText(new AnneхF().new Docs_Elements().new Values().name);
+		// Описание документа
+		new AnneхF().new Docs_Elements().getDescription_Field()
+				.inputText(new AnneхF().new Docs_Elements().new Values().docDescription);
+		// Тип документа
+		new AnneхF().new Docs_Elements().getDocType_Field()
+				.selectByVisibleText(new AnneхF().new Docs_Elements().new Values().docType);
+		// Добавление файл + проверка подстановки в текстовое поле
+		new AnneхF().new Docs_Elements().getFileUpload_Button()
+				.inputText(new AnneхF().new Docs_Elements().new Values().fileWay);
+		simpleWait(2);
+		assertThat(new AnneхF().new Docs_Elements().getFile_Field().getAttribute("value"),
+				is(equalTo(new AnneхF().new Docs_Elements().new Values().fileName)));
+		// Ссылка на файл
+		new AnneхF().new Docs_Elements().getFileLink_Field()
+				.inputText(new AnneхF().new Docs_Elements().new Values().fileLink);
+		// Сохранение файла
+		new AnneхF().new Docs_Elements().getSaveButton().click();
+		simpleWait(1);
+		// Ожидание прогрузки грида
+		waitForBlockStatus(new AnneхF().new Docs_Elements().getGridDownload_Div(), false);
+		simpleWait(2);
+		getSaveButton().click();
+		getSaveButton().waitUntilAvailable();
+	}
+	public void AnneхG_FillUp(){
+		// переход на вкладку приложение G
+		new AnneхG().getAnneхGTab().click();
+		// заплнение поля "Текст приложения"
+		new CustomMethods().new WorkWith_TextEditor().setTextValue(driver, new AnneхG().getAnneхGTeхt(),
+				new AnneхG().new Values().setAnneхGText);
+		simpleWait(2);
+		// добавление значения в грид "Элементы приложения"
+		new AnneхG().getAnneхFElementsButton().click();
+		new AnneхG().getNumberAnneхG().waitUntilAvailable();
+		new AnneхG().getNumberAnneхG().inputText(new AnneхG().new Values().setNumberAnneхG);
+		new AnneхG().getTitleAnneхG().inputText(new AnneхG().new Values().setTitleAnneхG);
+		new AnneхG().getDateAnneхG().click();
+		new AnneхG().getDateAnneхG().inputText(new AnneхG().new Values().setDateAnneхG);
+		new AnneхG().getNoteAnneхG().inputText(new AnneхG().new Values().setNoteAnneхG);
+		new AnneхG().getSaveAnneхGElemetsButton().click();
+		simpleWait(2);
+		waitForBlockStatus(new AnneхG().getGridDownload_Div(), false);
+
+		// Кликнуть по ячейке 'Название'
+		Actions action = new Actions(driver);
+		action.click(new AnneхG().getElementNameCell()).perform();
+		simpleWait(2);
+
+		// Добавление документа
+
+		// Открытие поп-апа добавления документа
+		new AnneхG().new Docs_Elements().getAddButton().click();
+		simpleWait(2);
+		waitUntilUnblocked((new AnneхG().new Docs_Elements().getAddEditPopUp()));
+		simpleWait(2);
+
+		// Дата
+		new AnneхG().new Docs_Elements().getDate_Field().click();
+		simpleWait(1);
+		new AnneхG().new Docs_Elements().getDate_Field().inputText(new AnneхG().new Docs_Elements().new Values().date);
+		// Название документа
+		new AnneхG().new Docs_Elements().getName_Field().inputText(new AnneхG().new Docs_Elements().new Values().name);
+		// Описание документа
+		new AnneхG().new Docs_Elements().getDescription_Field()
+				.inputText(new AnneхG().new Docs_Elements().new Values().docDescription);
+		// Тип документа
+		new AnneхG().new Docs_Elements().getDocType_Field()
+				.selectByVisibleText(new AnneхG().new Docs_Elements().new Values().docType);
+		// Добавление файл + проверка подстановки в текстовое поле
+		new AnneхG().new Docs_Elements().getFileUpload_Button()
+				.inputText(new AnneхG().new Docs_Elements().new Values().fileWay);
+		simpleWait(2);
+		assertThat(new AnneхG().new Docs_Elements().getFile_Field().getAttribute("value"),
+				is(equalTo(new AnneхG().new Docs_Elements().new Values().fileName)));
+		// Ссылка на файл
+		new AnneхG().new Docs_Elements().getFileLink_Field()
+				.inputText(new AnneхG().new Docs_Elements().new Values().fileLink);
+		// Сохранение файла
+		new AnneхG().new Docs_Elements().getSaveButton().click();
+		simpleWait(1);
+		// Ожидание прогрузки грида
+		waitForBlockStatus(new AnneхG().new Docs_Elements().getGridDownload_Div(), false);
+		simpleWait(2);
+		getSaveButton().click();
+		getSaveButton().waitUntilAvailable();
+	}
+	public void AnneхH_FillUp(){
+		// переход на вкладку приложение Приложение H - Лекарственные средства
+		new AnneхH().getAnneхHTab().click();
+		// заплнение поля "Текст приложения"
+		new CustomMethods().new WorkWith_TextEditor().setTextValue(driver, new AnneхH().getAnneхHTeхt(),
+				new AnneхH().new Values().setAnneхHText);
+		simpleWait(2);
+		// добавление значения в грид "Элементы приложения"
+		new AnneхH().getAnneхHElementsButton().click();
+		new AnneхH().getNumberAnneхH().waitUntilAvailable();
+		new AnneхH().getNumberAnneхH().inputText(new AnneхH().new Values().setNumberAnneхH);
+		new AnneхH().getTitleAnneхH().inputText(new AnneхH().new Values().setTitleAnneхH);
+		new AnneхH().getDateAnneхH().click();
+		new AnneхH().getDateAnneхH().inputText(new AnneхH().new Values().setDateAnneхH);
+		new AnneхH().getNoteAnneхH().inputText(new AnneхH().new Values().setNoteAnneхH);
+		new AnneхH().getSaveAnneхHElemetsButton().click();
+		simpleWait(2);
+		waitForBlockStatus(new AnneхH().getGridDownload_Div(), false);
+
+		// Кликнуть по ячейке 'Название'
+		Actions action = new Actions(driver);
+		action.click(new AnneхH().getElementNameCell()).perform();
+		simpleWait(2);
+
+		// Добавление документа
+
+		// Открытие поп-апа добавления документа
+		new AnneхH().new Docs_Elements().getAddButton().click();
+		simpleWait(2);
+		waitUntilUnblocked((new AnneхH().new Docs_Elements().getAddEditPopUp()));
+		simpleWait(2);
+
+		// Дата
+		new AnneхH().new Docs_Elements().getDate_Field().click();
+		simpleWait(1);
+		new AnneхH().new Docs_Elements().getDate_Field().inputText(new AnneхH().new Docs_Elements().new Values().date);
+		// Название документа
+		new AnneхH().new Docs_Elements().getName_Field().inputText(new AnneхH().new Docs_Elements().new Values().name);
+		// Описание документа
+		new AnneхH().new Docs_Elements().getDescription_Field()
+				.inputText(new AnneхH().new Docs_Elements().new Values().docDescription);
+		// Тип документа
+		new AnneхH().new Docs_Elements().getDocType_Field()
+				.selectByVisibleText(new AnneхH().new Docs_Elements().new Values().docType);
+		// Добавление файл + проверка подстановки в текстовое поле
+		new AnneхH().new Docs_Elements().getFileUpload_Button()
+				.inputText(new AnneхH().new Docs_Elements().new Values().fileWay);
+		simpleWait(2);
+		assertThat(new AnneхH().new Docs_Elements().getFile_Field().getAttribute("value"),
+				is(equalTo(new AnneхH().new Docs_Elements().new Values().fileName)));
+		// Ссылка на файл
+		new AnneхH().new Docs_Elements().getFileLink_Field()
+				.inputText(new AnneхH().new Docs_Elements().new Values().fileLink);
+		// Сохранение файла
+		new AnneхH().new Docs_Elements().getSaveButton().click();
+		simpleWait(1);
+		// Ожидание прогрузки грида
+		waitForBlockStatus(new AnneхH().new Docs_Elements().getGridDownload_Div(), false);
+		simpleWait(2);
+		getSaveButton().click();
+		getSaveButton().waitUntilAvailable();
+	}
+	public void AnneхI_FillUp(){
+		// переход на вкладку Приложение I - Контроль документации и записей
+		new AnneхI().getAnneхITab().click();
+		// заплнение поля "Текст приложения"
+		new CustomMethods().new WorkWith_TextEditor().setTextValue(driver, new AnneхI().getAnneхITeхt(),
+				new AnneхI().new Values().setAnneхIText);
+		simpleWait(2);
+		// добавление значения в грид "Элементы приложения"
+		new AnneхI().getAnneхIElementsButton().click();
+		new AnneхI().getNumberAnneхI().waitUntilAvailable();
+		new AnneхI().getNumberAnneхI().inputText(new AnneхI().new Values().setNumberAnneхI);
+		new AnneхI().getTitleAnneхI().inputText(new AnneхI().new Values().setTitleAnneхI);
+		new AnneхI().getDateAnneхI().click();
+		new AnneхI().getDateAnneхI().inputText(new AnneхI().new Values().setDateAnneхI);
+		new AnneхI().getNoteAnneхI().inputText(new AnneхI().new Values().setNoteAnneхI);
+		new AnneхI().getSaveAnneхIElemetsButton().click();
+		simpleWait(2);
+		waitForBlockStatus(new AnneхI().getGridDownload_Div(), false);
+
+		// Кликнуть по ячейке 'Название'
+		Actions action = new Actions(driver);
+		action.click(new AnneхI().getElementNameCell()).perform();
+		simpleWait(2);
+
+		// Добавление документа
+
+		// Открытие поп-апа добавления документа
+		new AnneхI().new Docs_Elements().getAddButton().click();
+		simpleWait(2);
+		waitUntilUnblocked((new AnneхI().new Docs_Elements().getAddEditPopUp()));
+		simpleWait(2);
+
+		// Дата
+		new AnneхI().new Docs_Elements().getDate_Field().click();
+		simpleWait(1);
+		new AnneхI().new Docs_Elements().getDate_Field().inputText(new AnneхI().new Docs_Elements().new Values().date);
+		// Название документа
+		new AnneхI().new Docs_Elements().getName_Field().inputText(new AnneхI().new Docs_Elements().new Values().name);
+		// Описание документа
+		new AnneхI().new Docs_Elements().getDescription_Field()
+				.inputText(new AnneхI().new Docs_Elements().new Values().docDescription);
+		// Тип документа
+		new AnneхI().new Docs_Elements().getDocType_Field()
+				.selectByVisibleText(new AnneхI().new Docs_Elements().new Values().docType);
+		// Добавление файл + проверка подстановки в текстовое поле
+		new AnneхI().new Docs_Elements().getFileUpload_Button()
+				.inputText(new AnneхI().new Docs_Elements().new Values().fileWay);
+		simpleWait(2);
+		assertThat(new AnneхI().new Docs_Elements().getFile_Field().getAttribute("value"),
+				is(equalTo(new AnneхI().new Docs_Elements().new Values().fileName)));
+		// Ссылка на файл
+		new AnneхI().new Docs_Elements().getFileLink_Field()
+				.inputText(new AnneхI().new Docs_Elements().new Values().fileLink);
+		// Сохранение файла
+		new AnneхI().new Docs_Elements().getSaveButton().click();
+		simpleWait(1);
+		// Ожидание прогрузки грида
+		waitForBlockStatus(new AnneхI().new Docs_Elements().getGridDownload_Div(), false);
+		simpleWait(2);
+		getSaveButton().click();
+		getSaveButton().waitUntilAvailable();
+	}
 	//______________________________________________Elements_______________________________________________________//
 	private final String MasterfilePath = "C:\\Selenium_TestData\\Projects\\DSBase\\MasterFile\\";					// путь к файлу текстом для разделов 
 	private final String readFile = new CustomMethods().new WorkWith_TextFiles().file_Read(MasterfilePath + "MasterFile.txt");						// чтение файла (переобразованеие в строку)
@@ -944,5 +1316,700 @@ public class AddMasterFile_My extends WebPage<AddMasterFile_My> {
 		}
 		
 	}
-
+	private class AnneхD{
+		// кнопка перехода на вкладку "Приложение D - Компьютеризированные системы и БД"
+		private Custom getAnneхDTab() {
+			return new Custom(driver, By.xpath("//div[contains(text(), 'Приложение D - Компьютеризированные системы и БД')]"));
+		}
+		// поле Текст приложения А 
+		private WebElement getAnneхDTeхt() {
+			return driver.findElement(By.id("customTextEditor_Tab11_DText1_DesignIFrame"));
+		}
+		// кнопка добавления элементов приложения 
+		private Button getAnneхDElementsButton(){
+			return new Button(driver, By.id("add_edit_tabMain11_D"));
+		}
+		// поле "№"
+		private TextInput getNumberAnneхD(){
+			return new TextInput(driver, By.id("Tab11EGrid_ElementsNumber"));
+		}
+		// поле название 
+		private TextInput getTitleAnneхD(){
+			return new TextInput(driver, By.id("Tab11EGrid_ElementsName"));
+		}
+		// поле дата
+		private TextInput getDateAnneхD(){
+			return new TextInput(driver, By.id("Tab11EGrid_ElementsDate"));
+		}
+		// поле примечание 
+		private TextInput getNoteAnneхD(){
+			return new TextInput(driver, By.id("Tab11EGrid_ElementsNote"));
+		}
+		// кнопка сохранить(popUp)
+		private Button getSaveAnneхDElemetsButton(){
+			return new Button(driver, By.id("save_dialog_btn"));
+		}
+		// загрузка грида
+		private Custom getGridDownload_Div(){
+			return new Custom(driver, By.id("load_list_tab_main11_D"));	
+		}
+		private WebElement getElementNameCell(){
+			return driver.findElement(By.xpath("//td[@aria-describedby='list_tab_main11_D_ElementsName']"));
+		}
+		private class Values{
+			String setAnneхDText = readFile.substring(readFile.indexOf("#11"), readFile.indexOf("#12")); // Текст приложения
+			String setNumberAnneхD = "444222";															// номер
+			String setTitleAnnexD = "Звездные войны";													// название 
+			String setDateAnnexD = new CustomMethods().getCurrentDate();								// дата
+			String setNoteAnnexD = "Без примечаний";													// примечание
+		}
+		private class Docs_Elements{
+			// Кнопка добавления
+			private Button getAddButton(){
+				return new Button(driver, By.id("add_edit_tab"));
+			}
+						
+			// Поп-ап добавления
+			private Custom getAddEditPopUp(){
+				return new Custom(driver, By.xpath("//span[text() = '" + new Values().addEditPopUpName + "']"));
+			}
+						
+			// "Завантаження"
+			private Custom getGridDownload_Div(){
+				return new Custom(driver, By.id("load_list_tab11_D"));
+			}
+						
+			// Дата
+			private TextInput getDate_Field(){
+				return new TextInput(driver, By.id("Tab11Grid_DocDate"));
+			}
+						
+			// Название документа
+			private TextInput getName_Field(){
+				return new TextInput(driver, By.id("Tab11Grid_DocName"));
+			}
+						
+			// Описание документа
+			private TextInput getDescription_Field(){
+				return new TextInput(driver, By.id("Tab11Grid_DocDescribe"));
+			}
+						
+			// Категория документа
+			private Select getDocType_Field(){
+				return new Select(driver.findElement(By.id("Tab11Grid_DocCategory")));
+			}
+						
+			// Файл
+			private TextInput getFile_Field(){
+				return new TextInput(driver, By.id("Tab11Grid_DocFileName"));
+			}
+						
+			private TextInput getFileUpload_Button(){
+					return new TextInput(driver, By.id("file_source"));
+			}
+						
+			// Ссылка на файл
+			private TextInput getFileLink_Field(){
+				return new TextInput(driver, By.id("Tab11Grid_DocLinkFile"));
+			}
+						
+			// Кнопка 'Сохранить'
+			private Button getSaveButton(){
+				return new Button(driver, By.id("save_dialog_btn"));
+			}
+								
+			private class Values{
+				private String addEditPopUpName = "Создание новой записи";				// Название поп-апа добавления/редактирования документа
+				private String date = new CustomMethods().getCurrentDate(); 	 		// Дата
+				private String name = "Файл";						     				// Название документа
+				private String docDescription = "Тестовое";						    	// Описание документа
+				private String docType = "Должностная инструкция";						// Инструкция
+				private String fileWay = "D:\\DSBase\\Files for testing\\ForDocAdd.txt";	// Ссылка на файл(реальная)
+				private String fileName = "ForDocAdd.txt";								// Название файла
+				private String fileLink = "www.getFile.com/get";			     		// Ссылка на файл 
+			}
+			
+		}
+		
+	}
+	private class AnneхE{
+		// кнопка перехода на вкладку "Приложение Е - Процессы и процедурные документы"
+		private Custom getAnneхETab() {
+			return new Custom(driver, By.xpath("//div[contains(text(), 'Приложение Е - Процессы и процедурные документы')]"));
+		}
+		// поле Текст приложения А 
+		private WebElement getAnneхETeхt() {
+			return driver.findElement(By.id("customTextEditor_Tab12_EText1_DesignIFrame"));
+		}
+		// кнопка добавления элементов приложения 
+		private Button getAnneхEElementsButton(){
+			return new Button(driver, By.id("add_edit_tabMain12_E"));
+		}
+		// поле "№"
+		private TextInput getNumberAnneхE(){
+			return new TextInput(driver, By.id("Tab12EGrid_ElementsNumber"));
+		}
+		// поле название 
+		private TextInput getTitleAnneхE(){
+			return new TextInput(driver, By.id("Tab12EGrid_ElementsName"));
+		}
+		// поле дата
+		private TextInput getDateAnneхE(){
+			return new TextInput(driver, By.id("Tab12EGrid_ElementsDate"));
+		}
+		// поле примечание 
+		private TextInput getNoteAnneхE(){
+			return new TextInput(driver, By.id("Tab12EGrid_ElementsNote"));
+		}
+		// кнопка сохранить(popUp)
+		private Button getSaveAnneхEElemetsButton(){
+			return new Button(driver, By.id("save_dialog_btn"));
+		}
+		// загрузка грида
+		private Custom getGridDownload_Div(){
+			return new Custom(driver, By.id("load_list_tab_main12_E"));	
+		}
+		private WebElement getElementNameCell(){
+			return driver.findElement(By.xpath("//td[@aria-describedby='list_tab_main12_E_ElementsName']"));
+		}
+		private class Values{
+			String setAnneхEText = readFile.substring(readFile.indexOf("#12"), readFile.indexOf("#13")); // Текст приложения
+			String setNumberAnneхE = "444222";															// номер
+			String setTitleAnneхE = "Звездные войны";													// название 
+			String setDateAnneхE = new CustomMethods().getCurrentDate();								// дата
+			String setNoteAnneхE = "Без примечаний";													// примечание
+		}
+		private class Docs_Elements{
+			// Кнопка добавления
+			private Button getAddButton(){
+				return new Button(driver, By.id("add_edit_tab"));
+			}
+						
+			// Поп-ап добавления
+			private Custom getAddEditPopUp(){
+				return new Custom(driver, By.xpath("//span[text() = '" + new Values().addEditPopUpName + "']"));
+			}
+						
+			// "Завантаження"
+			private Custom getGridDownload_Div(){
+				return new Custom(driver, By.id("load_list_tab12_E"));
+			}
+						
+			// Дата
+			private TextInput getDate_Field(){
+				return new TextInput(driver, By.id("Tab12Grid_DocDate"));
+			}
+						
+			// Название документа
+			private TextInput getName_Field(){
+				return new TextInput(driver, By.id("Tab12Grid_DocName"));
+			}
+						
+			// Описание документа
+			private TextInput getDescription_Field(){
+				return new TextInput(driver, By.id("Tab12Grid_DocDescribe"));
+			}
+						
+			// Категория документа
+			private Select getDocType_Field(){
+				return new Select(driver.findElement(By.id("Tab12Grid_DocCategory")));
+			}
+						
+			// Файл
+			private TextInput getFile_Field(){
+				return new TextInput(driver, By.id("Tab12Grid_DocFileName"));
+			}
+						
+			private TextInput getFileUpload_Button(){
+					return new TextInput(driver, By.id("file_source"));
+			}
+						
+			// Ссылка на файл
+			private TextInput getFileLink_Field(){
+				return new TextInput(driver, By.id("Tab12Grid_DocLinkFile"));
+			}
+						
+			// Кнопка 'Сохранить'
+			private Button getSaveButton(){
+				return new Button(driver, By.id("save_dialog_btn"));
+			}
+								
+			private class Values{
+				private String addEditPopUpName = "Создание новой записи";				// Название поп-апа добавления/редактирования документа
+				private String date = new CustomMethods().getCurrentDate(); 	 		// Дата
+				private String name = "Файл";						     				// Название документа
+				private String docDescription = "Тестовое";						    	// Описание документа
+				private String docType = "Должностная инструкция";						// Инструкция
+				private String fileWay = "D:\\DSBase\\Files for testing\\ForDocAdd.txt";	// Ссылка на файл(реальная)
+				private String fileName = "ForDocAdd.txt";								// Название файла
+				private String fileLink = "www.getFile.com/get";			     		// Ссылка на файл 
+			}
+			
+		}
+		
+	}
+	private class AnneхF{
+		// кнопка перехода на вкладку "Приложение F - Эффективность системы фармаконадзора"
+		private Custom getAnneхFTab() {
+			return new Custom(driver, By.xpath("//div[contains(text(), 'Приложение F - Эффективность системы фармаконадзора')]"));
+		}
+		// поле Текст приложения А 
+		private WebElement getAnneхFTeхt() {
+			return driver.findElement(By.id("customTextEditor_Tab13_FText1_DesignIFrame"));
+		}
+		// кнопка добавления элементов приложения 
+		private Button getAnneхFElementsButton(){
+			return new Button(driver, By.id("add_edit_tabMain13_F"));
+		}
+		// поле "№"
+		private TextInput getNumberAnneхF(){
+			return new TextInput(driver, By.id("Tab13EGrid_ElementsNumber"));
+		}
+		// поле название 
+		private TextInput getTitleAnneхF(){
+			return new TextInput(driver, By.id("Tab13EGrid_ElementsName"));
+		}
+		// поле дата
+		private TextInput getDateAnneхF(){
+			return new TextInput(driver, By.id("Tab13EGrid_ElementsDate"));
+		}
+		// поле примечание 
+		private TextInput getNoteAnneхF(){
+			return new TextInput(driver, By.id("Tab13EGrid_ElementsNote"));
+		}
+		// кнопка сохранить(popUp)
+		private Button getSaveAnneхFElemetsButton(){
+			return new Button(driver, By.id("save_dialog_btn"));
+		}
+		// загрузка грида
+		private Custom getGridDownload_Div(){
+			return new Custom(driver, By.id("load_list_tab_main13_F"));	
+		}
+		private WebElement getElementNameCell(){
+			return driver.findElement(By.xpath("//td[@aria-describedby='list_tab_main13_F_ElementsName']"));
+		}
+		private class Values{
+			String setAnneхFText = readFile.substring(readFile.indexOf("#13"), readFile.indexOf("#14")); // Текст приложения
+			String setNumberAnneхF = "444222";															// номер
+			String setTitleAnneхF = "Звездные войны";													// название 
+			String setDateAnneхF = new CustomMethods().getCurrentDate();								// дата
+			String setNoteAnneхF = "Без примечаний";													// примечание
+		}
+		private class Docs_Elements{
+			// Кнопка добавления
+			private Button getAddButton(){
+				return new Button(driver, By.id("add_edit_tab"));
+			}
+						
+			// Поп-ап добавления
+			private Custom getAddEditPopUp(){
+				return new Custom(driver, By.xpath("//span[text() = '" + new Values().addEditPopUpName + "']"));
+			}
+						
+			// "Завантаження"
+			private Custom getGridDownload_Div(){
+				return new Custom(driver, By.id("load_list_tab13_F"));
+			}
+						
+			// Дата
+			private TextInput getDate_Field(){
+				return new TextInput(driver, By.id("Tab13Grid_DocDate"));
+			}
+						
+			// Название документа
+			private TextInput getName_Field(){
+				return new TextInput(driver, By.id("Tab13Grid_DocName"));
+			}
+						
+			// Описание документа
+			private TextInput getDescription_Field(){
+				return new TextInput(driver, By.id("Tab13Grid_DocDescribe"));
+			}
+						
+			// Категория документа
+			private Select getDocType_Field(){
+				return new Select(driver.findElement(By.id("Tab13Grid_DocCategory")));
+			}
+						
+			// Файл
+			private TextInput getFile_Field(){
+				return new TextInput(driver, By.id("Tab13Grid_DocFileName"));
+			}
+						
+			private TextInput getFileUpload_Button(){
+					return new TextInput(driver, By.id("file_source"));
+			}
+						
+			// Ссылка на файл
+			private TextInput getFileLink_Field(){
+				return new TextInput(driver, By.id("Tab13Grid_DocLinkFile"));
+			}
+						
+			// Кнопка 'Сохранить'
+			private Button getSaveButton(){
+				return new Button(driver, By.id("save_dialog_btn"));
+			}
+								
+			private class Values{
+				private String addEditPopUpName = "Создание новой записи";				// Название поп-апа добавления/редактирования документа
+				private String date = new CustomMethods().getCurrentDate(); 	 		// Дата
+				private String name = "Файл";						     				// Название документа
+				private String docDescription = "Тестовое";						    	// Описание документа
+				private String docType = "Должностная инструкция";						// Инструкция
+				private String fileWay = "D:\\DSBase\\Files for testing\\ForDocAdd.txt";	// Ссылка на файл(реальная)
+				private String fileName = "ForDocAdd.txt";								// Название файла
+				private String fileLink = "www.getFile.com/get";			     		// Ссылка на файл 
+			}
+			
+		}
+		
+	}
+	private class AnneхG{
+		// кнопка перехода на вкладку "Приложение G - Система контроля качества"
+		private Custom getAnneхGTab() {
+			return new Custom(driver, By.xpath("//div[contains(text(), 'Приложение G - Система контроля качества')]"));
+		}
+		// поле Текст приложения G 
+		private WebElement getAnneхGTeхt() {
+			return driver.findElement(By.id("customTextEditor_Tab14_GText1_DesignIFrame"));
+		}
+		// кнопка добавления элементов приложения 
+		private Button getAnneхFElementsButton(){
+			return new Button(driver, By.id("add_edit_tabMain14_G"));
+		}
+		// поле "№"
+		private TextInput getNumberAnneхG(){
+			return new TextInput(driver, By.id("Tab14EGrid_ElementsNumber"));
+		}
+		// поле название 
+		private TextInput getTitleAnneхG(){
+			return new TextInput(driver, By.id("Tab14EGrid_ElementsName"));
+		}
+		// поле дата
+		private TextInput getDateAnneхG(){
+			return new TextInput(driver, By.id("Tab14EGrid_ElementsDate"));
+		}
+		// поле примечание 
+		private TextInput getNoteAnneхG(){
+			return new TextInput(driver, By.id("Tab14EGrid_ElementsNote"));
+		}
+		// кнопка сохранить(popUp)
+		private Button getSaveAnneхGElemetsButton(){
+			return new Button(driver, By.id("save_dialog_btn"));
+		}
+		// загрузка грида
+		private Custom getGridDownload_Div(){
+			return new Custom(driver, By.id("load_list_tab_main14_G"));	
+		}
+		private WebElement getElementNameCell(){
+			return driver.findElement(By.xpath("//td[@aria-describedby='list_tab_main14_G_ElementsName']"));
+		}
+		private class Values{
+			String setAnneхGText = readFile.substring(readFile.indexOf("#14"), readFile.indexOf("#15")); // Текст приложения
+			String setNumberAnneхG = "444222";															// номер
+			String setTitleAnneхG = "Звездные войны";													// название 
+			String setDateAnneхG = new CustomMethods().getCurrentDate();								// дата
+			String setNoteAnneхG = "Без примечаний";													// примечание
+		}
+		private class Docs_Elements{
+			// Кнопка добавления
+			private Button getAddButton(){
+				return new Button(driver, By.id("add_edit_tab"));
+			}
+						
+			// Поп-ап добавления
+			private Custom getAddEditPopUp(){
+				return new Custom(driver, By.xpath("//span[text() = '" + new Values().addEditPopUpName + "']"));
+			}
+						
+			// "Завантаження"
+			private Custom getGridDownload_Div(){
+				return new Custom(driver, By.id("load_list_tab14_G"));
+			}
+						
+			// Дата
+			private TextInput getDate_Field(){
+				return new TextInput(driver, By.id("Tab14Grid_DocDate"));
+			}
+						
+			// Название документа
+			private TextInput getName_Field(){
+				return new TextInput(driver, By.id("Tab14Grid_DocName"));
+			}
+						
+			// Описание документа
+			private TextInput getDescription_Field(){
+				return new TextInput(driver, By.id("Tab14Grid_DocDescribe"));
+			}
+						
+			// Категория документа
+			private Select getDocType_Field(){
+				return new Select(driver.findElement(By.id("Tab14Grid_DocCategory")));
+			}
+						
+			// Файл
+			private TextInput getFile_Field(){
+				return new TextInput(driver, By.id("Tab14Grid_DocFileName"));
+			}
+						
+			private TextInput getFileUpload_Button(){
+					return new TextInput(driver, By.id("file_source"));
+			}
+						
+			// Ссылка на файл
+			private TextInput getFileLink_Field(){
+				return new TextInput(driver, By.id("Tab14Grid_DocLinkFile"));
+			}
+						
+			// Кнопка 'Сохранить'
+			private Button getSaveButton(){
+				return new Button(driver, By.id("save_dialog_btn"));
+			}
+								
+			private class Values{
+				private String addEditPopUpName = "Создание новой записи";				// Название поп-апа добавления/редактирования документа
+				private String date = new CustomMethods().getCurrentDate(); 	 		// Дата
+				private String name = "Файл";						     				// Название документа
+				private String docDescription = "Тестовое";						    	// Описание документа
+				private String docType = "Должностная инструкция";						// Инструкция
+				private String fileWay = "D:\\DSBase\\Files for testing\\ForDocAdd.txt";	// Ссылка на файл(реальная)
+				private String fileName = "ForDocAdd.txt";								// Название файла
+				private String fileLink = "www.getFile.com/get";			     		// Ссылка на файл 
+			}
+			
+		}
+		
+	}
+	private class AnneхH{
+		// кнопка перехода на вкладку "Приложение H - Лекарственные средства"
+		private Custom getAnneхHTab() {
+			return new Custom(driver, By.xpath("//div[contains(text(), 'Приложение H - Лекарственные средства')]"));
+		}
+		// поле Текст приложения G 
+		private WebElement getAnneхHTeхt() {
+			return driver.findElement(By.id("customTextEditor_Tab15_HText1_DesignIFrame"));
+		}
+		// кнопка добавления элементов приложения 
+		private Button getAnneхHElementsButton(){
+			return new Button(driver, By.id("add_edit_tabMain15_H"));
+		}
+		// поле "№"
+		private TextInput getNumberAnneхH(){
+			return new TextInput(driver, By.id("Tab15EGrid_ElementsNumber"));
+		}
+		// поле название 
+		private TextInput getTitleAnneхH(){
+			return new TextInput(driver, By.id("Tab15EGrid_ElementsName"));
+		}
+		// поле дата
+		private TextInput getDateAnneхH(){
+			return new TextInput(driver, By.id("Tab15EGrid_ElementsDate"));
+		}
+		// поле примечание 
+		private TextInput getNoteAnneхH(){
+			return new TextInput(driver, By.id("Tab15EGrid_ElementsNote"));
+		}
+		// кнопка сохранить(popUp)
+		private Button getSaveAnneхHElemetsButton(){
+			return new Button(driver, By.id("save_dialog_btn"));
+		}
+		// загрузка грида
+		private Custom getGridDownload_Div(){
+			return new Custom(driver, By.id("load_list_tab_main15_H"));	
+		}
+		private WebElement getElementNameCell(){
+			return driver.findElement(By.xpath("//td[@aria-describedby='list_tab_main15_H_ElementsName']"));
+		}
+		private class Values{
+			String setAnneхHText = readFile.substring(readFile.indexOf("#15"), readFile.indexOf("#16")); // Текст приложения
+			String setNumberAnneхH = "444222";															// номер
+			String setTitleAnneхH = "Звездные войны";													// название 
+			String setDateAnneхH = new CustomMethods().getCurrentDate();								// дата
+			String setNoteAnneхH = "Без примечаний";													// примечание
+		}
+		private class Docs_Elements{
+			// Кнопка добавления
+			private Button getAddButton(){
+				return new Button(driver, By.id("add_edit_tab"));
+			}
+						
+			// Поп-ап добавления
+			private Custom getAddEditPopUp(){
+				return new Custom(driver, By.xpath("//span[text() = '" + new Values().addEditPopUpName + "']"));
+			}
+						
+			// "Завантаження"
+			private Custom getGridDownload_Div(){
+				return new Custom(driver, By.id("load_list_tab15_H"));
+			}
+						
+			// Дата
+			private TextInput getDate_Field(){
+				return new TextInput(driver, By.id("Tab15Grid_DocDate"));
+			}
+						
+			// Название документа
+			private TextInput getName_Field(){
+				return new TextInput(driver, By.id("Tab15Grid_DocName"));
+			}
+						
+			// Описание документа
+			private TextInput getDescription_Field(){
+				return new TextInput(driver, By.id("Tab15Grid_DocDescribe"));
+			}
+						
+			// Категория документа
+			private Select getDocType_Field(){
+				return new Select(driver.findElement(By.id("Tab15Grid_DocCategory")));
+			}
+						
+			// Файл
+			private TextInput getFile_Field(){
+				return new TextInput(driver, By.id("Tab15Grid_DocFileName"));
+			}
+						
+			private TextInput getFileUpload_Button(){
+					return new TextInput(driver, By.id("file_source"));
+			}
+						
+			// Ссылка на файл
+			private TextInput getFileLink_Field(){
+				return new TextInput(driver, By.id("Tab15Grid_DocLinkFile"));
+			}
+						
+			// Кнопка 'Сохранить'
+			private Button getSaveButton(){
+				return new Button(driver, By.id("save_dialog_btn"));
+			}
+								
+			private class Values{
+				private String addEditPopUpName = "Создание новой записи";				// Название поп-апа добавления/редактирования документа
+				private String date = new CustomMethods().getCurrentDate(); 	 		// Дата
+				private String name = "Файл";						     				// Название документа
+				private String docDescription = "Тестовое";						    	// Описание документа
+				private String docType = "Должностная инструкция";						// Инструкция
+				private String fileWay = "D:\\DSBase\\Files for testing\\ForDocAdd.txt";	// Ссылка на файл(реальная)
+				private String fileName = "ForDocAdd.txt";								// Название файла
+				private String fileLink = "www.getFile.com/get";			     		// Ссылка на файл 
+			}
+			
+		}
+		
+	}
+	private class AnneхI{
+		// кнопка перехода на вкладку "Приложение H - Лекарственные средства"
+		private Custom getAnneхITab() {
+			return new Custom(driver, By.xpath("//div[contains(text(), 'Приложение I - Контроль документации и записей')]"));
+		}
+		// поле Текст приложения I 
+		private WebElement getAnneхITeхt() {
+			return driver.findElement(By.id("customTextEditor_Tab16_IText1_DesignIFrame"));
+		}
+		// кнопка добавления элементов приложения 
+		private Button getAnneхIElementsButton(){
+			return new Button(driver, By.id("add_edit_tabMain16_I"));
+		}
+		// поле "№"
+		private TextInput getNumberAnneхI(){
+			return new TextInput(driver, By.id("Tab16EGrid_ElementsNumber"));
+		}
+		// поле название 
+		private TextInput getTitleAnneхI(){
+			return new TextInput(driver, By.id("Tab16EGrid_ElementsName"));
+		}
+		// поле дата
+		private TextInput getDateAnneхI(){
+			return new TextInput(driver, By.id("Tab16EGrid_ElementsDate"));
+		}
+		// поле примечание 
+		private TextInput getNoteAnneхI(){
+			return new TextInput(driver, By.id("Tab16EGrid_ElementsNote"));
+		}
+		// кнопка сохранить(popUp)
+		private Button getSaveAnneхIElemetsButton(){
+			return new Button(driver, By.id("save_dialog_btn"));
+		}
+		// загрузка грида
+		private Custom getGridDownload_Div(){
+			return new Custom(driver, By.id("load_list_tab_main16_I"));	
+		}
+		private WebElement getElementNameCell(){
+			return driver.findElement(By.xpath("//td[@aria-describedby='list_tab_main16_I_ElementsName']"));
+		}
+		private class Values{
+			String setAnneхIText = readFile.substring(readFile.indexOf("#16"), readFile.indexOf("#17")); // Текст приложения
+			String setNumberAnneхI = "444222";															// номер
+			String setTitleAnneхI = "Звездные войны";													// название 
+			String setDateAnneхI = new CustomMethods().getCurrentDate();								// дата
+			String setNoteAnneхI = "Без примечаний";													// примечание
+		}
+		private class Docs_Elements{
+			// Кнопка добавления
+			private Button getAddButton(){
+				return new Button(driver, By.id("add_edit_tab"));
+			}
+						
+			// Поп-ап добавления
+			private Custom getAddEditPopUp(){
+				return new Custom(driver, By.xpath("//span[text() = '" + new Values().addEditPopUpName + "']"));
+			}
+						
+			// "Завантаження"
+			private Custom getGridDownload_Div(){
+				return new Custom(driver, By.id("load_list_tab16_I"));
+			}
+						
+			// Дата
+			private TextInput getDate_Field(){
+				return new TextInput(driver, By.id("Tab16Grid_DocDate"));
+			}
+						
+			// Название документа
+			private TextInput getName_Field(){
+				return new TextInput(driver, By.id("Tab16Grid_DocName"));
+			}
+						
+			// Описание документа
+			private TextInput getDescription_Field(){
+				return new TextInput(driver, By.id("Tab16Grid_DocDescribe"));
+			}
+						
+			// Категория документа
+			private Select getDocType_Field(){
+				return new Select(driver.findElement(By.id("Tab16Grid_DocCategory")));
+			}
+						
+			// Файл
+			private TextInput getFile_Field(){
+				return new TextInput(driver, By.id("Tab16Grid_DocFileName"));
+			}
+						
+			private TextInput getFileUpload_Button(){
+					return new TextInput(driver, By.id("file_source"));
+			}
+						
+			// Ссылка на файл
+			private TextInput getFileLink_Field(){
+				return new TextInput(driver, By.id("Tab16Grid_DocLinkFile"));
+			}
+						
+			// Кнопка 'Сохранить'
+			private Button getSaveButton(){
+				return new Button(driver, By.id("save_dialog_btn"));
+			}
+								
+			private class Values{
+				private String addEditPopUpName = "Создание новой записи";				// Название поп-апа добавления/редактирования документа
+				private String date = new CustomMethods().getCurrentDate(); 	 		// Дата
+				private String name = "Файл";						     				// Название документа
+				private String docDescription = "Тестовое";						    	// Описание документа
+				private String docType = "Должностная инструкция";						// Инструкция
+				private String fileWay = "D:\\DSBase\\Files for testing\\ForDocAdd.txt";	// Ссылка на файл(реальная)
+				private String fileName = "ForDocAdd.txt";								// Название файла
+				private String fileLink = "www.getFile.com/get";			     		// Ссылка на файл 
+			}
+			
+		}
+		
+	}
 }

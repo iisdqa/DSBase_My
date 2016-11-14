@@ -166,6 +166,12 @@ public class TestOfTest  extends  BaseTest{
         addMasterFile_My.AnneõA_FillUp();
         addMasterFile_My.AnneõB_FillUp();
         addMasterFile_My.AnneõC_FillUp();
+        addMasterFile_My.AnneõD_FillUp();
+        addMasterFile_My.AnneõE_FillUp();
+        addMasterFile_My.AnneõF_FillUp();
+        addMasterFile_My.AnneõG_FillUp();
+        addMasterFile_My.AnneõH_FillUp();
+        addMasterFile_My.AnneõI_FillUp();
         
         
         
