@@ -127,7 +127,7 @@ public class PSURregistry_My extends WebPage<PSURregistry_My> {
 	new PSURDeletion_Elements().getDeletionYes_Button().click();
 	simpleWait(2);
 	//
-	waitForBlockStatus(new PSURregistry().getGridDownload_Div(), false);
+	new PSURregistry().getSearchAccordion().waitUntilAvailable();
 	}
 	public LogInPage_My userOut(){
 		// Выход из системы

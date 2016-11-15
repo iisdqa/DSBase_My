@@ -18,7 +18,7 @@ import com.dsbase.core.web.elements.TextInput;
 
 
 public class AddMasterFile_My extends WebPage<AddMasterFile_My> {
-	private static final String PAGE_URL = BASE_URL + "/Reports/Add";
+	private static final String PAGE_URL = BASE_URL + "/MasterFile";
 	public AddMasterFile_My(WebDriver driver){
 		super (driver);
 	}

@@ -10,7 +10,7 @@ import com.dsbase.core.web.pages.my.LogInPage_My;
 
 
 public class MasterFileRegistry_My extends WebPage<MasterFileRegistry_My> {
-	private static final String PAGE_URL = BASE_URL + "/MasterFile/0/61";
+	private static final String PAGE_URL = BASE_URL + "/MasterFile";
 	public MasterFileRegistry_My(WebDriver driver){
 		super (driver);
 	}
